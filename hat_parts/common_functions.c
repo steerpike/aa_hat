@@ -249,6 +249,9 @@ varargs void check_long(object o, int flags, mapping extra) {
 }
 
 void check_identify(object o, int flags) {
+  if(!o->query_unique() && o->query_value() < 500)
+    flags |= TEXT_NOT_MANDATORY;
+
   text_check(o, "the set_identify", (string)o->query_identify(), flags);
 }
 
