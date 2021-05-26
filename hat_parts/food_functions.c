@@ -4,7 +4,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s);
+void report(object o, string s, int channel);
 void inform(object o, string s);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
@@ -22,13 +22,13 @@ void hatcheck_food(object o) {
 
   heal = (int) o->query_healing();
   if(heal > 40)
-    report(o, "Food should heal 40 points or less.");
+    report(o, "Food should heal 40 points or less.", BALANCE_CHANNEL);
   else
     if(!heal)
-      report(o, "Food must heal for 1 or more.");
+      report(o, "Food must heal for 1 or more.", BALANCE_CHANNEL);
   check_recommended_value(o, 4*heal+(heal*heal)/10);
   if(!o->query_weight())
-    report(o, "Food should weigh at least 1.");
+    report(o, "Food should weigh at least 1.", QC_CHANNEL);
 
   check_name(o, 0);
   check_short(o, TEXT_CHECK_LIMITS, ITEM_SHORT_LIMITS);

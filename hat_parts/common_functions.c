@@ -119,13 +119,10 @@ varargs void out_line(string s, int channel, int indent) {
   
   if(!indent)
     indent = 2;
-  
-  if(highlight && query_hat_ansi()) {
-    s = "- " +s;
-    colour = CHANNELS[channel];
-    COLOURUTIL_D->write_c(COLOURUTIL_D->get_cf_string(colour+s+COLOUR_RESET, 0, indent));
-  } else
-    write(get_f_string(s, 0, indent));
+
+  s = "- " +s;
+  colour = CHANNELS[channel];
+  COLOURUTIL_D->write_c(COLOURUTIL_D->get_cf_string(colour+s+COLOUR_RESET, 0, indent));
   hat_log(get_f_string(s, 0, indent));
 }
 
@@ -162,9 +159,9 @@ varargs void inform(object o, string s, int channel) {
 
   if(!already_reported(o, s)) {
     add_report(o, s);
-    if(channel == QC_IDX)
+    if(channel == QC_CHANNEL)
       increment_error_count();
-    else if(channel == BALANCE_IDX)
+    else if(channel == BALANCE_CHANNEL)
       increment_balance_count();
     out_line(s, channel);
   }
@@ -181,7 +178,7 @@ void check_inherits(object o) {
   s = sort_array(inherit_list(o),#'>); //'
   for(i=0; i < sizeof(s)-1; i++)
     if(s[i] == s[i+1])
-      report(o, "Alert! "+s[i]+" is inherited twice.");
+      report(o, "Alert! "+s[i]+" is inherited twice.", QC_CHANNEL);
 }
 
 void check_name(object o, int flags) {
@@ -201,13 +198,13 @@ void check_name(object o, int flags) {
     return;
 
   if(text_short && strstr(lower_case(text_short), lower_case(name)) == -1)
-    report(o, "The set_name \""+name+"\" should appear in the short or needs adjustment.");
+    report(o, "The set_name \""+name+"\" should appear in the short or needs adjustment.", QC_CHANNEL);
 
   if(!(flags & TEXT_EXCEPTION_NAME_IN_ALIAS) && pointerp(ids) && member(ids, name) != -1)
-    report(o, "The set_name \""+name+"\" should not also be an alias.");
+    report(o, "The set_name \""+name+"\" should not also be an alias.", QC_CHANNEL);
 
   if(strlen(name) > 13 && living(o) && strstr(name, " ", 0) == -1 && !BANISH_D->query_name_banished(lower_case(name)))
-    report(o, "The set_name \""+name+"\" needs to be banished still.");
+    report(o, "The set_name \""+name+"\" needs to be banished still.", QC_CHANNEL);
 }
 
 varargs int check_short(object o, int flags, mapping extra) {
@@ -230,9 +227,9 @@ varargs void check_long(object o, int flags, mapping extra) {
     return;
   if(text_long == "You see nothing special.\n") {
     if(function_exists("long", o) != function_exists("query_long", o)) {
-      report(o, "The set_long doesn't seem to be working right.");
+      report(o, "The set_long doesn't seem to be working right.", QC_CHANNEL);
     } else
-      report(o, "The set_long seems to be the default.");
+      report(o, "The set_long seems to be the default.", QC_CHANNEL);
     return;
   }
 
@@ -242,7 +239,7 @@ varargs void check_long(object o, int flags, mapping extra) {
     return;
 
   if(!o->short())
-    report(o, "Has a set_long but also needs a set_short too.");
+    report(o, "Has a set_long but also needs a set_short too.", QC_CHANNEL);
 }
 
 void check_identify(object o, int flags) {
@@ -287,11 +284,10 @@ void check_material(object o, int mandatory) {
   if(!mat)
     mat = (string *) MATERIAL_D->guess_material(o);
   if(!mat || !sizeof(mat))
-    report(o, "The material of this object is unknown.");
+    report(o, "The material of this object is unknown.", QC_CHANNEL);
   else {
     if(mat[0] == "?")
-      report(o, "The set_material is missing, it might be "+
-                mat[1]+"?");
+      report(o, "The set_material is missing, it might be "+mat[1]+"?", QC_CHANNEL);
     else {
       allowed_materials = ({"adamantite", "bone", "brass", "bronze",
         "cheese", "clay", "cloth", "copper", "dough", "egg", "electrum",
@@ -302,7 +298,7 @@ void check_material(object o, int mandatory) {
         "zinc"});
       for(i=0; i<sizeof(mat); i++) {
         if(member_array(mat[i], allowed_materials) == -1)
-          report(o, "The set_material \""+mat[i]+"\" is not standard.");
+          report(o, "The set_material \""+mat[i]+"\" is not standard.", QC_CHANNEL);
       }
     }
   }
@@ -312,11 +308,11 @@ void check_recommended_value(object o, int rec) {
   int val;
   val = (int) o->query_value();
   if(!val && rec)
-    report(o, "Has no value. Expected: "+rec+".");
+    report(o, "Has no value. Expected: "+rec+".", BALANCE_CHANNEL);
   else if(val > rec)
-    report(o, "Has a high value ("+val+"). Expected: "+rec+".");
+    report(o, "Has a high value ("+val+"). Expected: "+rec+".", BALANCE_CHANNEL);
   else if(val < rec)
-    report(o, "Has a low value ("+val+"). Expected: "+rec+".");
+    report(o, "Has a low value ("+val+"). Expected: "+rec+".", BALANCE_CHANNEL);
 }
 
 // return 0 - input was 0 or ""
@@ -336,7 +332,7 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
 
   if(!text || text == "") {
     if(!(flags & TEXT_NOT_MANDATORY))
-      report(o, capitalize(what)+" is missing.");
+      report(o, capitalize(what)+" is missing.", QC_CHANNEL);
     return 0;
   }
 
@@ -344,48 +340,48 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
   while(text[<1..<1] == " ") // strip trailing spaces
     text = text[0..<2];
   if(strlen(text) != text_len && !(flags & TEXT_EXCEPTION_ENDING_SPACE && strlen(text) == text_len -1)) {
-    report(o, capitalize(what) + " contains trailing spaces.");
+    report(o, capitalize(what) + " contains trailing spaces.", QC_CHANNEL);
   }
 
   // TODO track down all the various redirect implementations, and
   // see which ones can handle a return string
   if(text[0..1] == "##") {
     if(!(flags & TEXT_ALLOW_REDIRECT)) {
-      report(o, "Redirection is not allowed on "+what);
+      report(o, "Redirection is not allowed on "+what, QC_CHANNEL);
       return 1;
     }
     if(!function_exists(text[2..<1], o))
-      report(o, capitalize(what) + " is redirecting to \""+text[2..<1]+"\" which does not exist.");
+      report(o, capitalize(what) + " is redirecting to \""+text[2..<1]+"\" which does not exist.", QC_CHANNEL);
     return 1;
   }
 
   if(strstr(text, " ,") != -1)
-    report(o, capitalize(what)+" has a space before a comma.");
+    report(o, capitalize(what)+" has a space before a comma.", QC_CHANNEL);
 
   if(strstr(text, "  ") != -1)
-    report(o, capitalize(what)+" has double spaces.");
+    report(o, capitalize(what)+" has double spaces.", QC_CHANNEL);
 
   if(!(flags & TEXT_EXCEPTION_INLINE_NL) && strstr(text[0..<2], "\n") != -1)
-    report(o, capitalize(what)+" should usually not contain \"\\n\".");
+    report(o, capitalize(what)+" should usually not contain \"\\n\".", QC_CHANNEL);
 
   c = text[<1..<1];
 
   if(flags & TEXT_REQUIRE_ENDING_NL) {
     if(c != "\n")
-      report(o, capitalize(what)+" should end with \"\\n\".");
+      report(o, capitalize(what)+" should end with \"\\n\".", QC_CHANNEL);
   } else {
     if(c == "\n") {
       if(!(flags & TEXT_EXCEPTION_ENDING_NL))
-        report(o, capitalize(what)+" should not end in \"\\n\".");
+        report(o, capitalize(what)+" should not end in \"\\n\".", QC_CHANNEL);
     }
   }
 
   words = explode(text, " ") - ({0}) - ({""}) - ({"\n"});
 
   if(flags & TEXT_REQUIRE_ARTICLE && sizeof(words) && !is_article(words[0]))
-    report(o, capitalize(what) + " usually starts with \"a\", \"an\", \"the\" or \"some\".");
+    report(o, capitalize(what) + " usually starts with \"a\", \"an\", \"the\" or \"some\".", QC_CHANNEL);
   else if(flags & TEXT_DENY_ARTICLE && !(flags & TEXT_EXCEPTION_ALLOW_ARTICLE) && sizeof(words) && is_article(words[0]))
-    report(o, capitalize(what) + " usually does not start with \"a\", \"an\", \"the\" or \"some\".");
+    report(o, capitalize(what) + " usually does not start with \"a\", \"an\", \"the\" or \"some\".", QC_CHANNEL);
 
   //inform(o, "DEBUG: words are "+(string)XFUN->variable_to_string(words)+".");
   // loop through all the words, and strip punctuation from them
@@ -434,20 +430,20 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
 
     // now check words for contractions
     if(!(flags & TEXT_ALLOW_CONTRACTION) && CONTRACTION_D->is_contraction(lower_case(word)))
-      report(o, capitalize(what) + " used contraction \""+word+"\".");
+      report(o, capitalize(what) + " used contraction \""+word+"\".", QC_CHANNEL);
 
     if(i < words_size-1 && SPELLING_D->query_is_mispelled(word+" "+words[i+1]))
-      report(o, capitalize(what) + " has \""+word+" "+words[i+1]+"\" which should be \""+(string)SPELLING_D->query_spelling(word+" "+words[i+1])+"\".");
+      report(o, capitalize(what) + " has \""+word+" "+words[i+1]+"\" which should be \""+(string)SPELLING_D->query_spelling(word+" "+words[i+1])+"\".", QC_CHANNEL);
 
     if(SPELLING_D->query_is_mispelled(word))
-      report(o, capitalize(what) + " has \""+word+"\" which should be \""+(string)SPELLING_D->query_spelling(word)+"\".");
+      report(o, capitalize(what) + " has \""+word+"\" which should be \""+(string)SPELLING_D->query_spelling(word)+"\".", QC_CHANNEL);
 
     if( (word == "a" || word == "an") && i < words_size-1 && (string)A_AN_D->query_article(words[i+1]) != lower_case(word) )
-      report(o, capitalize(what) + " uses article \""+word+"\" before \""+words[i+1]+"\", but should use \""+(lower_case(word)=="a"?"an":"a")+"\".");
+      report(o, capitalize(what) + " uses article \""+word+"\" before \""+words[i+1]+"\", but should use \""+(lower_case(word)=="a"?"an":"a")+"\".", QC_CHANNEL);
   }
 
   if(flags & TEXT_DENY_MULTIPLE_WORDS && sizeof(words) > 1)
-    report(o, capitalize(what) + " should only be one word.");
+    report(o, capitalize(what) + " should only be one word.", QC_CHANNEL);
 
   //strip the remaining newline at the end if it exists
   c = text[<1..<1];
@@ -476,7 +472,7 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
           text_len < i ? "short" : "long",
           text_len,
           i,
-          j));
+          j), QC_CHANNEL);
 
       i = extra["text_min_lines"];
       j = extra["text_max_lines"];
@@ -486,17 +482,17 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
           num_lines < i ? "few" : "many",
           num_lines,
           i,
-          j));
+          j), QC_CHANNEL);
     }
   }
 
   punctuation = ({".", "!", "?"});
   if(flags & TEXT_DENY_ENDING_PUNC) {
     if(member(punctuation, c) != -1)
-      report(o, capitalize(what) + " does not need punctuation.");
+      report(o, capitalize(what) + " does not need punctuation.", QC_CHANNEL);
   } else {
     if(member(punctuation, c) == -1)
-      report(o, capitalize(what) + " requires punctuation.");
+      report(o, capitalize(what) + " requires punctuation.", QC_CHANNEL);
   }
 
   return 1;

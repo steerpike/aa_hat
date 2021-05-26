@@ -4,7 +4,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s);
+void report(object o, string s, int channel);
 void inform(object o, string s);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
@@ -24,16 +24,16 @@ void hatcheck_drink(object o) {
 
   heal = (int) o->query_healing();
   if(heal > 45)
-    report(o, "Drinks should heal 45 points or less.");
+    report(o, "Drinks should heal 45 points or less.", BALANCE_CHANNEL);
   else if(!heal)
-    report(o, "Drinks must heal for 1 or more.");
+    report(o, "Drinks must heal for 1 or more.", BALANCE_CHANNEL);
 
   // TODO value in drinks are handled in /obj/drink.c and cannot be
   // controlled by the author easily
   //check_recommended_value(o, (3*heal+(heal*heal)/10)/2);
 
   if(!o->query_weight())
-    report(o, "Drinks should weigh at least 1.");
+    report(o, "Drinks should weigh at least 1.", QC_CHANNEL);
 
   check_name(o, is_empty(o) ? TEXT_EXCEPTION_ALLOW_ARTICLE : 0);
   check_short(o, TEXT_CHECK_LIMITS, ITEM_SHORT_LIMITS);

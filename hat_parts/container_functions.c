@@ -6,7 +6,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s);
+void report(object o, string s, int channel);
 void inform(object o, string s);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
@@ -23,11 +23,11 @@ void hatcheck_container(object o) {
   int capacity, value, expected;
 
   if(!o->query_weight())
-    report(o, "Containers must be 1 or more weight.");
+    report(o, "Containers must be 1 or more weight.", QC_CHANNEL);
 
   capacity = (int) o->query_max_weight();
   if(!capacity) {
-    report(o, "This container has zero capacity.");
+    report(o, "This container has zero capacity.", QC_CHANNEL);
   } else {
     if(!o->query_wearable())
       expected = capacity * CONTAINER_VALUE_NON_WEARABLE;

@@ -371,7 +371,7 @@ void hatcheck_item_list(object o, int notify_ok) {
       if(query_total_value() > query_treasure_max()[lvl] * 3 / 2)
         report(query_holder(), "Excess treasure (" + query_total_value() +
                "). Level " + lvl + " max is " + (query_treasure_max()[lvl]*3/2) +
-               " with the extra 50% allowance.");
+               " with the extra 50% allowance.", BALANCE_CHANNEL);
     }
     set_sum_value(0);
   }
@@ -543,9 +543,9 @@ void hatcheck_finished() {
     if(allchecked) {
       write("Hatcheck complete: checked "+allchecked+" files.\n");
       if(query_error_count())
-        write("  "+query_error_count()+" QC isues.\n");
+        write("Found "+query_error_count()+" QC issues.\n");
       if(query_balance_count())
-        write("  "+query_balance_count()+" Balance isues.\n");
+        write("Found "+query_balance_count()+" potential Balance issues.\n");
     } else
       write("Hatcheck complete: nothing checked--nothing found.\n");
   }

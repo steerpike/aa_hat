@@ -4,7 +4,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s);
+void report(object o, string s, int channel);
 void inform(object o, string s);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
@@ -61,15 +61,15 @@ void hatcheck_weapon(object o) {
 
   env = environment(o);
   if(env && living(env) && env->query_npc() && !o->query_wielded())
-    report(o, "Weapons held by monsters should be wielded.");
+    report(o, "Weapons held by monsters should be wielded.", QC_CHANNEL);
 
   if(wc <= 0)
-    report(o, "Weapons must have 1 or more damage.");
+    report(o, "Weapons must have 1 or more damage.", QC_CHANNEL);
   else if(pac <= 0)
-    report(o, "Weapons must have 1 or more parry.");
+    report(o, "Weapons must have 1 or more parry.", QC_CHANNEL);
   else if(wc >= 19 || pac >= 19) {
     if(!o->query_unique())
-      report(o, "Weapons with damage or parry greater than 18 must be unique.");
+      report(o, "Weapons with damage or parry greater than 18 must be unique.", BALANCE_CHANNEL);
   } else {
     // TODO probably need to breakoff thrown weapons at some point
     if(member(inherit_list(o), "obj/thrown-weapon.c") != -1) {
@@ -82,16 +82,16 @@ void hatcheck_weapon(object o) {
   }
 
   if(wc > diff+1)
-    report(o, "Weapon difficulty is too low, considering the damage.");
+    report(o, "Weapon difficulty is too low, considering the damage.", BALANCE_CHANNEL);
   else if(wc < diff-1)
-    report(o, "Weapon difficulty is too high, considering the damage.");
+    report(o, "Weapon difficulty is too high, considering the damage.", BALANCE_CHANNEL);
 
   if(!weight)
-    report(o, "Weapons must be 1 or more weight.");
+    report(o, "Weapons must be 1 or more weight.", QC_CHANNEL);
   else if(weight > rec_weight+3)
-    report(o, "This weapon is too heavy.");
+    report(o, "This weapon is too heavy.", BALANCE_CHANNEL);
   else if(weight < rec_weight-3)
-    report(o, "This weapon is too light.");
+    report(o, "This weapon is too light.", BALANCE_CHANNEL);
 
   switch(wtype) {
     case "Longsword":
@@ -185,7 +185,7 @@ void hatcheck_weapon(object o) {
       break;
 
     default:
-      report(o, "Unknown set_weapon type!");
+      report(o, "Unknown set_weapon type!", QC_CHANNEL);
   }
 
   check_name(o, 0);
@@ -205,17 +205,17 @@ void check_weaponrange(object o, string wtype, int weight, int diff, int pac,
   int minw, int maxw, int mindiff, int maxdiff, int minpac, int maxpac) {
 
   if(weight < minw)
-    report(o, "The minimum weight for "+wtype+" is "+minw+".");
+    report(o, "The minimum weight for "+wtype+" is "+minw+".", BALANCE_CHANNEL);
   else if(weight > maxw)
-    report(o, "The maximum weight for "+wtype+" is "+maxw+".");
+    report(o, "The maximum weight for "+wtype+" is "+maxw+".", BALANCE_CHANNEL);
 
   if(diff < mindiff)
-    report(o, "The minimum difficulty for "+wtype+" is "+mindiff+".");
+    report(o, "The minimum difficulty for "+wtype+" is "+mindiff+".", BALANCE_CHANNEL);
   else if(diff > maxdiff)
-    report(o, "The maximum difficulty for "+wtype+" is "+maxdiff+".");
+    report(o, "The maximum difficulty for "+wtype+" is "+maxdiff+".", BALANCE_CHANNEL);
 
   if(pac < minpac)
-    report(o, "The minimum parry class for "+wtype+" is "+minpac+".");
+    report(o, "The minimum parry class for "+wtype+" is "+minpac+".", BALANCE_CHANNEL);
   else if(pac > maxpac)
-    report(o, "The maximum parry class for "+wtype+" is "+maxpac+".");
+    report(o, "The maximum parry class for "+wtype+" is "+maxpac+".", BALANCE_CHANNEL);
 }

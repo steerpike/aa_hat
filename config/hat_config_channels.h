@@ -6,8 +6,8 @@
 #define CHANNELS \
   ({ COLOUR_INTENSE_YELLOW, COLOUR_INTENSE_RED, COLOUR_INTENSE_CYAN })
 
-#define INFORM_IDX  0
-#define QC_IDX      1
-#define BALANCE_IDX 2
+#define INFORM_CHANNEL  0
+#define QC_CHANNEL      1
+#define BALANCE_CHANNEL 2
 
 #endif
