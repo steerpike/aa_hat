@@ -1,0 +1,1133 @@
+Checking: cat 
+          (/w/ninjutsu/test_monster.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should appear in the short.
+- The set_short is too short (3 chars). Expected: 4 to 50 chars.
+- Does cat have arms?
+- DEBUG: checking race/alias
+- The race "cat" does not need to be an alias.
+Checking: a darkwood bow 
+          (/w/ninjutsu/hat/bow.c)
+- The set_name "bowstave" should appear in the short.
+Checking: a darkwood bow 
+          (/w/ninjutsu/hat/bow.c)
+- The set_name "bowstave" should appear in the short.
+Checking: a darkwood bow 
+          (/w/ninjutsu/hat/bow.c)
+- The set_name "test" should appear in the short.
+Checking: a piece of charcoal 
+          (/w/alindra/temple/object/charcoal.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name is missing.
+- The set_identify is missing.
+- The set_material is missing, it might be coal?
+Checking: Ninjutsu's Workroom 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: Ninjutsu's Workroom 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+- The room has no add_senses and these are required.
+- The set_short is too long (51 chars). Expected: 4 to 50 chars.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: xxx 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_short is too short (3 chars). Expected: 4 to 50 chars.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: a test ring 
+          (/w/ninjutsu/test_other.c)
+- The set_identify is missing.
+- Weightless jewellery must not provide AC.
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+- Has a low value (1). Expected: 675.
+- The set_name "shield" should appear in the short.
+- The set_short is too long (51 chars). Expected: 4 to 50 chars.
+Checking: a small stone 
+          (/w/ninjutsu/test_object.c)
+- The set_long is too short (1 chars). Expected: 10 to 380 chars.
+- The set_long requires punctuation.
+Checking: some black tea 
+          (/w/ninjutsu/test_misc.c)
+- Has no value. Expected: 1.
+- The set_long is too short (9 chars). Expected: 10 to 380 chars.
+- The set_identify is missing.
+- The set_smell requires punctuation.
+- The set_taste ends in "\n". (debug: one was auto-appended)
+- The set_taste requires punctuation.
+Checking: some black tea 
+          (/w/ninjutsu/test_misc.c)
+- Has no value. Expected: 1.
+- The set_long contains trailing spaces.
+- The set_long is too long (420 chars). Expected: 10 to 385 chars.
+- The set_long is too many lines (6). Expected: 1 to 5 lines.
+- The set_identify is missing.
+- The set_smell requires punctuation.
+- The set_taste ends in "\n". (debug: one was auto-appended)
+- The set_taste requires punctuation.
+Checking: some black tea 
+          (/w/ninjutsu/test_misc.c)
+- Has no value. Expected: 1.
+- The set_long contains trailing spaces.
+- The set_long is too long (420 chars). Expected: 10 to 385 chars.
+- The set_long is too many lines (6). Expected: 1 to 5 lines.
+- The set_identify is missing.
+- The set_smell requires punctuation.
+- The set_taste requires punctuation.
+- Has no value. Expected: 1.
+- The set_long contains trailing spaces.
+- The set_long is too long (420 chars). Expected: 10 to 385 chars.
+- The set_long is too many lines (6). Expected: 1 to 5 lines.
+- The set_identify is missing.
+- The set_smell requires punctuation.
+- The set_taste requires punctuation.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- The set_long is too short (1 chars). Expected: 10 to 385 chars.
+- The set_long requires punctuation.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- The set_long is too short (3 chars). Expected: 10 to 385 chars.
+- The set_long requires punctuation.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+- Excess treasure (2500). Level 19 max is 1950 with the extra 50% allowance.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+- Shields held by monsters should be worn.
+- Has a high value (999). Expected: 675.
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Excess treasure (5995). Level 19 max is 2250 with the extra 50% allowance.
+Checking: Razar the Greater Demon 
+          (/w/shadow/ms/razar.c)
+- Body AC (25) is too low for a level 20 monster. Expected: 29-44.
+- Head AC (23) is too low for a level 20 monster. Expected: 29-44.
+- Arm AC (25) is too low for a level 20 monster. Expected: 29-44.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Spell damage too high (90) on first spell. Maximum: 30.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_long has double spaces.
+- The set_long should usually not contain "\n".
+- The set_long should not end in "\n".
+- Demon race? Is this intended?
+- The race "demon" does not need to be an alias.
+Checking: the Shadow Sword 
+          (/w/shadow/ms/dark.c)
+- Weapons with damage or parry greater than 18 must be unique.
+- The set_long has double spaces.
+- The set_long should usually not contain "\n".
+- The set_long should not end in "\n".
+- The set_identify is missing.
+- The set_touch is missing.
+- The set_material is missing, it might be iron?
+Checking: East Village Crossroads 
+          (/room/newvill/vill_shore.c)
+- Rangers cannot forage here. See 'man query_ranger_terrain'.
+- Artificers cannot assay here. See 'man query_artificer_terrain_type'.
+- Outdoor rooms should use set_terrain.
+Checking: a shimmering blue door 
+          (/class/mage/obj/dimension_door.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "dimension door" should appear in the short.
+- The set_name "dimension door" should not also be an alias.
+- The set_identify is missing.
+- The set_touch is missing.
+- The material of this object is unknown.
+Checking: Near the shore of a lake 
+          (/w/krystal/westcamp/fixes/basepath.c)
+- Seems to be some type of base file...skipping.
+Checking: on the shore of Kluane Lake 
+          (/w/krystal/westcamp/fixes/baseshore.c)
+- Seems to be some type of base file...skipping.
+Checking: on a dock over Kluane Lake 
+          (/w/krystal/westcamp/fixes/dock.c)
+- If you go "west" the "east" leads to another room instead.
+- Rangers cannot forage here. See 'man query_ranger_terrain'.
+Checking: fish_obj [Invisible]
+          (/w/krystal/westcamp/npc/fishobj.c)
+- Seems to be invisible...skipping.
+Checking: a length of knotted rope 
+          (/w/krystal/westcamp/fixes/dogrope.c)
+Checking: a small enclosure 
+          (/w/krystal/westcamp/fixes/dogyard.c)
+- Rangers cannot forage here. See 'man query_ranger_terrain'.
+Checking: Lessa, a young half-elf 
+          (/w/krystal/westcamp/npc/lessa.c)
+- The chat chance (1) is low. Expected: 5-10.
+- Monsters require 3 load_chats.
+Checking: a scout knife 
+          (/w/dawg/ranger/obj/xknife.c)
+- Has no value. Expected: 20.
+- Weapons must be 1 or more weight.
+- The minimum weight for a knife is 1.
+- The minimum difficulty for a knife is 4.
+- The minimum parry class for a knife is 4.
+- The set_long should not end in "\n".
+- The set_long used contraction "It's".
+- The set_identify is missing.
+- The set_touch is missing.
+- The set_material is missing, it might be iron?
+Checking: a dirty pink shift 
+          (/w/krystal/westcamp/obj/shift.c)
+- The set_name "pink shift" should not also be an alias.
+Checking: some supple leather leggings 
+          (/w/krystal/westcamp/obj/leggings.c)
+- Has a low value (40). Expected: 44.
+Checking: a curing bag (worn) 
+          (/w/maker/obj/salt_bag/salt_bag.c)
+- Has a high value (860). Expected: 360.
+Checking: Lessa, a young half-elf 
+          (/w/krystal/westcamp/fixes/lessa.c)
+- The chat chance (1) is low. Expected: 5-10.
+- Monsters require 3 load_chats.
+Checking: a scout knife 
+          (/w/dawg/ranger/obj/xknife.c)
+Checking: a dirty pink shift 
+          (/w/krystal/westcamp/obj/shift.c)
+Checking: some supple leather leggings 
+          (/w/krystal/westcamp/obj/leggings.c)
+Checking: a curing bag (worn) 
+          (/w/maker/obj/salt_bag/salt_bag.c)
+Checking: In shallow waters of Lake Kluane 
+          (/w/krystal/westcamp/fixes/mapenter-dock.c)
+- The set_smell is missing.
+- The set_sound is missing.
+- The add_noget for "piling" used contraction "cause".
+Checking: Near the shore of a lake 
+          (/w/krystal/westcamp/fixes/mapenter.c)
+- The add_item for "lake" has double spaces.
+Checking: a marshy area 
+          (/w/krystal/westcamp/fixes/marsh.c)
+- The set_long is too few lines (2). Expected: 3 to 8 lines.
+- If you go "south" the "north" leads to another room instead.
+Checking: fish_obj [Invisible]
+          (/w/krystal/westcamp/npc/fishobj.c)
+Checking: a trail through the grass 
+          (/w/krystal/westcamp/fixes/patha.c)
+- If you go "east" the "west" leads to another room instead.
+- If you go "west" the "east" leads to another room instead.
+Checking: Near a large cookfire 
+          (/w/krystal/westcamp/fixes/pathb.c)
+- The add_noget for "fire ring" used contraction "cause".
+- The add_sound for "large structure" requires punctuation.
+- If you go "north" the "south" leads to another room instead.
+- If you go "east" the "west" leads to another room instead.
+- If you go "west" the "east" leads to another room instead.
+- Rangers cannot forage here. See 'man query_ranger_terrain'.
+Checking: Fire [Invisible]
+          (/w/tueblo/toolbox/fire.c)
+- Seems to be invisible...skipping.
+Checking: inside a tent-like structure 
+          (/w/krystal/westcamp/fixes/tentin.c)
+- The add_noget for "pole" used contraction "cause".
+- If you go "south" the "north" leads to another room instead.
+- An indoor room with light, but no light sources are described in the room?
+Checking: Thom, the friendly fisherman 
+          (/w/krystal/westcamp/npc/thom.c)
+- The chat chance (1) is low. Expected: 5-10.
+- The second load_chat text should usually not contain "\n".
+- The race "half-elf" does not need to be an alias.
+Checking: a simple blue tunic 
+          (/w/krystal/westcamp/obj/tunic.c)
+- The set_name "blue tunic" should not also be an alias.
+Checking: some supple leather trousers 
+          (/w/krystal/westcamp/obj/trousers.c)
+- Has a low value (40). Expected: 44.
+Checking: a knife sheathed in a sheath 
+          (/w/krystal/westcamp/obj/sheath.c)
+- Not living/container, but contains something.
+- The set_long is missing.
+- Jewellery with weight needs to grant AC (or some other function).
+Checking: a sleeping area inside a tent 
+          (/w/krystal/westcamp/fixes/tentsleep.c)
+- The set_long is too few lines (2). Expected: 3 to 8 lines.
+Checking: a trunk 
+          (/w/krystal/westcamp/obj/trunk.c)
+- Has no value. Expected: 500.
+- The set_name "trunk" should not also be an alias.
+- Has a set_long but also needs a set_short too.
+- The set_identify is missing.
+Checking: a well-used backpack 
+          (/w/krystal/westcamp/obj/backpack.c)
+- Has a high value (1130). Expected: 630.
+Checking: a mandrake root 
+          (/class/mage/obj/reagent.c)
+- All items of value must be 1 or more weight.
+- The set_long has double spaces.
+- The set_taste has double spaces.
+Checking: the mounted head of an andrewsarcus 
+          (/w/krystal/westcamp/obj/andhead.c)
+- The set_name "andrewsarchus head" should appear in the short.
+Checking: Thom, the friendly fisherman 
+          (/w/krystal/westcamp/fixes/thom.c)
+- The chat chance (1) is low. Expected: 5-10.
+- The second load_chat text should usually not contain "\n".
+- The race "half-elf" does not need to be an alias.
+Checking: a simple blue tunic 
+          (/w/krystal/westcamp/obj/tunic.c)
+Checking: some supple leather trousers 
+          (/w/krystal/westcamp/obj/trousers.c)
+Checking: a knife sheathed in a sheath 
+          (/w/krystal/westcamp/obj/sheath.c)
+Checking: a set of wind chimes 
+          (/w/krystal/westcamp/fixes/windchime.c)
+- The set_name "chimes" should not also be an alias.
+Checking: a small feral 0 
+          (/w/krystal/westcamp/npc/fake_puppy.c)
+- The set_name in monsters may only be one word, see 'man set_cap_name'.
+Checking: fish_obj [Invisible]
+          (/w/krystal/westcamp/npc/fishobj.c)
+Checking: a litter of three fox kits 
+          (/w/krystal/westcamp/npc/foxswarm.c)
+- The set_name in monsters may only be one word, see 'man set_cap_name'.
+Checking: a giant bullfrog 
+          (/w/krystal/westcamp/npc/frog.c)
+- The chat chance (2) is low. Expected: 5-10.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "bullfrog" should not also be an alias.
+- The race "frog" does not need to be an alias.
+Checking: Lessa, a young half-elf 
+          (/w/krystal/westcamp/npc/lessa.c)
+Checking: a scout knife 
+          (/w/dawg/ranger/obj/xknife.c)
+Checking: a dirty pink shift 
+          (/w/krystal/westcamp/obj/shift.c)
+Checking: some supple leather leggings 
+          (/w/krystal/westcamp/obj/leggings.c)
+Checking: a curing bag (worn) 
+          (/w/maker/obj/salt_bag/salt_bag.c)
+Checking: an ancient mosasaur 
+          (/w/krystal/westcamp/npc/mosasaur.c)
+- Arm AC (25) is too low for a level 19 monster. Expected: 27-41.
+- Leg AC (25) is too low for a level 19 monster. Expected: 27-41.
+- Spell damage too high (50) on first spell. Maximum: 30.
+- Monsters require 3 load_chats.
+- Mosasaur race? Is this intended?
+Checking: Thom, the friendly fisherman 
+          (/w/krystal/westcamp/npc/thom.c)
+Checking: a simple blue tunic 
+          (/w/krystal/westcamp/obj/tunic.c)
+Checking: some supple leather trousers 
+          (/w/krystal/westcamp/obj/trousers.c)
+Checking: a knife sheathed in a sheath 
+          (/w/krystal/westcamp/obj/sheath.c)
+Checking: the mounted head of an andrewsarcus 
+          (/w/krystal/westcamp/obj/andhead.c)
+Checking: a well-used backpack 
+          (/w/krystal/westcamp/obj/backpack.c)
+Checking: a length of knotted rope 
+          (/w/krystal/westcamp/obj/dogrope.c)
+Checking: a battered fishing knife 
+          (/w/krystal/westcamp/obj/fishknife.c)
+- Has a high value (500). Expected: 470.
+Checking: a dying bullfrog 
+          (/w/krystal/westcamp/obj/frogcorpse.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "dying frog" should appear in the short.
+- The set_name "dying frog" should not also be an alias.
+Checking: the mounted head of an imperial mammoth 
+          (/w/krystal/westcamp/obj/imphead.c)
+- The set_name "imperial mammoth head" should appear in the short.
+- The set_name "imperial mammoth head" should not also be an alias.
+Checking: some supple leather leggings 
+          (/w/krystal/westcamp/obj/leggings.c)
+Checking: a mallow puff 
+          (/w/krystal/westcamp/obj/mallow.c)
+- Has a low value (30). Expected: 32.
+- The set_name "mallow" should not also be an alias.
+Checking: a stuffed raven on a branch 
+          (/w/krystal/westcamp/obj/raven.c)
+- The set_name usually does not start with "a", "an", "the" or "some".
+Checking: a long thin reed 
+          (/w/krystal/westcamp/obj/reed.c)
+- The minimum weight for a one handed spear is 2.
+- The minimum parry class for a one handed spear is 3.
+- The set_name "reed" should not also be an alias.
+Checking: a large sapling 
+          (/w/krystal/westcamp/obj/sapling.c)
+- Has a low value (600). Expected: 613.
+- The maximum weight for a bow is 3.
+- The maximum parry class for a bow is 7.
+- The set_name "sapling" should not also be an alias.
+Checking: a battered sheath 
+          (/w/krystal/westcamp/obj/sheath.c)
+Checking: a dirty pink shift 
+          (/w/krystal/westcamp/obj/shift.c)
+Checking: a battered trident 
+          (/w/krystal/westcamp/obj/trident.c)
+- The set_name "trident" should not also be an alias.
+- The set_long should not end in "\n".
+Checking: a broken trident 
+          (/w/krystal/westcamp/obj/tridenthead.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "tridenthead" should appear in the short.
+Checking: some supple leather trousers 
+          (/w/krystal/westcamp/obj/trousers.c)
+Checking: a trunk 
+          (/w/krystal/westcamp/obj/trunk.c)
+Checking: a well-used backpack 
+          (/w/krystal/westcamp/obj/backpack.c)
+Checking: a mandrake root 
+          (/class/mage/obj/reagent.c)
+Checking: the mounted head of an imperial mammoth 
+          (/w/krystal/westcamp/obj/imphead.c)
+Checking: a simple blue tunic 
+          (/w/krystal/westcamp/obj/tunic.c)
+Checking: a fish key 
+          (/w/krystal/westcamp/obj/w_key.c)
+Checking: a set of wind chimes 
+          (/w/krystal/westcamp/obj/windchime.c)
+- The set_name "chimes" should not also be an alias.
+Checking: a dark place 
+          (/w/krystal/westcamp/room/basepath.c)
+- Seems to be some type of base file...skipping.
+Checking: a dark place 
+          (/w/krystal/westcamp/room/baseroom.c)
+- Seems to be some type of base file...skipping.
+Checking: a dark place 
+          (/w/krystal/westcamp/room/baseshore.c)
+- Seems to be some type of base file...skipping.
+Checking: under an upside down boat 
+          (/w/krystal/westcamp/room/boat.c)
+- There are no exits here.
+Checking: Westcamp Brain [Invisible]
+          (/w/krystal/westcamp/room/brain.c)
+- Seems to be invisible...skipping.
+Checking: [Invisible]
+          (/w/krystal/westcamp/room/coord.c)
+- Seems to be invisible...skipping.
+Checking: on a dock over Kluane Lake 
+          (/w/krystal/westcamp/room/dock.c)
+- Rangers cannot forage here. See 'man query_ranger_terrain'.
+Checking: fish_obj [Invisible]
+          (/w/krystal/westcamp/npc/fishobj.c)
+Checking: inside a doghouse 
+          (/w/krystal/westcamp/room/doghouse.c)
+- There are no exits here.
+Checking: a small enclosure 
+          (/w/krystal/westcamp/room/dogyard.c)
+- Rangers cannot forage here. See 'man query_ranger_terrain'.
+Checking: Lessa, a young half-elf 
+          (/w/krystal/westcamp/npc/lessa.c)
+Checking: a scout knife 
+          (/w/dawg/ranger/obj/xknife.c)
+Checking: a dirty pink shift 
+          (/w/krystal/westcamp/obj/shift.c)
+Checking: some supple leather leggings 
+          (/w/krystal/westcamp/obj/leggings.c)
+Checking: a curing bag (worn) 
+          (/w/maker/obj/salt_bag/salt_bag.c)
+Checking: Lessa's Safe Room 
+          (/w/krystal/westcamp/room/lessaroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (2). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+Checking: In shallow waters of Lake Kluane 
+          (/w/krystal/westcamp/room/mapenter-dock.c)
+- The set_smell is missing.
+- The set_sound is missing.
+- The add_noget for "piling" used contraction "cause".
+Checking: Near the shore of a lake 
+          (/w/krystal/westcamp/room/mapenter.c)
+- The add_item for "lake" has double spaces.
+Checking: a marshy area 
+          (/w/krystal/westcamp/room/marsh.c)
+- The set_long is too few lines (2). Expected: 3 to 8 lines.
+Checking: fish_obj [Invisible]
+          (/w/krystal/westcamp/npc/fishobj.c)
+Checking: a trail through the grass 
+          (/w/krystal/westcamp/room/patha.c)
+Checking: Near a large cookfire 
+          (/w/krystal/westcamp/room/pathb.c)
+- The add_noget for "fire ring" used contraction "cause".
+- The add_sound for "large structure" requires punctuation.
+- Rangers cannot forage here. See 'man query_ranger_terrain'.
+Checking: Fire [Invisible]
+          (/w/tueblo/toolbox/fire.c)
+Checking: on the shore of Kluane Lake 
+          (/w/krystal/westcamp/room/shore1.c)
+Checking: fish_obj [Invisible]
+          (/w/krystal/westcamp/npc/fishobj.c)
+Checking: on the shore of Kluane Lake 
+          (/w/krystal/westcamp/room/shore2.c)
+- The set_long is redirecting to "long_tarp " which does not exist.
+Checking: fish_obj [Invisible]
+          (/w/krystal/westcamp/npc/fishobj.c)
+Checking: on the shore of Kluane Lake 
+          (/w/krystal/westcamp/room/shore3.c)
+Checking: fish_obj [Invisible]
+          (/w/krystal/westcamp/npc/fishobj.c)
+Checking: inside a tent-like structure 
+          (/w/krystal/westcamp/room/tentin.c)
+- The add_noget for "pole" used contraction "cause".
+- An indoor room with light, but no light sources are described in the room?
+Checking: Thom, the friendly fisherman 
+          (/w/krystal/westcamp/npc/thom.c)
+Checking: a simple blue tunic 
+          (/w/krystal/westcamp/obj/tunic.c)
+Checking: some supple leather trousers 
+          (/w/krystal/westcamp/obj/trousers.c)
+Checking: a knife sheathed in a sheath 
+          (/w/krystal/westcamp/obj/sheath.c)
+Checking: an adventurer's map 
+          (/w/shandor/map/playermap.c)
+- The set_long requires punctuation.
+- The set_identify is missing.
+- The set_touch is missing.
+- The set_material is missing, it might be paper?
+Checking: outside a curious looking structure 
+          (/w/krystal/westcamp/room/tentout.c)
+Checking: a sleeping area inside a tent 
+          (/w/krystal/westcamp/room/tentsleep.c)
+- The set_long is too few lines (2). Expected: 3 to 8 lines.
+Checking: a trunk 
+          (/w/krystal/westcamp/obj/trunk.c)
+Checking: a well-used backpack 
+          (/w/krystal/westcamp/obj/backpack.c)
+Checking: a ginseng root 
+          (/class/mage/obj/reagent.c)
+Checking: a huge wall of stone 
+          (/w/ixnay/golem/room/L5wall.c)
+- If you go "east" you cannot come "west" to return.
+Checking: an enormous stone face 
+          (/w/ixnay/golem/npc/face.c)
+- Cannot find the master object...
+- Body AC is required.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_name "mount golem" should appear in the short.
+- Stone giant race? Is this intended?
+Checking: an enormous stone face 
+          (/w/ixnay/golem/npc/face.c)
+- Body AC is required.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_name "mount golem" should appear in the short.
+- Stone giant race? Is this intended?
+Checking: a huge wall of stone 
+          (/w/ixnay/golem/room/L5wall.c)
+- If you go "east" you cannot come "west" to return.
+Checking: Mount Golem [Invisible]
+          (/w/ixnay/golem/npc/face.c)
+- Body AC is required.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_short is missing.
+- Has a set_long but also needs a set_short too.
+- Stone giant race? Is this intended?
+Checking: a huge wall of stone 
+          (/w/ixnay/golem/room/L5wall.c)
+Checking: an enormous stone face 
+          (/w/ixnay/golem/npc/face.c)
+- Body AC is required.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_name "mount golem" should appear in the short.
+- Stone giant race? Is this intended?
+Checking: an enormous stone face 
+          (/w/ixnay/golem/npc/face.c)
+- Body AC is required.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_name "mount golem" should appear in the short.
+- Stone giant race? Is this intended?
+Checking: Duke Bernard the Senior Knight of the Rose 
+          (/w/pris/north/npc/bernard.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+Checking: [Invisible]
+          (/room/village/fighter_soul.c)
+- Seems to be invisible...skipping.
+Checking: a fashionable knight's pack (worn) 
+          (/w/bytre/pack/kpack.c)
+- Alert! obj/basic/id.c is inherited twice.
+- The set_touch is missing.
+- The set_material is missing, it might be leather?
+- Jewellery should use SPECIAL in set_armour.
+Checking: a golden amulet 
+          (/w/dale/guild/amulet.c)
+- Unrecognized object type...skipping.
+Checking: Duke Bernard the Senior Knight of the Rose 
+          (/w/pris/north/npc/bernard.c)
+- Excess treasure (1560). Level 16 max is 1500 with the extra 50% allowance.
+Checking: an npc 
+          (/w/pris/north/npc/commoner.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_short uses article "an" before "npc", but should use "a".
+- The set_long seems to be the default.
+- The set_race is missing!
+Checking: the camp cook 
+          (/w/pris/north/npc/cook.c)
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+Checking: Marquess Dee the Senior Knight of the Heart 
+          (/w/pris/north/npc/dee.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+Checking: [Invisible]
+          (/room/village/fighter_soul.c)
+Checking: a fashionable knight's pack (worn) 
+          (/w/bytre/pack/kpack.c)
+Checking: a spear of penance 
+          (/w/pris/north/obj/penance.c)
+- The minimum weight for a two handed spear is 4.
+Checking: a golden amulet 
+          (/w/dale/guild/amulet.c)
+Checking: Baron Edward the Junior Knight of the Rose 
+          (/w/pris/north/npc/edward.c)
+- DEX=10 is low for a level 15 monster.
+- INT=9 is low for a level 15 monster.
+- WIS=9 is low for a level 15 monster.
+- Monsters require 3 load_chats.
+Checking: [Invisible]
+          (/room/village/fighter_soul.c)
+Checking: a fashionable knight's pack (worn) 
+          (/w/bytre/pack/kpack.c)
+Checking: a dwarven throwing axe 
+          (/w/pris/north/obj/axe.c)
+- Alert! lib/basic/hooks.c is inherited twice.
+- Has a high value (380). Expected: 266.
+- The set_long is too long (428 chars). Expected: 10 to 385 chars.
+- The set_long is too many lines (6). Expected: 1 to 5 lines.
+Checking: a dwarven throwing axe 
+          (/w/pris/north/obj/axe.c)
+Checking: a golden amulet 
+          (/w/dale/guild/amulet.c)
+Checking: Endillian the Exalted Guardian of the House of Turgon 
+          (/w/pris/north/npc/endillian.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_short is too long (53 chars). Expected: 4 to 50 chars.
+Checking: a scout knife 
+          (/w/dawg/ranger/obj/xknife.c)
+- Has no value. Expected: 20.
+- Weapons must be 1 or more weight.
+- The minimum weight for a knife is 1.
+- The minimum difficulty for a knife is 4.
+- The minimum parry class for a knife is 4.
+- The set_long should not end in "\n".
+- The set_long used contraction "It's".
+- The set_identify is missing.
+- The set_touch is missing.
+- The set_material is missing, it might be iron?
+Checking: a soldier's kit pack (worn) 
+          (/w/pris/north/obj/kit.c)
+- The set_name "bag" should appear in the short.
+- The set_name "bag" should not also be an alias.
+Checking: a silver headband (worn) 
+          (/w/pris/north/obj/headband.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_identify is missing.
+- The set_touch is missing.
+- The set_material is missing, it might be silver?
+Checking: Countess Gemma the Junior Knight of the Heart 
+          (/w/pris/north/npc/gemma.c)
+- WC (19) too low. Expected: 20-30.
+- Monsters require 3 load_chats.
+Checking: [Invisible]
+          (/room/village/fighter_soul.c)
+Checking: a fashionable knight's pack (worn) 
+          (/w/bytre/pack/kpack.c)
+Checking: a golden amulet 
+          (/w/dale/guild/amulet.c)
+Checking: [Invisible]
+          (/w/pris/north/npc/keyword.c)
+- Alert! Nameless monster.
+Checking: Knight of the Trueheart Realm 
+          (/w/pris/north/npc/knight.c)
+- A level 0 monster, this is probably unintended.
+Checking: Lord Warden Marcus Gracehome, Defensor Fidei of Antana and
+          Trueheart Constable 
+          (/w/pris/north/npc/marcus.c)
+- Spell damage too high (60) on first spell. Maximum: 30.
+- Spell damage too high (60) on second spell. Maximum: 30.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_name "marcus gracehome" should not also be an alias.
+- The set_short is too long (78 chars). Expected: 4 to 50 chars.
+Checking: a simple tabard (worn) 
+          (/w/dawg/paladin/obj/soul.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_long has double spaces.
+- The set_identify is missing.
+- The set_touch is missing.
+- The set_material is missing, it might be gold?
+Checking: a soldier's kit pack (worn) 
+          (/w/pris/north/obj/kit.c)
+Checking: Antana's embrace 
+          (/w/pris/north/obj/embrace.c)
+- Armour should not use SPECIAL in set_armour (rings and jewellery can).
+- Has a high value (400). Expected: 384.
+Checking: Lord Warden Marcus Gracehome, Defensor Fidei of Antana and
+          Trueheart Constable 
+          (/w/pris/north/npc/marcus_new.c)
+- Body AC (24) is too low for a level 19 monster. Expected: 27-41.
+- Head AC (26) is too low for a level 19 monster. Expected: 27-41.
+- Arm AC (25) is too low for a level 19 monster. Expected: 27-41.
+- Leg AC (26) is too low for a level 19 monster. Expected: 27-41.
+- Alignment (1000) is too good for a level 19 monster. Max: 950.
+- Spell damage too high (60) on first spell. Maximum: 30.
+- Spell damage too high (60) on second spell. Maximum: 30.
+- Monsters require 3 load_chats.
+- The first load_a_chat text is redirecting to "say_attack_chat" which does
+  not exist.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_name "marcus gracehome" should not also be an alias.
+- The set_short is too long (78 chars). Expected: 4 to 50 chars.
+Checking: a soldier's kit pack (worn) 
+          (/w/pris/north/obj/kit.c)
+Checking: Antana's embrace 
+          (/w/pris/north/obj/embrace.c)
+Checking: Sister Morygan the true follower of Antana 
+          (/w/pris/north/npc/morygan.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+Checking: Antana's journey 
+          (/w/pris/north/obj/journey.c)
+- Has a high value (220). Expected: 177.
+Checking: a soldier's kit pack (worn) 
+          (/w/pris/north/obj/kit.c)
+Checking: Monk's monkstaff 
+          (/d/Monks/items/mstaff.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_long requires punctuation.
+- The set_identify is missing.
+- The set_touch is missing.
+- The material of this object is unknown.
+Checking: a red spellbook 
+          (/w/pris/north/obj/spellbook.c)
+- Unrecognized object type...skipping.
+Checking: Sister Nightingale the believer of Antana 
+          (/w/pris/north/npc/nightingale.c)
+- STR=10 is low for a level 14 monster.
+- CON=10 is low for a level 14 monster.
+- Monsters require 3 load_chats.
+Checking: [Invisible]
+          (/w/greyson/rogue/obj/soul.c)
+- Alert! lib/communication.c is inherited twice.
+- Seems to be invisible...skipping.
+Checking: a soldier's kit pack (worn) 
+          (/w/pris/north/obj/kit.c)
+Checking: gloves [Invisible]
+          (/w/pris/north/obj/gloves.c)
+- Seems to be invisible...skipping.
+Checking: Monk's monkstaff 
+          (/d/Monks/items/mstaff.c)
+Checking: an npc 
+          (/w/pris/north/npc/npc.c)
+- A level 0 monster, this is probably unintended.
+Checking: Brother Pieter the worshipper of Antana 
+          (/w/pris/north/npc/pieter.c)
+- WIS=20 is high for a level 16 monster.
+- Spell damage too high (40) on first spell. Maximum: 35.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+Checking: a soldier's kit pack (worn) 
+          (/w/pris/north/obj/kit.c)
+Checking: a flail of reckoning 
+          (/w/pris/north/obj/reckoning.c)
+- Has a high value (880). Expected: 670.
+- The set_long is too long (403 chars). Expected: 10 to 385 chars.
+- The set_long is too many lines (6). Expected: 1 to 5 lines.
+Checking: Monk's monkstaff 
+          (/d/Monks/items/mstaff.c)
+Checking: a holy symbol 
+          (/obj/cleric/clerc_soul.c)
+- Unrecognized object type...skipping.
+Checking: the camp quartermaster 
+          (/w/pris/north/npc/quartermaster.c)
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "quartermaster" should not also be an alias.
+- The set_name "quartermaster" needs to be banished still.
+Checking: an npc 
+          (/w/pris/north/npc/soldier.c)
+- A level 0 monster, this is probably unintended.
+Checking: an npc 
+          (/w/pris/north/npc/soldier_old.c)
+- A level 0 monster, this is probably unintended.
+Checking: the camp surgeon 
+          (/w/pris/north/npc/surgeon.c)
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+Checking: a robust walking stick 
+          (/w/alindra/temple/weapon/walking_stick.c)
+- The maximum parry class for a bow is 7.
+Checking: a small vial of liquid 
+          (/w/alindra/temple/object/kezra_liquor.c)
+- Has no value. Expected: 10.
+- The set_taste should usually not contain "\n".
+Checking: a small vial of liquid 
+          (/w/alindra/temple/object/kezra_liquor.c)
+- Has no value. Expected: 10.
+- The set_taste should usually not contain "\n".
+Checking: a small vial of liquid 
+          (/w/alindra/temple/object/kezra_liquor.c)
+- Has no value. Expected: 10.
+Checking: an empty vial 
+          (/w/alindra/temple/object/kezra_liquor.c)
+- The set_name usually does not start with "a", "an", "the" or "some".
+- The set_name usually does not start with "a", "an", "the" or "some".
+Checking: Maker's shell 
+          (/obj/tools/brain/brain.c)
+- Unrecognized object type...skipping.
+Checking: an empty vial 
+          (/w/alindra/temple/object/kezra_liquor.c)
+- The set_name usually does not start with "a", "an", "the" or "some".
+- The set_name usually does not start with "a", "an", "the" or "some".
+- The set_name usually does not start with "a", "an", "the" or "some".
+- The set_name usually does not start with "a", "an", "the" or "some".
+Checking: Ninjutsu's Workroom 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: an empty vial 
+          (/w/alindra/temple/object/kezra_liquor.c)
+- Cannot find the master object...
+Checking: an empty vial 
+          (/w/alindra/temple/object/kezra_liquor.c)
+Checking: Sister Nightingale the believer of Antana 
+          (/w/pris/north/npc/nightingale.c)
+- STR=10 is low for a level 14 monster.
+- CON=10 is low for a level 14 monster.
+- Monsters require 3 load_chats.
+Checking: [Invisible]
+          (/w/greyson/rogue/obj/soul.c)
+- Alert! lib/communication.c is inherited twice.
+- Seems to be invisible...skipping.
+Checking: a soldier's kit pack (worn) 
+          (/w/pris/north/obj/kit.c)
+- The set_name "bag" should appear in the short.
+- The set_name "bag" should not also be an alias.
+Checking: gloves [Invisible]
+          (/w/pris/north/obj/gloves.c)
+- Seems to be invisible...skipping.
+Checking: Monk's monkstaff 
+          (/d/Monks/items/mstaff.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_long requires punctuation.
+- The set_identify is missing.
+- The set_touch is missing.
+- The material of this object is unknown.
+Checking: an enormous stone face 
+          (/w/ixnay/golem/npc/face.c)
+- Body AC is required.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_name "mount golem" should appear in the short.
+- Stone giant race? Is this intended?
+Checking: Ninjutsu's Workroom 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: a darkwood bow 
+          (/w/ninjutsu/test_bow.c)
+- The set_name "bowstave" should appear in the short.
+Checking: a darkwood bow 
+          (/w/ninjutsu/test_bow.c)
+- The set_name "bowstave" should appear in the short or needs adjustment.
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: a wizard hat (glowing) 
+          (/w/maker/qc/hat/hat.c)
+Checking: Ninjutsu's Workroom 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: Ninjutsu's Workroom 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: Ninjutsu's Workroom 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: an ironwood boomerang 
+          (/d/Blueprints/items/o_ironwood_boomerang.c)
+- Alert! lib/basic/hooks.c is inherited twice.
+- Has a high value (2000). Expected: 110.
+- The set_long has double spaces.
+- The set_long should not end in "\n".
+- The set_material "ironwood" is not standard.
+Checking: a hunga-munga 
+          (/w/fiend/thrown/hungamunga.c)
+- Alert! lib/basic/hooks.c is inherited twice.
+- Has a high value (850). Expected: 442.
+- The set_name "hunga-munga" should not also be an alias.
+Checking: a hunga-munga 
+          (/w/fiend/thrown/hungamunga.c)
+- Has a high value (850). Expected: 442.
+- The set_name "hunga-munga" should not also be an alias.
+Checking: inner room of the Adventurers' Hall 
+          (/room/village/adv_inner.c)
+- The room has no add_senses and these are required.
+- The set_smell is missing.
+- The set_sound is missing.
+- If you go "north" you cannot come "south" to return.
+- Put exits in order: N, NE, E, SE, S, SW, W, NW, up, down, enter, out.
+- An indoor room with light, but no light sources are described in the room?
+Checking: the Wizards' Cat Board 
+          (/obj/secure/news/board.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "bulletin board" should appear in the short or needs
+  adjustment.
+- The set_long should not end in "\n".
+Checking: a troll 
+          (/room/map/wandering_monster.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "quartermaster" should appear in the short or needs
+  adjustment.
+Checking: a dark place 
+          (/w/paldin/project/tisland/rooms/beach/base_beach.c)
+- The room has no add_senses and these are required.
+- The set_long is missing.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+Checking: a dark place 
+          (/w/paldin/project/tisland/rooms/beach/base_beach.c)
+- Seems to be some type of base file...skipping.
+Checking: a hunga-munga 
+          (/w/fiend/thrown/hungamunga.c)
+- The hat cannot evaluate thrown weapon values currently.
+- The set_name "hunga-munga" should not also be an alias.
+Checking: Testface 
+          (/w/maker/test/testface.c)
+- A level 0 monster, this is probably unintended.
+Checking: Testface 
+          (/w/maker/test/testface.c)
+- A level 0 monster, this is probably unintended.
+Checking: Testface 
+          (/w/maker/test/testface.c)
+- A level 0 monster, this is probably unintended.
+Checking: Testface 
+          (/w/maker/test/testface.c)
+- DEBUG: language is common and chat is I am speaking in common.
+- The first load_chat language "common" should be "common language".
+- DEBUG: language is common language and chat is I am speaking in common
+  language.
+- DEBUG: language is common language and chat is This is a really long
+  sentence that will require wrapping, blah blah blah blah blah blah blah
+  blah blah!
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_long requires punctuation.
+- A neuter human? Check the gender and the race here.
+Checking: aoibaimh, a senior student gazer 
+          (/w/nitro/emsworth/npc/aoibaimh.c)
+- The first load_chat's should use "@<language>@<words>" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat's should use "@<language>@<words>" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat's should use "@<language>@<words>" syntax.
+- The third load_chat text should not end in "\n".
+- The fourth load_chat's should use "@<language>@<words>" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat's should use "@<language>@<words>" syntax.
+- The fifth load_chat text should not end in "\n".
+- The sixth load_chat's should use "@<language>@<words>" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat's should use "@<language>@<words>" syntax.
+- The fourth load_a_chat's should use "@<language>@<words>" syntax.
+Checking: aoibaimh, a senior student gazer 
+          (/w/nitro/emsworth/npc/aoibaimh.c)
+- The first load_chat's should use "@<language>@<words>" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat's should use "@<language>@<words>" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat's should use "@<language>@<words>" syntax.
+- The third load_chat text should not end in "\n".
+- The fourth load_chat's should use "@<language>@<words>" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat's should use "@<language>@<words>" syntax.
+- The fifth load_chat text should not end in "\n".
+- The sixth load_chat's should use "@<language>@<words>" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat's should use "@<language>@<words>" syntax.
+- The fourth load_a_chat's should use "@<language>@<words>" syntax.
+Checking: aoibaimh, a senior student gazer 
+          (/w/nitro/emsworth/npc/aoibaimh.c)
+- The first load_chat's should use "@<language>@<words>" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat's should use "@<language>@<words>" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat text should not end in "\n".
+- The fourth load_chat's should use "@<language>@<words>" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat text should not end in "\n".
+- The sixth load_chat's should use "@<language>@<words>" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat's should use "@<language>@<words>" syntax.
+Checking: aoibaimh, a senior student gazer 
+          (/w/nitro/emsworth/npc/aoibaimh.c)
+- The first load_chat is speech and should use "@<language>@<words>" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat is speech and should use "@<language>@<words>" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat text should not end in "\n".
+- The fourth load_chat is speech and should use "@<language>@<words>" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat text should not end in "\n".
+- The sixth load_chat is speech and should use "@<language>@<words>" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat is speech and should use "@<language>@<words>"
+  syntax.
+Checking: aoibaimh, a senior student gazer 
+          (/w/nitro/emsworth/npc/aoibaimh.c)
+- The first load_chat is speech and should use "@<language>@<words>" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat is speech and should use "@<language>@<words>" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat text should not end in "\n".
+- The fourth load_chat is speech and should use "@<language>@<words>" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat text should not end in "\n".
+- The sixth load_chat is speech and should use "@<language>@<words>" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat is speech and should use "@<language>@<words>"
+  syntax.
+Checking: aoibaimh, a senior student gazer 
+          (/w/nitro/emsworth/npc/aoibaimh.c)
+- The first load_chat is speech and should use "@<language>@" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat is speech and should use "@<language>@" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat text should not end in "\n".
+- The fourth load_chat is speech and should use "@<language>@" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat text should not end in "\n".

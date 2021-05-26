@@ -1,0 +1,18 @@
+- The sixth load_chat is speech and should use "@<language>@" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat is speech and should use "@<language>@" syntax.
+Checking: aoibaimh, a senior student gazer 
+          (/w/maker/qc/ftp/aoibaimh.c)
+- The first load_chat is speech and should use "@<language>@" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat is speech and should use "@<language>@" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat text should not end in "\n".
+- The fourth load_chat is speech and should use "@<language>@" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat text should not end in "\n".
+- The sixth load_chat is speech and should use "@<language>@" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat is speech and should use "@<language>@" syntax.

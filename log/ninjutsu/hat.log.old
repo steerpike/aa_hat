@@ -1,0 +1,1110 @@
+Checking: cat 
+          (/w/ninjutsu/test_monster.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should appear in the short.
+- The set_short is too short (3 chars). Expected: 4 to 50 chars.
+- Does cat have arms?
+- DEBUG: checking race/alias
+- The race "cat" does not need to be an alias.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- DEBUG: checking race/alias
+- The race "dog" does not need to be an alias.
+Checking: Feng the tribe leader 
+          (/w/ninjutsu/kequa/monster/a1_special_feng.c)
+- High hitpoints (600). Expected: 390-585.
+- Spell chance too high (60) on first spell. Maximum: 50.
+- DEBUG: checking race/alias
+- Excess treasure (3808). Level 19 max is 1300 with the extra 50% allowance.
+Checking: Yaga the blood shaman 
+          (/w/ninjutsu/kequa/monster/a2_special_yaga.c)
+- DEBUG: checking race/alias
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b0_hunter_base.c)
+- DEBUG: checking race/alias
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b1_hunter_spear_1h.c)
+- DEBUG: checking race/alias
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b2_hunter_spear_1h.c)
+- DEBUG: checking race/alias
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b3_hunter_spear_1h.c)
+- DEBUG: checking race/alias
+Checking: a darkwood bow 
+          (/w/ninjutsu/hat/bow.c)
+- The set_name "bowstave" should appear in the short.
+Checking: a darkwood bow 
+          (/w/ninjutsu/hat/bow.c)
+- The set_name "test" should appear in the short.
+Checking: a darkwood bow 
+          (/w/ninjutsu/hat/bow.c)
+- The set_name "test" should appear in the short.
+Checking: a darkwood bow 
+          (/w/ninjutsu/hat/bow.c)
+- The set_name "test" should appear in the short.
+Checking: test item
+           
+          (/w/ninjutsu/hat/text1/bow.c)
+- The set_name should not end in "\n".
+- The set_short should not end in "\n".
+- The set_long should not end in "\n".
+- The set_long uses article "an" before "test", but should use "a".
+- The set_identify should usually not contain "\n".
+- The set_identify should not end in "\n".
+- The set_identify used contraction "y'all".
+- The set_identify has "honor" which should be "honour".
+- The set_smell should usually not contain "\n".
+- The set_smell should not end in "\n".
+- The set_smell uses article "an" before "smell", but should use "a".
+- The set_smell used contraction "y'all".
+- The set_smell has "honor" which should be "honour".
+- The set_sound should usually not contain "\n".
+- The set_sound should not end in "\n".
+- The set_sound uses article "an" before "sound", but should use "a".
+- The set_sound used contraction "y'all".
+- The set_sound has "honor" which should be "honour".
+- The set_taste should usually not contain "\n".
+- The set_taste should not end in "\n".
+- The set_taste uses article "an" before "taste", but should use "a".
+- The set_taste used contraction "y'all".
+- The set_taste has "honor" which should be "honour".
+- The set_touch should usually not contain "\n".
+- The set_touch should not end in "\n".
+- The set_touch uses article "an" before "touch", but should use "a".
+- The set_touch used contraction "y'all".
+- The set_touch has "honor" which should be "honour".
+- The add_item for "inscription" text has double spaces.
+- The add_item for "inscription" text requires punctuation.
+- The add_noget for "inscription" text has double spaces.
+- The add_noget for "inscription" text requires punctuation.
+- The add_search for "inscription" text has double spaces.
+- The add_search for "inscription" text requires punctuation.
+- The add_smell for "inscription" text has double spaces.
+- The add_smell for "inscription" text requires punctuation.
+- The add_sound for "inscription" text has double spaces.
+- The add_sound for "inscription" text requires punctuation.
+- The add_taste for "inscription" text has double spaces.
+- The add_taste for "inscription" text requires punctuation.
+- The add_touch for "inscription" text has double spaces.
+- The add_touch for "inscription" text requires punctuation.
+Checking: a darkwood bow 
+          (/w/ninjutsu/hat/bow.c)
+- The set_name "bowstave" should appear in the short.
+Checking: test item 
+          (/w/ninjutsu/hat/text2/bow.c)
+- The set_long uses article "an" before "test", but should use "a".
+- The set_long requires punctuation.
+- The set_identify has double spaces.
+- The set_identify used contraction "y'all".
+- The set_identify has "honor" which should be "honour".
+- The set_identify requires punctuation.
+- The set_smell has double spaces.
+- The set_smell uses article "an" before "smell", but should use "a".
+- The set_smell requires punctuation.
+- The set_sound has double spaces.
+- The set_sound uses article "an" before "sound", but should use "a".
+- The set_sound requires punctuation.
+- The set_taste has double spaces.
+- The set_taste uses article "an" before "taste", but should use "a".
+- The set_taste requires punctuation.
+- The set_touch has double spaces.
+- The set_touch uses article "an" before "touch", but should use "a".
+- The set_touch requires punctuation.
+- The add_item for "inscription" text has a space before a comma.
+- The add_item for "inscription" text requires punctuation.
+- The add_noget for "inscription" text has a space before a comma.
+- The add_noget for "inscription" text requires punctuation.
+- The add_search for "inscription" text has a space before a comma.
+- The add_search for "inscription" text requires punctuation.
+- The add_smell for "inscription" text has a space before a comma.
+- The add_smell for "inscription" text requires punctuation.
+- The add_sound for "inscription" text has a space before a comma.
+- The add_sound for "inscription" text requires punctuation.
+- The add_taste for "inscription" text has a space before a comma.
+- The add_taste for "inscription" text requires punctuation.
+- The add_touch for "inscription" text has a space before a comma.
+- The add_touch for "inscription" text requires punctuation.
+Checking: a piece of charcoal 
+          (/w/alindra/temple/object/charcoal.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name is missing.
+- The set_identify is missing.
+- The set_material is missing, it might be coal?
+Checking: a test ring 
+          (/w/ninjutsu/test_other.c)
+- The set_identify is missing.
+Checking: a test ring 
+          (/w/ninjutsu/test_other.c)
+- The set_identify is missing.
+Checking: a test ring 
+          (/w/ninjutsu/test_other.c)
+- The set_identify is missing.
+- Weightless jewellery must not provide AC.
+Checking: a test item 
+          (/w/ninjutsu/hat/text3/torch.c)
+- Has a high value (40). Expected: 34.
+- The minimum weight for a one handed club is 2.
+- The minimum difficulty for a one handed club is 6.
+- The set_identify should not end in "\n".
+Checking: test item 
+          (/w/ninjutsu/hat/text2/torch.c)
+- Has a high value (40). Expected: 34.
+- The minimum weight for a one handed club is 2.
+- The minimum difficulty for a one handed club is 6.
+- The set_long uses article "an" before "test", but should use "a".
+- The set_long requires punctuation.
+- The set_identify should not end in "\n".
+- The set_smell has double spaces.
+- The set_smell uses article "an" before "smell", but should use "a".
+- The set_smell requires punctuation.
+- The set_sound has double spaces.
+- The set_sound uses article "an" before "sound", but should use "a".
+- The set_sound requires punctuation.
+- The set_taste has double spaces.
+- The set_taste uses article "an" before "taste", but should use "a".
+- The set_taste requires punctuation.
+- The set_touch has double spaces.
+- The set_touch uses article "an" before "touch", but should use "a".
+- The set_touch requires punctuation.
+- The add_item for "inscription" text has a space before a comma.
+- The add_item for "inscription" text requires punctuation.
+- The add_noget for "inscription" text has a space before a comma.
+- The add_noget for "inscription" text requires punctuation.
+- The add_search for "inscription" text has a space before a comma.
+- The add_search for "inscription" text requires punctuation.
+- The add_smell for "inscription" text has a space before a comma.
+- The add_smell for "inscription" text requires punctuation.
+- The add_sound for "inscription" text has a space before a comma.
+- The add_sound for "inscription" text requires punctuation.
+- The add_taste for "inscription" text has a space before a comma.
+- The add_taste for "inscription" text requires punctuation.
+- The add_touch for "inscription" text has a space before a comma.
+- The add_touch for "inscription" text requires punctuation.
+Checking: test item 
+          (/w/ninjutsu/hat/text2/torch.c)
+- Has a high value (40). Expected: 34.
+- The minimum weight for a one handed club is 2.
+- The minimum difficulty for a one handed club is 6.
+- The set_long uses article "an" before "test", but should use "a".
+- The set_long requires punctuation.
+- The set_identify should not end in "\n".
+- The set_smell has double spaces.
+- The set_smell uses article "an" before "smell", but should use "a".
+- The set_smell requires punctuation.
+- The set_sound has double spaces.
+- The set_sound uses article "an" before "sound", but should use "a".
+- The set_sound requires punctuation.
+- The set_taste has double spaces.
+- The set_taste uses article "an" before "taste", but should use "a".
+- The set_taste requires punctuation.
+- The set_touch has double spaces.
+- The set_touch uses article "an" before "touch", but should use "a".
+- The set_touch requires punctuation.
+- The add_item for "inscription" has a space before a comma.
+- The add_item for "inscription" requires punctuation.
+- The add_noget for "inscription" has a space before a comma.
+- The add_noget for "inscription" requires punctuation.
+- The add_search for "inscription" has a space before a comma.
+- The add_search for "inscription" requires punctuation.
+- The add_smell for "inscription" has a space before a comma.
+- The add_smell for "inscription" requires punctuation.
+- The add_sound for "inscription" has a space before a comma.
+- The add_sound for "inscription" requires punctuation.
+- The add_taste for "inscription" has a space before a comma.
+- The add_taste for "inscription" requires punctuation.
+- The add_touch for "inscription" has a space before a comma.
+- The add_touch for "inscription" requires punctuation.
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: Ninjutsu's Workroom 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: XxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxY 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_short is too long (51 chars). Expected: 4 to 50 chars.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+- The room has no add_senses and these are required.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+- The room has no add_senses and these are required.
+- The set_short is too short (3 chars). Expected: 4 to 50 chars.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: xxx 
+          (/w/ninjutsu/workroom.c)
+- The room has no add_senses and these are required.
+- The set_short is too short (3 chars). Expected: 4 to 50 chars.
+- The set_long is too few lines (1). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- There are no exits here.
+- An indoor room with light, but no light sources are described in the room?
+Checking: a test ring 
+          (/w/ninjutsu/test_other.c)
+- The set_identify is missing.
+- Weightless jewellery must not provide AC.
+Checking: some black tea 
+          (/w/ninjutsu/test_misc.c)
+- Has no value. Expected: 1.
+- The set_long is too short (9 chars). Expected: 10 to 380 chars.
+- The set_identify is missing.
+- The set_smell requires punctuation.
+- The set_taste ends in "\n". (debug: one was auto-appended)
+- The set_taste requires punctuation.
+Checking: a test ring 
+          (/w/ninjutsu/test_other.c)
+- The set_long requires punctuation.
+- The set_identify is missing.
+- Weightless jewellery must not provide AC.
+Checking: some black tea 
+          (/w/ninjutsu/test_misc.c)
+- Has no value. Expected: 1.
+- The set_long contains trailing spaces.
+- The set_long is too long (420 chars). Expected: 10 to 380 chars.
+- The set_long is too many lines (6). Expected: 1 to 5 lines.
+- The set_identify is missing.
+- The set_smell requires punctuation.
+- The set_taste ends in "\n". (debug: one was auto-appended)
+- The set_taste requires punctuation.
+Checking: some black tea 
+          (/w/ninjutsu/test_misc.c)
+- Has no value. Expected: 1.
+- The set_long contains trailing spaces.
+- The set_long is too long (420 chars). Expected: 10 to 385 chars.
+- The set_long is too many lines (6). Expected: 1 to 5 lines.
+- The set_identify is missing.
+- The set_smell requires punctuation.
+- The set_taste requires punctuation.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- The set_long is too short (1 chars). Expected: 10 to 385 chars.
+- The set_long requires punctuation.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: some black tea 
+          (/w/ninjutsu/test_misc.c)
+- Has no value. Expected: 1.
+- The set_long contains trailing spaces.
+- The set_long is too long (420 chars). Expected: 10 to 385 chars.
+- The set_long is too many lines (6). Expected: 1 to 5 lines.
+- The set_identify is missing.
+- The set_smell requires punctuation.
+- The set_taste requires punctuation.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- The set_long is too short (1 chars). Expected: 10 to 385 chars.
+- The set_long requires punctuation.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- The set_long is too short (3 chars). Expected: 10 to 385 chars.
+- The set_long requires punctuation.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- The set_long is too short (3 chars). Expected: 10 to 385 chars.
+- The set_long requires punctuation.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: Feng the tribe leader 
+          (/w/ninjutsu/kequa/monster/a1_special_feng.c)
+- High hitpoints (600). Expected: 390-585.
+- Spell chance too high (60) on first spell. Maximum: 50.
+Checking: Yaga the blood shaman 
+          (/w/ninjutsu/kequa/monster/a2_special_yaga.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b0_hunter_base.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b1_hunter_spear_1h.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b2_hunter_spear_1h.c)
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+- Excess treasure (2500). Level 19 max is 1950 with the extra 50% allowance.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+- Shields held by monsters should be worn.
+- Has a low value (1). Expected: 675.
+- The set_name "shield" should appear in the short.
+- The set_short is too long (51 chars). Expected: 4 to 50 chars.
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+- Shields held by monsters should be worn.
+- Has a low value (1). Expected: 675.
+- The set_name "shield" should appear in the short.
+- The set_short is too long (51 chars). Expected: 4 to 50 chars.
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+Checking: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+          (/w/ninjutsu/test_shield.c)
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+- Shields held by monsters should be worn.
+- Has a high value (999). Expected: 675.
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Excess treasure (5995). Level 19 max is 1950 with the extra 50% allowance.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+- Shields held by monsters should be worn.
+- Has a high value (999). Expected: 675.
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Excess treasure (5995). Level 19 max is 2250 with the extra 50% allowance.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+- Shields held by monsters should be worn.
+- Has a high value (999). Expected: 675.
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a shield 
+          (/w/ninjutsu/test_shield.c)
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Excess treasure (3996). Level 19 max is 2250 with the extra 50% allowance.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- WC (1) too low. Expected: 25-38.
+- Head AC (1) is too low for a level 19 monster. Expected: 27-41.
+- Low hitpoints (1). Expected: 390-585.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- WC (1) too low. Expected: 25-38.
+- Head AC (1) is too low for a level 19 monster. Expected: 27-41.
+- Low hitpoints (1). Expected: 390-585.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+Checking: a dog 
+          (/w/ninjutsu/test_monster.c)
+- WC (1) too low. Expected: 25-38.
+- Head AC (1) is too low for a level 19 monster. Expected: 27-41.
+- Low hitpoints (1). Expected: 390-585.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name "dog" should not also be an alias.
+- Does a dog have arms?
+- The race "dog" does not need to be an alias.
+- Excess treasure (3333). Level 19 max is 2250 with the extra 50% allowance.
+Checking: Razar the Greater Demon 
+          (/w/shadow/tower/npc/razar.c)
+- WC (40) too high. Expected: 25-38.
+- Body AC (25) is too low for a level 19 monster. Expected: 27-41.
+- Head AC (25) is too low for a level 19 monster. Expected: 27-41.
+- Arm AC (25) is too low for a level 19 monster. Expected: 27-41.
+- High hitpoints (700). Expected: 390-585.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Alignment (-1000) is too evil for a level 19 monster. Max: -950.
+- Spell damage too high (90) on first spell. Maximum: 30.
+- The first load_chat text should not end in "\n".
+- The second load_chat text should not end in "\n".
+- The third load_chat text should not end in "\n".
+- The first load_a_chat text should not end in "\n".
+- The second load_a_chat text should not end in "\n".
+- The third load_a_chat text should not end in "\n".
+- The fourth load_a_chat text should not end in "\n".
+- The set_long has double spaces.
+- Demon race? Is this intended?
+- The race "demon" does not need to be an alias.
+Checking: the shadow sword 
+          (/w/shadow/tower/obj/dark.c)
+- Has a low value (1000). Expected: 1258.
+- The set_long has double spaces.
+- The set_long used contraction "it's".
+- The set_identify is missing.
+- The set_touch is missing.
+- The set_material is missing, it might be iron?
+Checking: (no exits) 
+          (/w/ninjutsu/fix/qc_offices/baseroom.c)
+- Seems to be some type of base file...skipping.
+Checking: the QC clerk 
+          (/w/ninjutsu/fix/qc_offices/clerk.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+Checking: [Invisible]
+          (/d/Qc/obj/record.c)
+- Seems to be invisible...skipping.
+Checking: QC Approval Office 
+          (/w/ninjutsu/fix/qc_offices/office.c)
+- The room has no add_senses and these are required.
+- The set_smell is missing.
+- The set_sound is missing.
+- If you go "north" the "south" leads to another room instead.
+- If you go "east" the "west" leads to another room instead.
+- If you go "south" the "north" leads to another room instead.
+- If you go "west" the "east" leads to another room instead.
+- If you go "northwest" you cannot come "southeast" to return.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: The QC Approval Board 
+          (/obj/secure/news/board.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "bulletin board" should appear in the short.
+- The set_long should not end in "\n".
+Checking: a submissions clerk 
+          (/d/Qc/npc/clerk.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_long has double spaces.
+- The set_long used contraction "She's".
+Checking: [Invisible]
+          (/d/Qc/obj/record.c)
+- Seems to be invisible...skipping.
+Checking: QC/Balance Relations Room 
+          (/w/ninjutsu/fix/qc_offices/qc_and_bal.c)
+- The room has no add_senses and these are required.
+- The set_smell is missing.
+- The set_sound is missing.
+- If you go "west" the "east" leads to another room instead.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: The QC/Balance Relations Board 
+          (/obj/secure/news/board.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "bulletin board" should appear in the short.
+- The set_long should not end in "\n".
+Checking: QC Reception Room 
+          (/w/ninjutsu/fix/qc_offices/reception.c)
+- The set_smell is missing.
+- The set_sound is missing.
+- If you go "east" the "west" leads to another room instead.
+- If you go "west" the "east" leads to another room instead.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: The QC Submissions Board 
+          (/obj/secure/news/board.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "bulletin board" should appear in the short.
+- The set_long should not end in "\n".
+Checking: Bug Tracker Room 
+          (/w/ninjutsu/fix/qc_offices/tracking.c)
+- The set_smell is missing.
+- The set_sound is missing.
+- If you go "southeast" you cannot come "northwest" to return.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: The Bug Tracker Board 
+          (/obj/secure/news/board.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "bulletin board" should appear in the short.
+- The set_long should not end in "\n".
+Checking: QC Workroom 
+          (/w/ninjutsu/fix/qc_offices/workroom.c)
+- The room has no add_senses and these are required.
+- The set_smell is missing.
+- The set_sound is missing.
+- If you go "south" the "north" leads to another room instead.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: The QC Discussion Board 
+          (/obj/secure/news/board.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "bulletin board" should appear in the short.
+- The set_long should not end in "\n".
+Checking: (no exits) 
+          (/w/ninjutsu/fix/qc_offices/ORIG/baseroom.c)
+- Seems to be some type of base file...skipping.
+Checking: a submissions clerk 
+          (/w/ninjutsu/fix/qc_offices/ORIG/clerk.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_long has double spaces.
+- The set_long used contraction "She's".
+Checking: [Invisible]
+          (/d/Qc/obj/record.c)
+- Seems to be invisible...skipping.
+Checking: QC Submissions Office 
+          (/w/ninjutsu/fix/qc_offices/ORIG/office.c)
+- The add_item for "office" used contraction "It's".
+- The add_item for "office" used contraction "it's".
+- The add_item for "office" used contraction "isn't".
+- The add_item for "pinup" used contraction "can't".
+- The add_noget for "pinup" used contraction "can't".
+- The add_noget for "pinup" used contraction "It'd".
+- If you go "north" the "south" leads to another room instead.
+- If you go "east" the "west" leads to another room instead.
+- If you go "south" the "north" leads to another room instead.
+- If you go "southwest" the "northeast" leads to another room instead.
+- If you go "west" the "east" leads to another room instead.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: the Approval Board 
+          (/obj/secure/news/board.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "bulletin board" should appear in the short.
+- The set_long should not end in "\n".
+Checking: a submissions clerk 
+          (/d/Qc/npc/clerk.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_long has double spaces.
+- The set_long used contraction "She's".
+Checking: [Invisible]
+          (/d/Qc/obj/record.c)
+Checking: QC / Balance Relations 
+          (/w/ninjutsu/fix/qc_offices/ORIG/qc_and_bal.c)
+- The set_long is too few lines (2). Expected: 3 to 8 lines.
+- The add_item for "walls" has double spaces.
+- If you go "west" the "east" leads to another room instead.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: The QC/Balance Relations Board 
+          (/obj/secure/news/board.c)
+Checking: Reception Office 
+          (/w/ninjutsu/fix/qc_offices/ORIG/reception.c)
+- If you go "east" the "west" leads to another room instead.
+- If you go "west" the "east" leads to another room instead.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: The Submissions Cat Board 
+          (/obj/secure/news/board.c)
+Checking: QC: Bug Tracking 
+          (/w/ninjutsu/fix/qc_offices/ORIG/tracking.c)
+- The set_long has double spaces.
+- The set_long is too few lines (2). Expected: 3 to 8 lines.
+- The set_smell is missing.
+- The set_sound is missing.
+- If you go "northeast" the "southwest" leads to another room instead.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: The Bugs Tracking Board 
+          (/obj/secure/news/board.c)
+Checking: QC: Workroom 
+          (/w/ninjutsu/fix/qc_offices/ORIG/workroom.c)
+- The room has no add_senses and these are required.
+- The set_long has double spaces.
+- The set_smell is missing.
+- The set_sound is missing.
+- If you go "south" the "north" leads to another room instead.
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: The Qc Board 
+          (/obj/secure/news/board.c)
+Checking: QC Submissions Office 
+          (/d/Qc/room/office.c)
+- The add_item for "office" used contraction "It's".
+- The add_item for "office" used contraction "it's".
+- The add_item for "office" used contraction "isn't".
+- The add_item for "pinup" used contraction "can't".
+- The add_noget for "pinup" used contraction "can't".
+- The add_noget for "pinup" used contraction "It'd".
+- A very bright (100) room? This is uncommon.
+- An indoor room with light, but no light sources are described in the room?
+Checking: the Approval Board 
+          (/obj/secure/news/board.c)
+- This is weightless, if that is intended it will need special approval.
+- The set_name "bulletin board" should appear in the short.
+- The set_long should not end in "\n".
+Checking: a submissions clerk 
+          (/d/Qc/npc/clerk.c)
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_long has double spaces.
+- The set_long used contraction "She's".
+Checking: [Invisible]
+          (/d/Qc/obj/record.c)
+- Seems to be invisible...skipping.
+Checking: a robust walking stick 
+          (/w/alindra/temple/weapon/walking_stick.c)
+Checking: a darkwood bow 
+          (/w/ninjutsu/test_bow.c)
+- The set_name "bowstave" should appear in the short.
+Checking: a glass of milk 
+          (/w/katarina/gemynd/obj/milk.c)
+- The set_name "milk" should not also be an alias.
+- The set_name "milk" should not also be an alias.
+Checking: a darkwood bow 
+          (/w/ninjutsu/test_bow.c)
+- The set_name "bowstave" should appear in the short.
+Checking: a glass of milk 
+          (/w/katarina/gemynd/obj/milk.c)
+- The set_name "milk" should not also be an alias.
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: a darkwood bowstave 
+          (/w/ninjutsu/test_bow.c)
+- The set_name "test" should appear in the short or needs adjustment.
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: a huge wall of stone 
+          (/w/ixnay/golem/room/L5wall.c)
+Checking: an enormous stone face 
+          (/w/ixnay/golem/npc/face.c)
+- Body AC is required.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_name "mount golem" should appear in the short or needs adjustment.
+- Stone giant race? Is this intended?
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: an empty glass 
+          (/w/katarina/gemynd/obj/milk.c)
+Checking: a shamanic anklet 
+          (/w/ninjutsu/kequa/armour/anklet.c)
+Checking: a shamanic bracelet 
+          (/w/ninjutsu/kequa/armour/bracelet.c)
+Checking: a shamanic earring 
+          (/w/ninjutsu/kequa/armour/earring.c)
+Checking: a shamanic waistband 
+          (/w/ninjutsu/kequa/armour/waistband.c)
+Checking: Feng the tribe leader 
+          (/w/ninjutsu/kequa/monster/a1_special_feng.c)
+- High hitpoints (600). Expected: 390-585.
+- Spell chance too high (60) on first spell. Maximum: 50.
+- Excess treasure (3808). Level 19 max is 2250 with the extra 50% allowance.
+Checking: Yaga the blood shaman 
+          (/w/ninjutsu/kequa/monster/a2_special_yaga.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b0_hunter_base.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b1_hunter_spear_1h.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b2_hunter_spear_1h.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b3_hunter_spear_1h.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b4_hunter_spear_1h.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b5_hunter_spear_2h.c)
+Checking: an agile kequa hunter 
+          (/w/ninjutsu/kequa/monster/b6_hunter_spear_2h.c)
+Checking: a hulking kequa warrior 
+          (/w/ninjutsu/kequa/monster/c0_warrior_base.c)
+Checking: a hulking kequa warrior 
+          (/w/ninjutsu/kequa/monster/c1_warrior_axe_1h.c)
+Checking: a hulking kequa warrior 
+          (/w/ninjutsu/kequa/monster/c2_warrior_axe_1h.c)
+Checking: a hulking kequa warrior 
+          (/w/ninjutsu/kequa/monster/c3_warrior_club_2h.c)
+Checking: a hulking kequa warrior 
+          (/w/ninjutsu/kequa/monster/c4_warrior_club_2h.c)
+Checking: a large horn 
+          (/w/ninjutsu/kequa/object/horn.c)
+Checking: [Invisible]
+          (/w/ninjutsu/kequa/object/roasting_spit.c)
+- Seems to be invisible...skipping.
+Checking: (no exits) 
+          (/w/ninjutsu/kequa/room/a0_special_generic_base.c)
+- Seems to be some type of base file...skipping.
+Checking: a lit pyre 
+          (/w/ninjutsu/kequa/room/a1_special_pyre.c)
+Checking: Fire [Invisible]
+          (/w/tueblo/toolbox/fire.c)
+- Seems to be invisible...skipping.
+Checking: [Invisible]
+          (/w/ninjutsu/kequa/object/roasting_spit.c)
+Checking: a mammoth skull 
+          (/w/ninjutsu/kequa/room/a2_special_stake.c)
+Checking: inside a camp 
+          (/w/ninjutsu/kequa/room/a3_special_entrance.c)
+Checking: outside a camp 
+          (/w/ninjutsu/kequa/room/a4_special_mapenter.c)
+Checking: inside a tent 
+          (/w/ninjutsu/kequa/room/b0_tent_inside_base.c)
+- Seems to be some type of base file...skipping.
+Checking: inside a tent 
+          (/w/ninjutsu/kequa/room/b1_tent_inside.c)
+Checking: inside a tent 
+          (/w/ninjutsu/kequa/room/b2_tent_inside.c)
+Checking: inside a tent 
+          (/w/ninjutsu/kequa/room/b3_tent_inside.c)
+Checking: Feng the tribe leader 
+          (/w/ninjutsu/kequa/monster/a1_special_feng.c)
+Checking: inside a tent 
+          (/w/ninjutsu/kequa/room/b4_tent_inside.c)
+Checking: inside a tent 
+          (/w/ninjutsu/kequa/room/b5_tent_inside.c)
+Checking: a dark place 
+          (/w/ninjutsu/kequa/room/c0_tent_outside_base.c)
+- Seems to be some type of base file...skipping.
+Checking: outside a tent 
+          (/w/ninjutsu/kequa/room/c1_tent_outside.c)
+Checking: outside a tent 
+          (/w/ninjutsu/kequa/room/c2_tent_outside.c)
+Checking: outside a tent 
+          (/w/ninjutsu/kequa/room/c3_tent_outside.c)
+Checking: outside a tent 
+          (/w/ninjutsu/kequa/room/c4_tent_outside.c)
+Checking: outside a tent 
+          (/w/ninjutsu/kequa/room/c5_tent_outside.c)
+Checking: a dark place 
+          (/w/ninjutsu/kequa/room/d0_area_overgrown_base.c)
+- Seems to be some type of base file...skipping.
+Checking: an overgrown area 
+          (/w/ninjutsu/kequa/room/d1_area_overgrown.c)
+Checking: an overgrown area 
+          (/w/ninjutsu/kequa/room/d2_area_overgrown.c)
+Checking: an overgrown area 
+          (/w/ninjutsu/kequa/room/d3_area_overgrown.c)
+Checking: an overgrown area 
+          (/w/ninjutsu/kequa/room/d4_area_overgrown.c)
+Checking: an overgrown area 
+          (/w/ninjutsu/kequa/room/d5_area_overgrown.c)
+Checking: an overgrown area 
+          (/w/ninjutsu/kequa/room/d6_area_overgrown.c)
+Checking: a dark place 
+          (/w/ninjutsu/kequa/room/e0_area_grassy_base.c)
+- Seems to be some type of base file...skipping.
+Checking: a grassy area 
+          (/w/ninjutsu/kequa/room/e1_area_grassy.c)
+Checking: a grassy area 
+          (/w/ninjutsu/kequa/room/e2_area_grassy.c)
+Checking: a grassy area 
+          (/w/ninjutsu/kequa/room/e3_area_grassy.c)
+Checking: a grassy area 
+          (/w/ninjutsu/kequa/room/e4_area_grassy.c)
+Checking: a dark place 
+          (/w/ninjutsu/kequa/room/f0_area_trampled_base.c)
+- Seems to be some type of base file...skipping.
+Checking: a trampled area 
+          (/w/ninjutsu/kequa/room/f1_area_trampled.c)
+Checking: a trampled area 
+          (/w/ninjutsu/kequa/room/f2_area_trampled.c)
+Checking: a trampled area 
+          (/w/ninjutsu/kequa/room/f3_area_trampled.c)
+Checking: a trampled area 
+          (/w/ninjutsu/kequa/room/f4_area_trampled.c)
+Checking: a primitive axe 
+          (/w/ninjutsu/kequa/weapon/axe_1h.c)
+Checking: a primitive greataxe 
+          (/w/ninjutsu/kequa/weapon/axe_2h.c)
+Checking: a colossal greataxe 
+          (/w/ninjutsu/kequa/weapon/axe_2h_unique.c)
+Checking: a primitive club 
+          (/w/ninjutsu/kequa/weapon/club_2h.c)
+Checking: a primitive short spear 
+          (/w/ninjutsu/kequa/weapon/spear_1h.c)
+Checking: a primitive spear 
+          (/w/ninjutsu/kequa/weapon/spear_2h.c)
+Checking: an ironwood boomerang 
+          (/d/Blueprints/items/o_ironwood_boomerang.c)
+- Alert! lib/basic/hooks.c is inherited twice.
+- Has a high value (2000). Expected: 110.
+- The set_long has double spaces.
+- The set_long should not end in "\n".
+- The set_material "ironwood" is not standard.
+Checking: an ironwood boomerang 
+          (/d/Blueprints/items/o_ironwood_boomerang.c)
+- Alert! lib/basic/hooks.c is inherited twice.
+- Has a high value (2000). Expected: 110.
+- The set_long has double spaces.
+- The set_long should not end in "\n".
+- The set_material "ironwood" is not standard.
+Checking: a hunga-munga 
+          (/w/fiend/thrown/hungamunga.c)
+- Alert! lib/basic/hooks.c is inherited twice.
+- Has a high value (850). Expected: 442.
+- The set_name "hunga-munga" should not also be an alias.
+Checking: a hunga-munga 
+          (/w/fiend/thrown/hungamunga.c)
+- Has a high value (850). Expected: 442.
+- The set_name "hunga-munga" should not also be an alias.
+Checking: a huge wall of stone 
+          (/w/ixnay/golem/room/L5wall.c)
+Checking: an enormous stone face 
+          (/w/ixnay/golem/npc/face.c)
+- Body AC is required.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
+- Level 17 and above must have an add_spell.
+- Monsters require 3 load_chats.
+- Monsters require 3 load_a_chats (unkillable monsters do not need a_chats).
+- The set_name should only be one word.
+- The set_name "mount golem" should appear in the short or needs adjustment.
+- Stone giant race? Is this intended?
+Checking: a hunga-munga 
+          (/w/fiend/thrown/hungamunga.c)
+- Has a high value (850). Expected: 442.
+- The set_name "hunga-munga" should not also be an alias.
+Checking: a hurlbat 
+          (/w/fiend/thrown/hurlbat.c)
+- Has a high value (270). Expected: 241.
+- The set_name usually does not start with "a", "an", "the" or "some".
+Checking: a dart 
+          (/w/dawg/thrown/dart.c)
+- Alert! lib/basic/hooks.c is inherited twice.
+- Has a high value (47). Expected: 20.
+- The minimum weight for a rapier is 2.
+- The minimum difficulty for a rapier is 4.
+- The minimum parry class for a rapier is 7.
+- The set_identify is missing.
+- The set_touch is missing.
+- The set_material is missing, it might be iron?
+Checking: aoibaimh, a senior student gazer 
+          (/w/nitro/emsworth/npc/aoibaimh.c)
+- The first load_chat's should use "@<language>@<words>" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat's should use "@<language>@<words>" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat's should use "@<language>@<words>" syntax.
+- The third load_chat text should not end in "\n".
+- The fourth load_chat's should use "@<language>@<words>" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat's should use "@<language>@<words>" syntax.
+- The fifth load_chat text should not end in "\n".
+- The sixth load_chat's should use "@<language>@<words>" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat's should use "@<language>@<words>" syntax.
+- The fourth load_a_chat's should use "@<language>@<words>" syntax.
+Checking: aoibaimh, a senior student gazer 
+          (/w/nitro/emsworth/npc/aoibaimh.c)
+- The first load_chat is speech and should use "@<language>@" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat is speech and should use "@<language>@" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat text should not end in "\n".
+- The fourth load_chat is speech and should use "@<language>@" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat text should not end in "\n".
+- The sixth load_chat is speech and should use "@<language>@" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat is speech and should use "@<language>@" syntax.
+Checking: aoibaimh, a senior student gazer 
+          (/w/maker/qc/ftp/aoibaimh.c)
+- The third load_a_chat is speech and should use "@<language>@" syntax.
+Checking: [Invisible]
+          (/w/ninjutsu/fishing/bait.c)
+- Seems to be invisible...skipping.
+Checking: a broken line 
+          (/w/ninjutsu/fishing/br_line.c)
+- All items with weight must have some value.
+Checking: a broken pole 
+          (/w/ninjutsu/fishing/br_pole.c)
+- Weapons must have 1 or more damage.
+- The minimum weight for a one handed club is 2.
+- The minimum difficulty for a one handed club is 6.
+- The minimum parry class for a one handed club is 1.
+Checking: fish_obj [Invisible]
+          (/w/ninjutsu/fishing/fish_obj.c)
+- Seems to be invisible...skipping.
+Checking: [Invisible]
+          (/w/ninjutsu/fishing/fishing_implement.c)
+- Error cloning: /w/ninjutsu/fishing/fishing_implement.c...skipping
+  
+Checking: [Invisible]
+          (/w/ninjutsu/fishing/line.c)
+- Seems to be invisible...skipping.
+Checking: a fishing net 
+          (/w/ninjutsu/fishing/net.c)
+- Has a high value (30). Expected: 26.
+- The minimum weight for a flail is 2.
+- The minimum difficulty for a flail is 7.
+- The minimum parry class for a flail is 3.
+- The set_name "fishing net" should not also be an alias.
+- The set_long should not end in "\n".
+- The set_smell has "odor" which should be "odour".
+- The material of this object is unknown.
+Checking: a fishing pole 
+          (/w/ninjutsu/fishing/pole.c)
+- Has a high value (30). Expected: 26.
+- The minimum weight for a one handed club is 2.
+- The minimum difficulty for a one handed club is 6.
+- The set_name "fishing pole" should not also be an alias.
+- The set_long used contraction "It's".
+Checking: aoibaimh, a senior student gazer 
+          (/w/nitro/emsworth/npc/aoibaimh.c)
+- The first load_chat is speech and should use "@<language>@" syntax.
+- The first load_chat text should not end in "\n".
+- The second load_chat is speech and should use "@<language>@" syntax.
+- The second load_chat text should not end in "\n".
+- The third load_chat text should not end in "\n".
+- The fourth load_chat is speech and should use "@<language>@" syntax.
+- The fourth load_chat text has double spaces.
+- The fourth load_chat text should usually not contain "\n".
+- The fourth load_chat text should not end in "\n".
+- The fifth load_chat text should not end in "\n".
+- The sixth load_chat is speech and should use "@<language>@" syntax.
+- The sixth load_chat text should not end in "\n".
+- The third load_a_chat is speech and should use "@<language>@" syntax.
+Checking: a guard 
+          (/w/ninjutsu/test_monster.c)
+- Level 17 and above cannot have the same AC on each slot.
+- Level 17 and above cannot have str/dex/int/con/wis equal.
