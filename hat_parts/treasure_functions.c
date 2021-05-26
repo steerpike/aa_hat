@@ -4,8 +4,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s);
-void inform(object o, string s);
+void report(object o, string s, int channel);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
 void check_long(object o, int flags, mapping extra);
@@ -24,13 +23,13 @@ void hatcheck_treasure(object o) {
 
   if(!weight) {
     if(value)
-      report(o, "All items of value must be 1 or more weight.");
+      report(o, "All items of value must be 1 or more weight.", QC_CHANNEL);
     if(!value)
-      inform(o, "This is weightless, if that is intended it will need special approval.");
+      report(o, "This is weightless, if that is intended it will need special approval.", QC_CHANNEL);
   }
 
   if(weight && !value)
-    report(o, "All items with weight must have some value.");
+    report(o, "All items with weight must have some value.", QC_CHANNEL);
 
   check_name(o, 0);
   check_short(o, TEXT_CHECK_LIMITS, ITEM_SHORT_LIMITS);

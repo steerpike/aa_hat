@@ -1,0 +1,13 @@
+#ifndef HAT_CONFIG_REPORT_CHANNELS
+#define HAT_CONFIG_REPORT_CHANNELS
+
+#include <colour.h>
+
+#define CHANNELS \
+  ({ COLOUR_WHITE, COLOUR_INTENSE_RED, COLOUR_INTENSE_CYAN })
+
+#define HAT_CHANNEL     0
+#define QC_CHANNEL      1
+#define BALANCE_CHANNEL 2
+
+#endif

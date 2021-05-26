@@ -4,8 +4,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s);
-void inform(object o, string s);
+void report(object o, string s, int channel);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
 void check_long(object o, int flags, mapping extra);

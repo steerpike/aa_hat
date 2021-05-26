@@ -4,8 +4,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s);
-void inform(object o, string s);
+void report(object o, string s, int channel);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
 void check_long(object o, int flags, mapping extra);
@@ -23,9 +22,9 @@ void hatcheck_gem(object o) {
   path = explode(file_name(o), "#")[0];
   is_base_gem = path == "/obj/gem";
   if(!is_base_gem)
-    report(o, "This is a custom gem and will need QC approval, due to the Keepink project.");
+    report(o, "This is a custom gem and will need QC approval, due to the Keepink project.", QC_CHANNEL);
   else if((int)o->query_gem_flaw() == 1 && (int)o->query_gem_size() == 1 && (int)o->query_gem_val() == 1)
-    inform(o, "This gem has low stats, is this intentional? Expected: 3-30.");
+    report(o, "This gem has low stats, is this intentional? Expected: 3-30.", QC_CHANNEL);
 
   check_name(o, is_base_gem ? TEXT_EXCEPTION_NAME_IN_ALIAS : 0);
   check_short(o, TEXT_CHECK_LIMITS, ITEM_SHORT_LIMITS);

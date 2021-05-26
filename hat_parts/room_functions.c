@@ -11,8 +11,7 @@ void hatcheck_item_list(object o, int notify_ok);
 mapping basic_check(object room); // TODO port this over from hat.c?
 int format_check_file(object o, string f); // TODO why is this here, and not everywhere?
 
-void report(object o, string s);
-void inform(object o, string s);
+void report(object o, string s, int channel);
 void check_inherits(object o); // TODO why is this here, and not everywhere?
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
@@ -50,7 +49,7 @@ void hatcheck_room(object o) {
   check_inherits(o);
 
   if((!o->query_exits() || !sizeof((string*)o->query_exits())) && !o->enum_doors() && strstr(lower_case(explode(explode(file_name(o), "#")[0],"/")[<1]), "base") != -1) {
-    inform(o, "Seems to be some type of base file...skipping.");
+    report(o, "Seems to be some type of base file...skipping.", HAT_CHANNEL);
     call_out("hatcheck_all_files", 1);
     return;
   }
@@ -63,7 +62,7 @@ void hatcheck_room(object o) {
   }
 
   if(sizeof(items) && sizeof(items) < MIN_ITEMS)
-    report(o, "The room needs more add_senses, it is too plain.");
+    report(o, "The room needs more add_senses, it is too plain.", QC_CHANNEL);
 
   check_short(o, TEXT_CHECK_LIMITS, ROOM_SHORT_LIMITS);
   check_long(o,
@@ -76,25 +75,25 @@ void hatcheck_room(object o) {
   inheritance = inherit_list(o);
 
   if(member_array("room/room.c", inheritance) == -1)
-    report(o, "It looks like you forgot to inherit room/room.");
+    report(o, "It looks like you forgot to inherit room/room.", QC_CHANNEL);
   else if(inheritance[1] == "room/room.c") {
     if(!is_workroom(o))
-      report(o, "You probably need to use a base file room here.");
+      report(o, "You probably need to use a base file room here.", QC_CHANNEL);
   }
 
   if(function_exists("foo", o))
-    report(o, "You cannot have a function named foo() in a room.");
+    report(o, "You cannot have a function named foo() in a room.", QC_CHANNEL);
 
   if(!is_workroom(o)) {
     xf = function_exists("query_x_coord", o);
     yf = function_exists("query_y_coord", o);
     if(!xf || !yf)
-      report(o, "Missing X and Y coordinates (should go in a base file).");
+      report(o, "Missing X and Y coordinates (should go in a base file).", QC_CHANNEL);
     else if(xf == file_name() || yf == file_name()) {
       if(inheritance[1] == "room/room.c")
-        report(o, "The query_x_coord and query_y_coord must go into a base file.");
+        report(o, "The query_x_coord and query_y_coord must go into a base file.", QC_CHANNEL);
       else
-        report(o, "The query_x_coord and query_y_coord must go into a base file.");
+        report(o, "The query_x_coord and query_y_coord must go into a base file.", QC_CHANNEL);
     }
   }
 
@@ -122,7 +121,7 @@ int is_mapenter(object room) {
 
 void hatcheck_room_2(object room) {
   if(check_exits(room) + check_doors(room) == 0 && !is_mapenter(room))
-    inform(room, "There are no exits here.");
+    report(room, "There are no exits here.", QC_CHANNEL);
 
   light = (int) room->query_light();
   artificial = 0;
@@ -140,43 +139,42 @@ void hatcheck_room_3(object room, mapping items) {
   base_light = light-artificial;
 
   if(base_light < 0)
-    report(room, "A very dark ("+base_light+") room? This is uncommon.");
+    report(room, "A very dark ("+base_light+") room? This is uncommon.", QC_CHANNEL);
   if(base_light > 1) {
-    report(room, "A very bright ("+base_light+") room? This is uncommon.");
+    report(room, "A very bright ("+base_light+") room? This is uncommon.", QC_CHANNEL);
     if(base_light == 2)
-      report(room, "Did you put set_light(1) in the base room and in here?");
+      report(room, "Did you put set_light(1) in the base room and in here?", QC_CHANNEL);
   }
   if(base_light <= 0) {
     if(outdoors == 2)
-      report(room, "This room has windows of some kind, but has no light?");
+      report(room, "This room has windows of some kind, but has no light?", QC_CHANNEL);
     else
       if(outdoors == 3 || outdoors == 4)
-        report(room, "This is an outdoor room, but has no light?");
+        report(room, "This is an outdoor room, but has no light?", QC_CHANNEL);
   } else
     if(outdoors == 0 || outdoors == 1)
       if(!items["torch"] && !items["torches"] && !items["lamp"] &&
         !items["lamps"] && !items["fire"] && !items["fireplace"] &&
         !items["lantern"] && !items["lanterns"] && !items["candle"] &&
         !items["candles"] && !items["light"])
-        report(room, "An indoor room with light, but no light sources are "
-          "described in the room?");
+        report(room, "An indoor room with light, but no light sources are described in the room?", QC_CHANNEL);
   if(outdoors < 0 || outdoors > 4)
-    report(room, "Error: illegal value ("+outdoors+") in set_outdoors.");
+    report(room, "Error: illegal value ("+outdoors+") in set_outdoors.", QC_CHANNEL);
 
   // TODO assess the outdoorsness for foraging and whatnot
   if(outdoors == 3 || outdoors == 4) {
     if(!check_forageable(room) && !(room->query_is_underwater_room() || room->query_is_water_room()))
-      report(room, "Rangers cannot forage here. See 'man query_ranger_terrain'.");
+      report(room, "Rangers cannot forage here. See 'man query_ranger_terrain'.", QC_CHANNEL);
     if(!check_assay(room) && !(room->query_is_underwater_room() || room->query_is_water_room()))
-      report(room, "Artificers cannot assay here. See 'man query_artificer_terrain_type'.");
+      report(room, "Artificers cannot assay here. See 'man query_artificer_terrain_type'.", QC_CHANNEL);
     // TODO /room/room.c should call terrain::create(), so that all rooms
     // get "none" by default. then the hat can stop checking for terrain
     if(!room->is_maproom() && !room->query_terrain())
-      report(room, "Outdoor rooms should use set_terrain.");
+      report(room, "Outdoor rooms should use set_terrain.", QC_CHANNEL);
   }
   
   if(room->is_maproom() && file_name(room)[0..10] != "/room/map/m" && room->query_terrain())
-    report(room, "Mapenter rooms should not set_terrain.");
+    report(room, "Mapenter rooms should not set_terrain.", QC_CHANNEL);
 
   hatcheck_item_list(first_inventory(room), 1);
 }
@@ -221,22 +219,22 @@ int check_exit(object room, object dest, string direction) {
   string backdir, backroom;
 
   if(!call_other(dest, "query_room"))
-    report(room, "The \""+direction+"\" exit leads to a non-room.");
+    report(room, "The \""+direction+"\" exit leads to a non-room.", QC_CHANNEL);
   else {
     if(dest == room)
-      report(room, "The \""+direction+"\" exit leads right back here.");
+      report(room, "The \""+direction+"\" exit leads right back here.", QC_CHANNEL);
     else {
       backdir = reverse_direction(direction);
       if(!backdir) {
         if(!is_workroom(room))
-          report(room, "The \""+direction+"\" direction is non-standard.");
+          report(room, "The \""+direction+"\" direction is non-standard.", QC_CHANNEL);
       } else if(!is_mapenter(room)) {
         backroom = (string) dest->query_exit(backdir);
         if(!backroom)
-          report(room, "If you go \""+direction+"\" you cannot come \""+backdir+"\" to return.");
+          report(room, "If you go \""+direction+"\" you cannot come \""+backdir+"\" to return.", QC_CHANNEL);
         else
           if(find_object(backroom) != room)
-            report(room, "If you go \""+direction+"\" the \""+backdir+"\" leads to another room instead.");
+            report(room, "If you go \""+direction+"\" the \""+backdir+"\" leads to another room instead.", QC_CHANNEL);
       }
     }
   }
@@ -266,15 +264,15 @@ int check_exits(object room) {
     err = catch(load_object(exits[i]));
 
     if(err)
-      report(room, "The \""+direction+"\" exit leads somewhere that does not load.");
+      report(room, "The \""+direction+"\" exit leads somewhere that does not load.", QC_CHANNEL);
     else {
       dest = find_object(exits[i]);
       check_exit(room, dest, direction);
     }
   }
+  // TODO remove once sort_exits is installed
   if(!dir_ok)
-    report(room, "Put exits in order: N, NE, E, SE, S, SW, W, NW, up, "
-      "down, enter, out.");
+    report(room, "Put exits in order: N, NE, E, SE, S, SW, W, NW, up, down, enter, out.", QC_CHANNEL);
 
   return 1;
 }

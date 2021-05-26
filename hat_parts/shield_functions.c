@@ -4,8 +4,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s);
-void inform(object o, string s);
+void report(object o, string s, int channel);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
 void check_long(object o, int flags, mapping extra);
@@ -25,26 +24,26 @@ void hatcheck_shield(object o) {
 
   env = environment(o);
   if(env && living(env) && env->query_npc() && !o->query_worn())
-    report(o, "Shields held by monsters should be worn.");
+    report(o, "Shields held by monsters should be worn.", QC_CHANNEL);
 
   block = (int) o->query_block_ac();
   if(block <= 0)
-    report(o, "Shields must have 1 or more block AC.");
+    report(o, "Shields must have 1 or more block AC.", QC_CHANNEL);
   else if(block > 20)
-    report(o, "Maximum block AC is 20.");
+    report(o, "Maximum block AC is 20.", BALANCE_CHANNEL);
   else
     check_recommended_value(o, shield_prices[block-1]);
 
   if(block >= 19 && !o->query_unique())
-    report(o, "Shields with greater than 18 block AC must be unique.");
+    report(o, "Shields with greater than 18 block AC must be unique.", BALANCE_CHANNEL);
 
   weight = (int) o->query_weight();
   if(!weight)
-    report(o, "Shields must be 1 or more weight.");
+    report(o, "Shields must be 1 or more weight.", QC_CHANNEL);
   else {
     expected = to_int(to_float(block)/4.0+0.999);
     if(this_object()->abs(expected - weight) >= 2)
-      report(o, "Weight ("+weight+") is off. Expected: "+expected+".");
+      report(o, "Weight ("+weight+") is off. Expected: "+expected+".", BALANCE_CHANNEL);
   }
 
   check_name(o, 0);

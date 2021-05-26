@@ -7,8 +7,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s); // from ../hat.c
-varargs void inform(object o, string s, int highlight); // from ../hat.c
+void report(object o, string s, int channel);
 
 // ------------------------------------------------------- Implementation ---
 
@@ -40,7 +39,7 @@ int format_check_file(object o, string f) {
   l = read_file(f, 1, 1);
   if(strlen(l) >= 2)
     if(l[<2] == 13 && l[<1] == 10) {
-      report(o, "Please re-upload the file in ASCII format.");
+      report(o, "Please re-upload the file in ASCII format.", QC_CHANNEL);
       return 0;
     }
   return 1;
