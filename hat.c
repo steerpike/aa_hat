@@ -47,6 +47,9 @@ void determine_light(object room, object o, mapping items);
 void increment_error_count();
 int query_error_count();
 
+void increment_balance_count();
+int query_balance_count();
+
 // -------------------------------------------------- Internal Prototypes ---
 
 void hatcheck_finished();
@@ -534,15 +537,19 @@ int do_hatcheck(string what) {
 }
 
 void hatcheck_finished() {
-  if(!query_error_count())
+  if(!query_error_count() && !query_balance_count())
     write("Hatcheck complete: no problems detected.\n");
-  else
+  else {
     if(allchecked) {
-      write("Hatcheck complete: checked "+allchecked+" files and found "+query_error_count()+" problems.\n");
+      write("Hatcheck complete: checked "+allchecked+" files.\n");
+      if(query_error_count())
+        write("  "+query_error_count()+" QC isues.\n");
+      if(query_balance_count())
+        write("  "+query_balance_count()+" Balance isues.\n");
     } else
-      write("Error: nothing checked--nothing found.\n");
+      write("Hatcheck complete: nothing checked--nothing found.\n");
+  }
   stop_busy();
-  
 }
 
 int do_hatshow() {

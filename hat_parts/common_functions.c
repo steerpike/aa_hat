@@ -26,7 +26,7 @@ varargs void out_line(string s, int highlight, int indent);
 
 // --------------------------------------------------------- Global Variables
 
-int emergency_stop, error_count, is_busy;
+int emergency_stop, error_count, balance_count, is_busy;
 object last_reported;
 mapping reports;
 
@@ -35,6 +35,10 @@ mapping reports;
 void reset_error_count() { error_count = 0; }
 void increment_error_count() { error_count++; }
 int query_error_count() { return error_count; }
+
+void reset_balance_count() { balance_count = 0; }
+void increment_balance_count() { balance_count++; }
+int query_balance_count() { return balance_count; }
 
 object query_last_reported() { return last_reported; }
 
@@ -74,6 +78,7 @@ mapping query_reports() { return reports ? reports + ([]) : ([]); }
 void reset_variables() {
   set_sum_value(0);
   reset_error_count();
+  reset_balance_count();
   set_reporting_on_object(0);
   disable_emergency_stop();
   clear_reports();
@@ -109,7 +114,7 @@ void hat_log(string s) {
     log_file(hatlog_file(), s);
 }
 
-varargs void out_line(string s, int highlight, int indent) {
+varargs void out_line(string s, int channel, int indent) {
   string colour;
   
   if(!indent)
@@ -117,7 +122,7 @@ varargs void out_line(string s, int highlight, int indent) {
   
   if(highlight && query_hat_ansi()) {
     s = "- " +s;
-    colour = ({COLOUR_INTENSE_RED, COLOUR_INTENSE_YELLOW})[highlight-1];
+    colour = CHANNELS[channel];
     COLOURUTIL_D->write_c(COLOURUTIL_D->get_cf_string(colour+s+COLOUR_RESET, 0, indent));
   } else
     write(get_f_string(s, 0, indent));
@@ -151,29 +156,29 @@ void add_report(object o, string error) {
     reports[file] += ({error});
 }
 
-varargs void inform(object o, string s, int is_error) {
+varargs void inform(object o, string s, int channel) {
   if(o != query_last_reported())
     set_reporting_on_object(o);
 
   if(!already_reported(o, s)) {
     add_report(o, s);
-    if(is_error) {
-      out_line(s, 1); // 1 is red
+    if(channel == QC_IDX)
       increment_error_count();
-    } else
-      out_line(s, 2);  // 2 is yellow
+    else if(channel == BALANCE_IDX)
+      increment_balance_count();
+    out_line(s, channel);
   }
 }
 
-void report(object o, string s) {
-  inform(o, s, 1);
+void report(object o, string s, int channel) {
+  inform(o, s, channel);
 }
 
 void check_inherits(object o) {
   string *s;
   int i;
 
-  s = sort_array(inherit_list(o),#'>);
+  s = sort_array(inherit_list(o),#'>); //'
   for(i=0; i < sizeof(s)-1; i++)
     if(s[i] == s[i+1])
       report(o, "Alert! "+s[i]+" is inherited twice.");
