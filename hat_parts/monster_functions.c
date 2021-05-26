@@ -7,7 +7,6 @@
 // -------------------------------------------------- External Prototypes ---
 
 void report(object o, string s, int channel);
-void inform(object o, string s);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
 void check_long(object o, int flags, mapping extra);
@@ -84,7 +83,7 @@ void hatcheck_monster(object o) {
   // and while we're doing that, check their reactions as well,
   // and maybe even their destinations for PATH_D?
   if(o->query_is_persona())
-    inform(o, "Monster is using persona code, skipping chat checks.");
+    report(o, "Monster is using persona code, skipping chat checks.", HAT_CHANNEL);
   else
     monster_chats(o);
 

@@ -5,7 +5,6 @@
 // -------------------------------------------------- External Prototypes ---
 
 void report(object o, string s, int channel);
-void inform(object o, string s);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
 void check_long(object o, int flags, mapping extra);
@@ -74,7 +73,7 @@ void hatcheck_weapon(object o) {
     // TODO probably need to breakoff thrown weapons at some point
     if(member(inherit_list(o), "obj/thrown-weapon.c") != -1) {
       //expected = thrown_weapon_value(o);
-      inform(o, "The hat cannot evaluate thrown weapon values currently.");
+      report(o, "The hat cannot evaluate thrown weapon values currently.", BALANCE_CHANNEL);
     } else {
       expected = (int)WANDUS->query_recommended_weapon_value(o);
       check_recommended_value(o, expected);

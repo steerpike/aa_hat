@@ -59,7 +59,7 @@ void set_reporting_on_object(object o) {
 
     spam = "Checking: " + (item_short ? item_short+" " : (name?name+" ":"") +"[Invisible]") + "\n(" + file + ")";
 
-    out_line(spam, 0, 10);
+    out_line(spam, HAT_CHANNEL, 10);
   }
   last_reported = o;
 }
@@ -120,7 +120,6 @@ varargs void out_line(string s, int channel, int indent) {
   if(!indent)
     indent = 2;
 
-  s = "- " +s;
   colour = CHANNELS[channel];
   COLOURUTIL_D->write_c(COLOURUTIL_D->get_cf_string(colour+s+COLOUR_RESET, 0, indent));
   hat_log(get_f_string(s, 0, indent));
@@ -153,9 +152,16 @@ void add_report(object o, string error) {
     reports[file] += ({error});
 }
 
-varargs void inform(object o, string s, int channel) {
+void inform(object o, string s, int channel) {
   if(o != query_last_reported())
     set_reporting_on_object(o);
+
+  if(channel == HAT_CHANNEL) {
+    out_line(s, channel, 10);
+    return;
+  }
+  
+  s = "- " +s;
 
   if(!already_reported(o, s)) {
     add_report(o, s);

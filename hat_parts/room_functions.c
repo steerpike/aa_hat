@@ -12,7 +12,6 @@ mapping basic_check(object room); // TODO port this over from hat.c?
 int format_check_file(object o, string f); // TODO why is this here, and not everywhere?
 
 void report(object o, string s, int channel);
-void inform(object o, string s);
 void check_inherits(object o); // TODO why is this here, and not everywhere?
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
@@ -50,7 +49,7 @@ void hatcheck_room(object o) {
   check_inherits(o);
 
   if((!o->query_exits() || !sizeof((string*)o->query_exits())) && !o->enum_doors() && strstr(lower_case(explode(explode(file_name(o), "#")[0],"/")[<1]), "base") != -1) {
-    inform(o, "Seems to be some type of base file...skipping.");
+    report(o, "Seems to be some type of base file...skipping.", HAT_CHANNEL);
     call_out("hatcheck_all_files", 1);
     return;
   }
@@ -122,7 +121,7 @@ int is_mapenter(object room) {
 
 void hatcheck_room_2(object room) {
   if(check_exits(room) + check_doors(room) == 0 && !is_mapenter(room))
-    inform(room, "There are no exits here.");
+    report(room, "There are no exits here.", QC_CHANNEL);
 
   light = (int) room->query_light();
   artificial = 0;

@@ -4,8 +4,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s);
-void inform(object o, string s);
+void report(object o, string s, int channel);
 void check_name(object o, int flags);
 int check_short(object o, int flags, mapping extra);
 void check_long(object o, int flags, mapping extra);
@@ -30,7 +29,7 @@ void hatcheck_armour(object o) {
   special = ({"head", "body", "arm", "leg"});
   for(i=0; i<sizeof(special); i++)
     if(call_other(o, "query_special_"+special[i]+"_ac"))
-      report(o, "The set_special_"+special[i]+"_ac function is obsolete.");
+      report(o, "The set_special_"+special[i]+"_ac function is obsolete.", QC_CHANNEL);
 
   type = (string) o->query_armour_type();
   types = (string *) o->query_ac_types();
@@ -39,7 +38,7 @@ void hatcheck_armour(object o) {
 
   env = environment(o);
   if(env && living(env) && env->query_npc() && !o->query_worn())
-    report(o, "Armour held by monsters should be worn.");
+    report(o, "Armour held by monsters should be worn.", QC_CHANNEL);
 
   check_name(o, 0);
   check_short(o, TEXT_CHECK_LIMITS, ITEM_SHORT_LIMITS);
@@ -55,10 +54,9 @@ void hatcheck_armour(object o) {
 
   if(!typeno) {
     if(type == "armour")
-      report(o, "Armour that provides no protection seems unintended.");
+      report(o, "Armour that provides no protection seems unintended.", QC_CHANNEL);
     else if(o->query_weight())
-      inform(o, "Jewellery with weight needs to grant AC (or some other "
-        "function).");
+      report(o, "Jewellery with weight needs to grant AC (or some other function).", QC_CHANNEL);
   } else {
     for(i=0;i<typeno;i++)
       allalike_and_anyprotection += check_armour_part(o, types[i]);
@@ -74,33 +72,33 @@ void hatcheck_armour(object o) {
       if(o->query_leg_ac())
         nomajor++;
       if(!nomajor && type == "armour")
-        report(o, "Composite armour should cover one of head/hbody/arm/leg.");
+        report(o, "Composite armour should cover one of head/hbody/arm/leg.", QC_CHANNEL);
     }
 
     if(type == "armour") {
       if((string)o->query_armour_name() == "special")
-        report(o, "Armour should not use SPECIAL in set_armour (rings and jewellery can).");
+        report(o, "Armour should not use SPECIAL in set_armour (rings and jewellery can).", BALANCE_CHANNEL);
       else if(allalike_and_anyprotection)
-        report(o, "The set_armour must come after set_ac values.");
+        report(o, "The set_armour must come after set_ac values.", QC_CHANNEL);
     } else {
       if((string)o->query_armour_name() != "special")
-        report(o, "Jewellery should use SPECIAL in set_armour.");
+        report(o, "Jewellery should use SPECIAL in set_armour.", BALANCE_CHANNEL);
       if(!weight && allalike_and_anyprotection)
-        report(o, "Weightless jewellery must not provide AC.");
+        report(o, "Weightless jewellery must not provide AC.", BALANCE_CHANNEL);
       if(nomajor)
-        report(o, "Jewellery can only provide AC to lighter slots (neck/lbody/foot/hand).");
+        report(o, "Jewellery can only provide AC to lighter slots (neck/lbody/foot/hand).", BALANCE_CHANNEL);
       return;
     }
 
     expected = (int) WANDUS->query_recommended_armour_weight(o);
     if(weight != expected)
-      report(o, "Wrong weight ("+weight+"). Expected: "+expected+".");
+      report(o, "Wrong weight ("+weight+"). Expected: "+expected+".", BALANCE_CHANNEL);
 
     expected = (int) WANDUS->query_recommended_armour_value(o);
     if(expected != -1)
       check_recommended_value(o, expected);
     else
-      report(o, "Unable to evaluate with a formula. Check with a Balance member.");
+      report(o, "Unable to evaluate with a formula. Check with a Balance member.", BALANCE_CHANNEL);
   }
 }
 
@@ -119,7 +117,7 @@ int max_ac_for_part(object o, string part) {
       return 15;
 
     default:
-      report(o, "Invalid AC type: "+part+".");
+      report(o, "Invalid AC type: "+part+".", QC_CHANNEL);
   }
 }
 
@@ -134,13 +132,13 @@ mixed check_armour_part(object o, string part) {
   max = max_ac_for_part(o, part);
 
   if(ac > max)
-    report(o, "Alert! Maximum "+part+" AC is "+max+".");
+    report(o, "Alert! Maximum "+part+" AC is "+max+".", BALANCE_CHANNEL);
   else if((ac == 14 || ac == max) && !o->query_unique())
-    report(o, "Alert! This should be unique ("+part+" AC = "+ac+").");
+    report(o, "Alert! This should be unique ("+part+" AC = "+ac+").", BALANCE_CHANNEL);
 
   type = (string) o->query_armour_name();
   if(!type) {
-    report(o, "Did you forget to call set_armour?");
+    report(o, "Did you forget to call set_armour?", QC_CHANNEL);
     return 0;
   }
 
@@ -149,7 +147,7 @@ mixed check_armour_part(object o, string part) {
     "scalemail", "chainmail", "splintmail", "bandedmail", "platemail",
     "special"}));
   if(i == -1) {
-    report(o, "There is something wrong with set_armour!");
+    report(o, "There is something wrong with set_armour!", QC_CHANNEL);
     return 0;
   }
 
@@ -161,8 +159,7 @@ mixed check_armour_part(object o, string part) {
   slash = tohit["slash"];
   chop = tohit["chop"];
 
-  j = member_array(part,
-      ({"head","neck","hbody","lbody","arm","hand","leg","foot"}));
+  j = member_array(part, ({"head","neck","hbody","lbody","arm","hand","leg","foot"}));
 
   if(type != "special" &&
   (crush[j]  != pierce[j] ||
@@ -178,7 +175,7 @@ mixed check_armour_part(object o, string part) {
     anyprotection = 1;
 
   if(!anyprotection)
-    report(o, "This armour provides no "+part+" AC, is this intended?");
+    report(o, "This armour provides no "+part+" AC, is this intended?", QC_CHANNEL);
 
   if(allalike)
     return anyprotection;

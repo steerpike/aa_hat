@@ -2,11 +2,11 @@
 
 #pragma strict_types
 
+#include <daemons.h>
 #include <wizards.h>
 /*
 #include <armour_lib.h>
 #include <containers.h>
-#include <daemons.h>
 #include <colour.h>
 #include <map.h>
 #include <xfun.h>
@@ -234,7 +234,7 @@ mapping basic_check(object room) {
   items = (mapping)room->query_items();
 
   if(!items || !sizeof(items)) {
-    report(room, "The room has no add_senses and these are required.");
+    report(room, "The room has no add_senses and these are required.", QC_CHANNEL);
     return ([]);
   }
 
@@ -258,7 +258,7 @@ void hatcheck_item(object o) {
 
   err = catch(master = load_object(fname));
   if(err)
-    report(o, "Cannot find the master object...");
+    report(o, "Cannot find the master object...", HAT_CHANNEL);
   // TODO add is_clone() check for livings after adding efun find_livings()
   // to simul_efun.c
 
@@ -273,7 +273,7 @@ void hatcheck_item(object o) {
   }
 
   if(!o->query_short() && !o->short()) {
-    inform(o, "Seems to be invisible...skipping.");
+    report(o, "Seems to be invisible...skipping.", HAT_CHANNEL);
     call_out("hatcheck_all_files", 1);
     return;
   }
@@ -288,7 +288,7 @@ void hatcheck_item(object o) {
   }
 
   if(first_inventory(o))
-    report(o, "Not living/container, but contains something.");
+    report(o, "Not living/container, but contains something.", QC_CHANNEL);
 
   if(o->query_is_armour()) {
     hatcheck_armour(o);
@@ -341,7 +341,7 @@ void hatcheck_item(object o) {
   }
 
   if(o->short() && !done)
-    inform(o, "Unrecognized object type...skipping.");
+    report(o, "Unrecognized object type...skipping.", HAT_CHANNEL);
   call_out("hatcheck_all_files", 1);
 }
 
@@ -421,7 +421,7 @@ void hatcheck_file(string path) {
   member(inherit_list(o), "obj/treasure.c"))) {
     err = catch(o2 = clone_object(path));
     if(err || !o2) {
-      inform(o, "Error cloning: "+path+"...skipping\n");
+      report(o, "Error cloning: "+path+"...skipping\n", HAT_CHANNEL);
       call_out("hatcheck_all_files", 1);
       return;
     }
@@ -543,9 +543,9 @@ void hatcheck_finished() {
     if(allchecked) {
       write("Hatcheck complete: checked "+allchecked+" files.\n");
       if(query_error_count())
-        write("Found "+query_error_count()+" QC issues.\n");
+        COLOURUTIL_D->write_cf(CHANNELS[QC_CHANNEL]+"Found "+query_error_count()+" QC issues."+COLOUR_RESET);
       if(query_balance_count())
-        write("Found "+query_balance_count()+" potential Balance issues.\n");
+        COLOURUTIL_D->write_cf(CHANNELS[BALANCE_CHANNEL]+"Found "+query_balance_count()+" Balance issues."+COLOUR_RESET);
     } else
       write("Hatcheck complete: nothing checked--nothing found.\n");
   }
