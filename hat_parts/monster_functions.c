@@ -27,6 +27,7 @@ void monster_ac(object o);
 void monster_wc(object o);
 void monster_hp(object o);
 void monster_align(object o);
+void check_name_say(object o);
 
 // ----------------------------------------------------- Global Variables ---
 
@@ -86,6 +87,8 @@ void hatcheck_monster(object o) {
     report(o, "Monster is using persona code, skipping chat checks.", HAT_CHANNEL);
   else
     monster_chats(o);
+
+  check_name_say(o);
 
   // TODO when using set_cap_name, we run into quirks. I can possibly fix
   // this by adding a get_livings() in the living hashtable
@@ -432,4 +435,10 @@ void monster_align(object o) {
 
   if(align < min || align > max)
     report(o, "Alignment ("+align+") is too "+(align<min?"evil":"good")+" for a level "+lvl+" monster. Max: "+(align<min?min:max)+".", BALANCE_CHANNEL);
+}
+
+
+void check_name_say(object o) {
+  if(!intp(o->query_name_say()))
+    report(o, "query_name_say() should return 1 so speech uses name instead of short.", QC_CHANNEL);
 }
