@@ -203,6 +203,9 @@ void check_name(object o, int flags) {
   flags | TEXT_DENY_ARTICLE | TEXT_DENY_ENDING_PUNC))
     return;
 
+  if(name[0..0] == "\n")
+    report(o,"The set_name should not begin with \"\\n\", should it be an alias instead?.", QC_CHANNEL);
+
   if(text_short && strstr(lower_case(text_short), lower_case(name)) == -1)
     report(o, "The set_name \""+name+"\" should appear in the short or needs adjustment.", QC_CHANNEL);
 
