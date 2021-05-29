@@ -15,6 +15,7 @@ jobs:
       with:
         server: ${{ secrets.server }}
         port: ${{ secrets.port }}
-        username: ${{ secrets.username }}
+        username: ${{ secrets.main_username }}
         password: ${{ secrets.password
         server-dir: ./hat/
+        state_name: deploy/.sync_state.json
