@@ -13,9 +13,9 @@ jobs:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: ${{ secrets.server }}
+        server: anguish.org
         port: ${{ secrets.port }}
         username: ${{ secrets.staging_username }}
-        password: ${{ secrets.password }}
+        password: ${{ secrets.staging_password }}
         server-dir: hat/
-        state-name: deploy/.sync_state.json
+        state-name: .sync-state.json
