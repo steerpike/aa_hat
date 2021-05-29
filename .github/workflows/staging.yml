@@ -1,7 +1,7 @@
 on:
   push:
     branches: [ staging ]
-name: Deploy Qc Domain hat
+name: Deploy Qc Domain hat (staging)
 jobs:
   web-deploy:
     name: Deploy
@@ -16,6 +16,6 @@ jobs:
         server: ${{ secrets.server }}
         port: ${{ secrets.port }}
         username: ${{ secrets.staging_username }}
-        password: ${{ secrets.password
+        password: ${{ secrets.password }}
         server-dir: ./hat/
         state_name: deploy/.sync_state.json
