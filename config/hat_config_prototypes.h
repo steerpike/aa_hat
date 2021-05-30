@@ -11,5 +11,6 @@ void check_set_sense(object o, string thing, int flags);
 void check_add_senses(object o, int i);
 void check_material(object o, int mandatory);
 void check_recommended_value(object o, int rec);
+varargs int text_check(object o, string what, string text, int flags, mapping extra);
 
 #endif

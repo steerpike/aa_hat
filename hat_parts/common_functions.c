@@ -21,7 +21,6 @@ void set_sum_value(int i);
 // -------------------------------------------------- Internal Prototypes ---
 
 int query_hat_ansi();
-varargs int text_check(object o, string what, string text, int flags, mapping extra);
 varargs void out_line(string s, int highlight, int indent);
 
 // --------------------------------------------------------- Global Variables
