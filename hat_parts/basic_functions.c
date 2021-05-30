@@ -5,10 +5,6 @@
 
 #include "../hat_def.h"
 
-// -------------------------------------------------- External Prototypes ---
-
-void report(object o, string s, int channel);
-
 // ------------------------------------------------------- Implementation ---
 
 int abs(int i) { return i>0?i:-i; }

@@ -2,10 +2,6 @@
 
 #include "../hat_def.h"
 
-// -------------------------------------------------- External Prototypes ---
-
-void report(object o, string s, int channel);
-
 // ------------------------------------------------------- Implementation ---
 
 void hatcheck_coins(object o) {

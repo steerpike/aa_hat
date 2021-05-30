@@ -6,15 +6,7 @@
 
 // -------------------------------------------------- External Prototypes ---
 
-void report(object o, string s, int channel);
-void check_name(object o, int flags);
-int check_short(object o, int flags, mapping extra);
-void check_long(object o, int flags, mapping extra);
-void check_identify(object o, int flags);
-void check_set_sense(object o, string thing, int flags);
-void check_add_senses(object o, int i);
 int is_capitalized(string s);
-varargs int text_check(object o, string what, string text, int flags, mapping extra);
 int is_language(string s);
 
 // -------------------------------------------------- Internal Prototypes ---

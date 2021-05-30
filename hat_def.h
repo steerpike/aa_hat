@@ -4,6 +4,7 @@
 #include "config/hat_config_description_limits.h"
 #include "config/hat_config_paths.h"
 #include "config/hat_config_channels.h"
+#include "config/hat_config_prototypes.h"
 #include "config/hat_config_text_flags.h"
 
 #define EVAL_COST_LIMIT (get_eval_cost() < 500000)
