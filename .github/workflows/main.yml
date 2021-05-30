@@ -1,7 +1,7 @@
 on:
   push:
-    branches: [ staging ]
-name: Deploy QC Hat tool (staging)
+    branches: [ main ]
+name: Deploy QC Hat tool (main)
 jobs:
   web-deploy:
     name: Deploy
@@ -15,7 +15,7 @@ jobs:
       with:
         server: anguish.org
         port: ${{ secrets.port }}
-        username: ${{ secrets.staging_username }}
-        password: ${{ secrets.staging_password }}
-        server-dir: qc/hat/
+        username: ${{ secrets.main_username }}
+        password: ${{ secrets.main_password }}
+        server-dir: hat/
         state-name: deploy/.sync-state.json
