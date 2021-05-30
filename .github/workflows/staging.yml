@@ -18,4 +18,4 @@ jobs:
         username: ${{ secrets.staging_username }}
         password: ${{ secrets.staging_password }}
         server-dir: qc/hat/
-        state-name: .sync-state.json
+        state-name: deploy/.sync-state.json
