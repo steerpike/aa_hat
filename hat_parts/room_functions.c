@@ -4,6 +4,14 @@
 
 #include "../hat_def.h"
 
+// -------------------------------------------------- External Prototypes ---
+
+void hatcheck_item_list(object o, int notify_ok);
+
+mapping basic_check(object room); // TODO port this over from hat.c?
+int format_check_file(object o, string f); // TODO why is this here, and not everywhere?
+void check_inherits(object o); // TODO why is this here, and not everywhere?
+
 // -------------------------------------------------- Internal Prototypes ---
 
 int check_exits(object room);
