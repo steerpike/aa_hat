@@ -10,14 +10,7 @@ void hatcheck_item_list(object o, int notify_ok);
 
 mapping basic_check(object room); // TODO port this over from hat.c?
 int format_check_file(object o, string f); // TODO why is this here, and not everywhere?
-
-void report(object o, string s, int channel);
 void check_inherits(object o); // TODO why is this here, and not everywhere?
-void check_name(object o, int flags);
-int check_short(object o, int flags, mapping extra);
-void check_long(object o, int flags, mapping extra);
-void check_set_sense(object o, string sense, int flags);
-void check_add_senses(object o, int i);
 
 // -------------------------------------------------- Internal Prototypes ---
 

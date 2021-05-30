@@ -1,7 +1,9 @@
+// this is in .gitignore, if it is adjusted it needs to be manually adjusted
 #ifndef HAT_CONFIG_PATHS
 #define HAT_CONFIG_PATHS
 
-#define HAT_PATH  "/w/maker/qc/hat/"
+#include "hat_config_path.h"
+
 #define HAT_PARTS HAT_PATH "hat_parts/"
 #define HAT_LOG   HAT_PATH "log/"
 
