@@ -411,11 +411,19 @@ void hatcheck_file(string path) {
     write("Error locating: "+path+"\n");
     increment_error_count();
     call_out("hatcheck_all_files", 1);
-  } else if(o->query_room()) {
+    return;
+  }
+
+  if(strstr(lower_case(explode(explode(file_name(o), "#")[0],"/")[<1]), "base") != -1) {
+    report(o, "Seems to be some type of base file...skipping.", HAT_CHANNEL);
+    call_out("hatcheck_all_files", 1);
+    return;
+  }
+  
+  if(o->query_room()) {
     set_reporting_on_object(o);
     hatcheck_room(o);
-  }
-  else if(!is_clone(o) && (living(o) || o->query_is_weapon() ||
+  } else if(!is_clone(o) && (living(o) || o->query_is_weapon() ||
   o->query_is_armour() || o->query_is_shield() || o->query_is_food() ||
   o->query_is_drink() || o->query_is_gem() ||
   member(inherit_list(o), "obj/treasure.c"))) {

@@ -432,5 +432,5 @@ void monster_align(object o) {
 
 void check_name_say(object o) {
   if(!intp(o->query_name_say()))
-    report(o, "query_name_say() should return 1 so speech uses name instead of short.", QC_CHANNEL);
+    report(o, "The query_name_say should return 1 rather than a string.", QC_CHANNEL);
 }
