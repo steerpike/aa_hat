@@ -41,12 +41,6 @@ void hatcheck_room(object o) {
 
   check_inherits(o);
 
-  if((!o->query_exits() || !sizeof((string*)o->query_exits())) && !o->enum_doors() && strstr(lower_case(explode(explode(file_name(o), "#")[0],"/")[<1]), "base") != -1) {
-    report(o, "Seems to be some type of base file...skipping.", HAT_CHANNEL);
-    call_out("hatcheck_all_files", 1);
-    return;
-  }
-
   items = basic_check(o);
 
   if(!items) {
