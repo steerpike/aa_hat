@@ -278,6 +278,9 @@ void check_add_senses_texts(object o, mapping map, string what) {
   descriptions = ([]);
 
   for(i=0; i<size; i++) {
+    if(keys[i] != lower_case(keys[i]))
+      report(o, "The noun \""+keys[i]+"\" in "+what+" should be lower case.", QC_CHANNEL);
+
     description = map[keys[i]];
     if(!member(descriptions, description)) {
       text_check(o, "the "+what+" for \""+keys[i]+"\"", description, TEXT_ALLOW_REDIRECT);
