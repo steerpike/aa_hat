@@ -454,6 +454,9 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
 
     if( (word == "a" || word == "an") && i < words_size-1 && (string)A_AN_D->query_article(words[i+1]) != lower_case(word) )
       report(o, capitalize(what) + " uses article \""+word+"\" before \""+words[i+1]+"\", but should use \""+(lower_case(word)=="a"?"an":"a")+"\".", QC_CHANNEL);
+
+    if( i < words_size-1 && member(({"hand", "hands", "foot", "feet", "arm", "arms", "leg", "legs", "head"}), words[i+1]) != -1 && member(({"the", "your", "his", "her", "its"}), word) != -1)
+      report(o, captizlize(what) + "has \""+words[i+1]+"\" which might be a dynamic body part and should query_hand_str, etc.")
   }
 
   if(flags & TEXT_DENY_MULTIPLE_WORDS && sizeof(words) > 1)
