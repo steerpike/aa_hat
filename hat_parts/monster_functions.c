@@ -15,6 +15,7 @@ void check_stat(object o, int lvl, int stat, string statname);
 void monster_stat(object o);
 void monster_chats(object o);
 void monster_spells(object o);
+void monster_race(object o);
 void monster_ac(object o);
 void monster_wc(object o);
 void monster_hp(object o);
@@ -41,7 +42,7 @@ int query_sum_value(int i) { return sum_value; }
 
 void hatcheck_monster(object o) {
   int lvl;
-  string race, r_name, *aliases;
+  string r_name, *aliases;
 
   r_name = (string)o->query_real_name();
 
@@ -72,6 +73,7 @@ void hatcheck_monster(object o) {
   monster_stat(o);
   monster_align(o);
   monster_spells(o);
+  monster_race(o);
   // TODO cycle through persona states and check all their chats
   // and while we're doing that, check their reactions as well,
   // and maybe even their destinations for PATH_D?
@@ -94,84 +96,8 @@ void hatcheck_monster(object o) {
   check_set_sense(o, "touch", TEXT_NOT_MANDATORY);
   check_add_senses(o, 0);
 
-  race = (string) o->query_race();
 
-  if(!race)
-    report(o, "The set_race is missing!", QC_CHANNEL);
-  else
-    if(!RACE_D->query_known_race(o)) {
-      switch(race) {
-      case "bird":
-        if((string) o->query_arm_str() != "wing" &&
-          RACE_D->query_has_wings(o))
-          report(o, "Does "+lower_case((string) o->short())+" have wings?", QC_CHANNEL);
-        break;
-      case "equipment":
-      case "pan":
-      case "statue":
-      case "utensil":
-        report(o, capitalize(race)+" race? Use \"animate\".", QC_CHANNEL);
-        break;
-      case "avian":
-      case "buzzard":
-        report(o, capitalize(race)+" race? Use \"bird\".", QC_CHANNEL);
-        break;
-      case "calf":
-        report(o, capitalize(race)+" race? Use \"cow\".", QC_CHANNEL);
-        break;
-      case "drow":
-        report(o, capitalize(race)+" race? Use \"dark elf\".", QC_CHANNEL);
-        break;
-      case "incubus":
-      case "succubus":
-        report(o, capitalize(race)+" race? Use \"demon\".", QC_CHANNEL);
-        break;
-      case "earthquaker":
-        report(o, capitalize(race)+" race? Use \"golem\".", QC_CHANNEL);
-        break;
-      case "butterfly":
-      case "centipede":
-      case "cockroach":
-      case "grasshopper":
-      case "larva":
-      case "tick":
-      case "wasp":
-        report(o, capitalize(race)+" race? Use \"insect\".", QC_CHANNEL);
-        break;
-      case "floral":
-      case "fungus":
-      case "squash":
-      case "vegetable":
-        report(o, capitalize(race)+" race? Use \"plant\".", QC_CHANNEL);
-        break;
-      case "banshee":
-      case "ghoul":
-        report(o, capitalize(race)+" race? Use \"undead\".", QC_CHANNEL);
-        break;
-      case "animal":
-      case "beast":
-      case "creature":
-      case "feline":
-      case "hag":
-      case "horror":
-      case "humanoid":
-      case "mammal":
-        report(o, capitalize(race)+" race? That is too broad.", QC_CHANNEL);
-        break;
-      default:
-        report(o, capitalize(race)+" race? Is this intended?", QC_CHANNEL);
-        break;
-      }
-    } else {
-      if((int) o->query_arm_ac() != -1 && (string) o->query_arm_str() == "arm" && !RACE_D->query_has_arms(o))
-        report(o, "Does "+lower_case((string) o->short())+" have arms?", QC_CHANNEL);
-      if((int) o->query_leg_ac() != -1 && (string) o->query_leg_str()  == "leg" && !RACE_D->query_has_legs(o))
-        report(o, "Does "+lower_case((string) o->short())+" have legs?", QC_CHANNEL);
-      if((string) o->query_arm_str() != "wing" && RACE_D->query_has_wings(o))
-      report(o, "Does "+lower_case((string) o->short())+" have wings?", QC_CHANNEL);
-    }
-
-  if(!o->query_gender() && race == "human")
+  if(!o->query_gender() && (string)o->query_race() == "human")
     report(o, "A neuter human? Check the gender and the race here.", QC_CHANNEL);
 
   aliases = (string*)o->query_alias();
@@ -322,6 +248,94 @@ void monster_spells(object o) {
 
     if(dam <= 0)
       report(o, "Spell damage is zero on "+adj_num+" spell. This is probably unintended.", QC_CHANNEL);
+  }
+}
+
+void monster_race(object o) {
+  string race;
+
+  race = (string) o->query_race();
+
+  if(!race) {
+    report(o, "The set_race is missing!", QC_CHANNEL);
+    return;
+  }
+
+  if(strlen(race) > 15) {
+    report(o, "The set_race is too long ("+strlen(race)+" chars). Maximum: 15", QC_CHANNEL);
+    return;
+  }
+
+  if(!RACE_D->query_known_race(o)) {
+    switch(race) {
+    case "bird":
+      if((string) o->query_arm_str() != "wing" &&
+        RACE_D->query_has_wings(o))
+        report(o, "Does "+lower_case((string) o->short())+" have wings?", QC_CHANNEL);
+      break;
+    case "equipment":
+    case "pan":
+    case "statue":
+    case "utensil":
+      report(o, capitalize(race)+" race? Use \"animate\".", QC_CHANNEL);
+      break;
+    case "avian":
+    case "buzzard":
+      report(o, capitalize(race)+" race? Use \"bird\".", QC_CHANNEL);
+      break;
+    case "calf":
+      report(o, capitalize(race)+" race? Use \"cow\".", QC_CHANNEL);
+      break;
+    case "drow":
+      report(o, capitalize(race)+" race? Use \"dark elf\".", QC_CHANNEL);
+      break;
+    case "incubus":
+    case "succubus":
+      report(o, capitalize(race)+" race? Use \"demon\".", QC_CHANNEL);
+      break;
+    case "earthquaker":
+      report(o, capitalize(race)+" race? Use \"golem\".", QC_CHANNEL);
+      break;
+    case "butterfly":
+    case "centipede":
+    case "cockroach":
+    case "grasshopper":
+    case "larva":
+    case "tick":
+    case "wasp":
+      report(o, capitalize(race)+" race? Use \"insect\".", QC_CHANNEL);
+      break;
+    case "floral":
+    case "fungus":
+    case "squash":
+    case "vegetable":
+      report(o, capitalize(race)+" race? Use \"plant\".", QC_CHANNEL);
+      break;
+    case "banshee":
+    case "ghoul":
+      report(o, capitalize(race)+" race? Use \"undead\".", QC_CHANNEL);
+      break;
+    case "animal":
+    case "beast":
+    case "creature":
+    case "feline":
+    case "hag":
+    case "horror":
+    case "humanoid":
+    case "mammal":
+      report(o, capitalize(race)+" race? That is too broad.", QC_CHANNEL);
+      break;
+    default:
+      report(o, capitalize(race)+" race? Is this intended?", QC_CHANNEL);
+      break;
+    }
+  } else {
+    if((int) o->query_arm_ac() != -1 && (string) o->query_arm_str() == "arm" && !RACE_D->query_has_arms(o))
+      report(o, "Does "+lower_case((string) o->short())+" have arms?", QC_CHANNEL);
+    if((int) o->query_leg_ac() != -1 && (string) o->query_leg_str()  == "leg" && !RACE_D->query_has_legs(o))
+      report(o, "Does "+lower_case((string) o->short())+" have legs?", QC_CHANNEL);
+    if((string) o->query_arm_str() != "wing" && RACE_D->query_has_wings(o))
+    report(o, "Does "+lower_case((string) o->short())+" have wings?", QC_CHANNEL);
   }
 }
 
