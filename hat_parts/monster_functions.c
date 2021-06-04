@@ -254,7 +254,7 @@ void monster_race(object o) {
   }
 
   if(strlen(race) > 15) {
-    report(o, "The set_race is too long ("+strlen(race)+" chars). Maximum: 15", QC_CHANNEL);
+    report(o, "The set_race is too long ("+strlen(race)+" chars). Maximum: 15.", QC_CHANNEL);
     return;
   }
 
