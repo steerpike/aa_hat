@@ -42,7 +42,7 @@ int query_sum_value(int i) { return sum_value; }
 
 void hatcheck_monster(object o) {
   int lvl;
-  string r_name, *aliases;
+  string r_name;
 
   r_name = (string)o->query_real_name();
 
@@ -95,14 +95,6 @@ void hatcheck_monster(object o) {
   check_set_sense(o, "taste", TEXT_NOT_MANDATORY);
   check_set_sense(o, "touch", TEXT_NOT_MANDATORY);
   check_add_senses(o, 0);
-
-
-  if(!o->query_gender() && (string)o->query_race() == "human")
-    report(o, "A neuter human? Check the gender and the race here.", QC_CHANNEL);
-
-  aliases = (string*)o->query_alias();
-  if(aliases && sizeof(aliases) && member(aliases, race) != -1)
-    report(o, "The race \""+race+"\" does not need to be an alias.", QC_CHANNEL);
 
   set_sum_value(1); // TODO why is this 1?
   set_total_value(0); // TODO how does the value sytem work?
@@ -252,7 +244,7 @@ void monster_spells(object o) {
 }
 
 void monster_race(object o) {
-  string race;
+  string race, *aliases;
 
   race = (string) o->query_race();
 
@@ -263,6 +255,11 @@ void monster_race(object o) {
 
   if(strlen(race) > 15) {
     report(o, "The set_race is too long ("+strlen(race)+" chars). Maximum: 15", QC_CHANNEL);
+    return;
+  }
+
+  if(!o->query_gender() && (string)o->query_race() == "human") {
+    report(o, "A neuter human? Check the gender and the race here.", QC_CHANNEL);
     return;
   }
 
@@ -337,6 +334,10 @@ void monster_race(object o) {
     if((string) o->query_arm_str() != "wing" && RACE_D->query_has_wings(o))
     report(o, "Does "+lower_case((string) o->short())+" have wings?", QC_CHANNEL);
   }
+
+  aliases = (string*)o->query_alias();
+  if(aliases && sizeof(aliases) && member(aliases, race) != -1)
+    report(o, "The race \""+race+"\" does not need to be an alias.", QC_CHANNEL);
 }
 
 void monster_ac(object o) {
