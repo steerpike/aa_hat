@@ -25,15 +25,15 @@ varargs void out_line(string s, int highlight, int indent);
 
 // --------------------------------------------------------- Global Variables
 
-int emergency_stop, error_count, balance_count, is_busy;
+int emergency_stop, qc_count, balance_count, is_busy;
 object last_reported;
 mapping reports;
 
 // ------------------------------------------------------- Implementation ---
 
-void reset_error_count() { error_count = 0; }
-void increment_error_count() { error_count++; }
-int query_error_count() { return error_count; }
+void reset_qc_count() { qc_count = 0; }
+void increment_qc_count() { qc_count++; }
+int query_qc_count() { return qc_count; }
 
 void reset_balance_count() { balance_count = 0; }
 void increment_balance_count() { balance_count++; }
@@ -53,7 +53,7 @@ void set_reporting_on_object(object o) {
     
     name = (string)o->query_name();
     
-    if(item_short && item_short[0..1] == "0 ")
+    if(item_short && item_short[0..0] == "0")
       item_short = item_short[2..<1];
 
     spam = "Checking: " + (item_short ? item_short+" " : (name?name+" ":"") +"[Invisible]") + "\n(" + file + ")";
@@ -76,7 +76,7 @@ mapping query_reports() { return reports ? reports + ([]) : ([]); }
 
 void reset_variables() {
   set_sum_value(0);
-  reset_error_count();
+  reset_qc_count();
   reset_balance_count();
   set_reporting_on_object(0);
   disable_emergency_stop();
@@ -154,18 +154,13 @@ void add_report(object o, string error) {
 void inform(object o, string s, int channel) {
   if(o != query_last_reported())
     set_reporting_on_object(o);
-
-  if(channel == HAT_CHANNEL) {
-    out_line(s, channel, 10);
-    return;
-  }
   
   s = "- " +s;
 
   if(!already_reported(o, s)) {
     add_report(o, s);
     if(channel == QC_CHANNEL)
-      increment_error_count();
+      increment_qc_count();
     else if(channel == BALANCE_CHANNEL)
       increment_balance_count();
     out_line(s, channel);
@@ -173,6 +168,16 @@ void inform(object o, string s, int channel) {
 }
 
 void report(object o, string s, int channel) {
+  if(channel == ERROR_CHANNEL) {
+    out_line(s, channel, 2);
+    return;
+  }
+
+  if(channel == HAT_CHANNEL) {
+    out_line(s, channel, 10);
+    return;
+  }
+
   inform(o, s, channel);
 }
 

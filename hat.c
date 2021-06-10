@@ -44,8 +44,8 @@ void hatcheck_room_2(object room);
 void hatcheck_room_3(object room, mapping items);
 void determine_light(object room, object o, mapping items);
 
-void increment_error_count();
-int query_error_count();
+void increment_qc_count();
+int query_qc_count();
 
 void increment_balance_count();
 int query_balance_count();
@@ -399,8 +399,8 @@ void hatcheck_file(string path) {
   if(!o) {
     err = catch(load_object(path));
     if(err) {
-      write("Error loading: "+path+"\n");
-      increment_error_count();
+      report(0, "Error loading: "+path, ERROR_CHANNEL);
+      increment_qc_count();
       call_out("hatcheck_all_files", 1);
       return;
     }
@@ -408,8 +408,8 @@ void hatcheck_file(string path) {
   }
 
   if(!o) {
-    write("Error locating: "+path+"\n");
-    increment_error_count();
+    report(0, "Error locating: "+path, ERROR_CHANNEL);
+    increment_qc_count();
     call_out("hatcheck_all_files", 1);
     return;
   }
@@ -545,13 +545,13 @@ int do_hatcheck(string what) {
 }
 
 void hatcheck_finished() {
-  if(!query_error_count() && !query_balance_count())
+  if(!query_qc_count() && !query_balance_count())
     write("Hatcheck complete: no problems detected.\n");
   else {
     if(allchecked) {
       write("Hatcheck complete: checked "+allchecked+" files.\n");
-      if(query_error_count())
-        COLOURUTIL_D->write_cf(CHANNELS[QC_CHANNEL]+"Found "+query_error_count()+" QC issues."+COLOUR_RESET);
+      if(query_qc_count())
+        COLOURUTIL_D->write_cf(CHANNELS[QC_CHANNEL]+"Found "+query_qc_count()+" QC issues."+COLOUR_RESET);
       if(query_balance_count())
         COLOURUTIL_D->write_cf(CHANNELS[BALANCE_CHANNEL]+"Found "+query_balance_count()+" Balance issues."+COLOUR_RESET);
     } else
