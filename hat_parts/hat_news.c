@@ -26,16 +26,6 @@ void load_news() {
     news = ([]);
 }
 
-void add_hatnews(string arg) {
-  // TODO make a better security routine
-  if((string)this_player()->query_real_name() != "maker")
-    return;
-
-  news += ([ time(): arg ]);
-  save_news();
-  return 1;
-}
-
 void check_news(int num_of_items) {
   int i, *keys, time_threshold;
   string *news_items;
@@ -53,9 +43,19 @@ void check_news(int num_of_items) {
   }
 
   if(!sizeof(news_items))
-    write("No new hat news.\n")
+    write("No new hat news.\n");
   else
     this_player()->more(news_items);
+}
+
+int do_addhatnews(string arg) {
+  // TODO make a better security routine
+  if((string)this_player()->query_real_name() != "maker")
+    return 0;
+
+  news += ([ time(): arg ]);
+  save_news();
+  return 1;
 }
 
 int do_hatnews(string arg) {
