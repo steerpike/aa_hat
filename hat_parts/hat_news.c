@@ -2,6 +2,8 @@
 
 #include <xfun.h>
 
+#include "../hat_def.h"
+
 int last_time_news_checked;
 
 // ([ unix time: "news strings" ]);
@@ -20,7 +22,7 @@ void load_news() {
 
 void add_news(string arg) {
   // TODO make a better security routine
-  if(this_player()->query_real_name() != "maker")
+  if((string)this_player()->query_real_name() != "maker")
     return;
 
   news += ([ time(): arg ]);
