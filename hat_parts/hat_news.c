@@ -10,6 +10,12 @@ int last_time_news_checked;
 mapping news;
 
 int query_last_time_news_checked() { return last_time_news_checked; }
+void set_last_time_news_checked(int i) { last_time_news_checked = i; }
+
+void init() {
+  add_action("do_hatnews", "hatnews");
+  add_action("do_addhatnews", "addhatnews");
+}
 
 void save_news() {
   save_object(HAT_SAVE + "hat");
@@ -20,25 +26,24 @@ void load_news() {
     news = ([]);
 }
 
-void add_news(string arg) {
+void add_hatnews(string arg) {
   // TODO make a better security routine
   if((string)this_player()->query_real_name() != "maker")
     return;
 
   news += ([ time(): arg ]);
   save_news();
+  return 1;
 }
 
 void check_news(int num_of_items) {
   int i, *keys, time_threshold;
   string *news_items;
 
-  if(!num_of_items) {
+  if(!num_of_items)
     time_threshold = query_last_time_news_checked();
-    num_of_items = sizeof(news);
-  }
   
-  last_time_news_checked = time();
+  set_last_time_news_checked(time());
 
   news_items = ({});
   keys = sort_array(m_indices(news), #'<); //'
@@ -47,5 +52,16 @@ void check_news(int num_of_items) {
       news_items += ({ (string)XFUN->short_time(keys[i]) + news[keys[i]] });
   }
 
-  this_player()->more(news_items);
+  if(!sizeof(news_items))
+    write("No new hat news.\n")
+  else
+    this_player()->more(news_items);
+}
+
+int do_hatnews(string arg) {
+  if(arg == "all")
+    check_news(sizeof(news));
+  else
+    check_news(to_int(arg));
+  return 1;
 }
