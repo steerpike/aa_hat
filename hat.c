@@ -86,6 +86,7 @@ void create() {
 
 void init() {
   armour::init();
+  hat_news::init();
 
   if(environment() != this_player())
     return;
@@ -579,10 +580,10 @@ void init_arg(string arg) {
 
   args = explode(arg, "|");
 
-  hat_visible = args[0];
-  hat_light = args[1];
-  hat_ansi = args[2];
-  check_news(args[3]);
+  hat_visible = to_int(args[0]);
+  hat_light = to_int(args[1]);
+  hat_ansi = to_int(args[2]);
+  set_last_time_news_checked(to_int(args[3]));
 }
 
 string query_auto_load() {
