@@ -62,7 +62,6 @@ int do_addhatnews(string arg) {
     return 0;
 
   write_file(HAT_NEWS, time()+"|"+arg+"\n");
-  save_news();
   return 1;
 }
 
