@@ -105,8 +105,6 @@ void init() {
   add_action("do_hatfind", "hatfind");
   add_action("do_hatstop", "hatstop");
   add_action("do_hatlog", "hatlog");
-
-  call_out("check_if_news", 2);
 }
 
 void hatlog_more() {
