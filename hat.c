@@ -539,7 +539,7 @@ string query_auto_load() {
   if(this_player()->query_level() < APPRENTICE)
     return 0;
   else
-    return explode(file_name(this_object()),"#")[0]+":")
+    return explode(file_name(this_object()),"#")[0] + ":";
 }
 
 int drop() { return 1; }

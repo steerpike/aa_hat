@@ -15,5 +15,7 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
 
 // From hat_settings.c
 void save_hat();
+int query_last_time_news_checked();
+void set_last_time_news_checked(int i);
 
 #endif
