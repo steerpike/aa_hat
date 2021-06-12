@@ -58,8 +58,8 @@ void hatcheck_finished();
 
 // ----------------------------------------------------- Global Variables ---
 
-int already, allno, allchecked, hat_visible, hat_light, hat_ansi;
-string commands, *all_files;
+static int already, allno, allchecked, hat_visible, hat_light, hat_ansi;
+static string commands, *all_files;
 
 // ------------------------------------------------------- Implementation ---
 

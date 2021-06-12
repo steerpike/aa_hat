@@ -12,6 +12,8 @@ mapping news;
 int query_last_time_news_checked() { return last_time_news_checked; }
 void set_last_time_news_checked(int i) { last_time_news_checked = i; }
 
+void mapping query_hatnews() { return ([]) + news; }
+
 void init() {
   add_action("do_hatnews", "hatnews");
   add_action("do_addhatnews", "addhatnews");
@@ -28,7 +30,7 @@ void load_news() {
 
 void check_news(int num_of_items) {
   int i, *keys, time_threshold;
-  string *news_items;
+  string date, *news_items;
 
   if(!num_of_items)
     time_threshold = query_last_time_news_checked();
@@ -38,8 +40,10 @@ void check_news(int num_of_items) {
   news_items = ({});
   keys = sort_array(m_indices(news), #'<); //'
   for(i=0; i<sizeof(keys) && i<num_of_items; i++) {
-    if(keys[i] > time_threshold)
-      news_items += ({ (string)XFUN->short_time(keys[i]) + news[keys[i]] });
+    if(keys[i] > time_threshold) {
+      date = explode((string)XFUN->short_time(keys[i]), " ")[0]
+      news_items += ({ date + ": " + news[keys[i]] });
+    }
   }
 
   if(!sizeof(news_items))
