@@ -36,6 +36,7 @@ static variables inherit (HAT_PARTS + "check_treasure_functions");
 static variables inherit (HAT_PARTS + "check_weapon_functions");
 
 static variables inherit (HAT_PARTS + "hat_news");
+inherit (HAT_PARTS + "hat_settings");
 
 // -------------------------------------------------- External Prototypes ---
 
