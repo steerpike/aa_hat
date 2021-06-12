@@ -5,7 +5,6 @@
 #include "../hat_def.h"
 
 int last_time_news_checked;
-
 // ([ unix time: "news strings" ]);
 mapping news;
 
@@ -19,23 +18,28 @@ void init() {
   add_action("do_addhatnews", "addhatnews");
 }
 
-void save_news() {
-  save_object(HAT_SAVE + "hat");
-}
-
 void load_news() {
-  if(!restore_object(HAT_SAVE + "hat"))
-    news = ([]);
+  int i;
+  string *data, *news_items;
+
+  news = ([]);
+  news_items = explode(read_file(HAT_NEWS), "\n");
+  for(i=0; i<sizeof(news_items); i++) {
+    data = explode(news_items[i], "|");
+    news += ([ to_int(data[0]): implode(data[1..], "|") ]);
+  }
 }
 
 void check_news(int num_of_items) {
   int i, *keys, time_threshold;
   string date, *news_items;
 
-  if(!num_of_items)
+  if(!num_of_items) {
     time_threshold = query_last_time_news_checked();
+    num_of_items = sizeof(news);
+  }
   
-  set_last_time_news_checked(time());
+  //set_last_time_news_checked(time());
 
   news_items = ({});
   keys = sort_array(m_indices(news), #'<); //'
@@ -57,7 +61,7 @@ int do_addhatnews(string arg) {
   if((string)this_player()->query_real_name() != "maker")
     return 0;
 
-  news += ([ time(): arg ]);
+  write_file(HAT_NEWS, time()+"|"+arg+"\n");
   save_news();
   return 1;
 }
