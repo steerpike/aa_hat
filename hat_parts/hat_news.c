@@ -22,13 +22,15 @@ void load_news() {
   int i;
   string *data, *news_items;
 
+  news = ([]);
   if(file_size(HAT_NEWS) > 0) {
-    news = ([]);
     news_items = explode(read_file(HAT_NEWS), "\n");
     for(i=0; i<sizeof(news_items); i++) {
       data = explode(news_items[i], "|");
       news += ([ to_int(data[0]): implode(data[1..], "|") ]);
     }
+    if(file_date(HAT_NEWS) > query_last_time_news_checked())
+      COLOURUTIL_D->write_c((string)COLOURUTIL_D->igreen("There is new 'hatnews' (or 'hatnews <num>/all' for details.\n"));
   }
 }
 
