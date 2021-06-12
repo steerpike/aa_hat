@@ -11,16 +11,16 @@ int last_time_news_checked;
 int query_last_time_news_checked() { return last_time_news_checked; }
 void set_last_time_news_checked(int i) { last_time_news_checked = i; }
 
+void check_if_news() {
+  if(query_last_time_news_checked() && file_date(HAT_NEWS) > query_last_time_news_checked())
+    COLOURUTIL_D->write_c((string)COLOURUTIL_D->igreen("There is new 'hatnews'.\n"));
+}
+
 void init() {
   add_action("do_hatnews", "hatnews");
   add_action("do_addhatnews", "addhatnews");
 
-  call_out("check_if_news", 3);
-}
-
-void check_if_news() {
-  if(file_date(HAT_NEWS) > query_last_time_news_checked())
-    COLOURUTIL_D->write_c((string)COLOURUTIL_D->igreen("There is new 'hatnews'.\n"));
+  call_out("check_if_news", 2);
 }
 
 mapping get_news() {
