@@ -77,7 +77,7 @@ int do_addhatnews(string arg) {
     return 0;
 
   write_file(HAT_NEWS, time()+"|"+arg+"\n");
-  writef("Added news: \""+arg+"\"")
+  writef("Added news: \""+arg+"\"");
   return 1;
 }
 
