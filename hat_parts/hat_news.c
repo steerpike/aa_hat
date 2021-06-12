@@ -1,6 +1,7 @@
 #pragma strict_types
 
 #include <xfun.h>
+#include <daemons.h>
 
 #include "../hat_def.h"
 
