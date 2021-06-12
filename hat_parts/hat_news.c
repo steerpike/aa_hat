@@ -5,14 +5,8 @@
 
 #include "../hat_def.h"
 
-int last_time_news_checked;
-// ([ unix time: "news strings" ]);
-
-int query_last_time_news_checked() { return last_time_news_checked; }
-void set_last_time_news_checked(int i) { last_time_news_checked = i; }
-
 void check_if_news() {
-  if(query_last_time_news_checked() && file_date(HAT_NEWS) > query_last_time_news_checked())
+  if(file_date(HAT_NEWS) > query_last_time_news_checked())
     COLOURUTIL_D->write_c((string)COLOURUTIL_D->igreen("There is new 'hatnews'.\n"));
 }
 
@@ -54,6 +48,7 @@ void check_news(int num_of_items) {
   }
   
   set_last_time_news_checked(time());
+  save_hat();
 
   news_items = ({});
   keys = sort_array(m_indices(news), #'<); //'

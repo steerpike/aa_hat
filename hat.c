@@ -16,26 +16,27 @@
 
 // ---------------------------------------------------------- Inheritance ---
 
-inherit "obj/armour";
+static variables inherit "obj/armour";
 
-inherit (HAT_PARTS + "basic_functions");
-inherit (HAT_PARTS + "common_functions");
+static variables inherit (HAT_PARTS + "basic_functions");
+static variables inherit (HAT_PARTS + "common_functions");
 
-inherit (HAT_PARTS + "check_armour_functions");
-inherit (HAT_PARTS + "check_coins_functions");
-inherit (HAT_PARTS + "check_container_functions");
-inherit (HAT_PARTS + "check_drink_functions");
-inherit (HAT_PARTS + "check_food_functions");
-inherit (HAT_PARTS + "check_gem_functions");
-inherit (HAT_PARTS + "check_key_functions");
-inherit (HAT_PARTS + "check_monster_functions");
-inherit (HAT_PARTS + "check_room_functions");
-inherit (HAT_PARTS + "check_shield_functions");
-inherit (HAT_PARTS + "check_torch_functions");
-inherit (HAT_PARTS + "check_treasure_functions");
-inherit (HAT_PARTS + "check_weapon_functions");
+static variables inherit (HAT_PARTS + "check_armour_functions");
+static variables inherit (HAT_PARTS + "check_coins_functions");
+static variables inherit (HAT_PARTS + "check_container_functions");
+static variables inherit (HAT_PARTS + "check_drink_functions");
+static variables inherit (HAT_PARTS + "check_food_functions");
+static variables inherit (HAT_PARTS + "check_gem_functions");
+static variables inherit (HAT_PARTS + "check_key_functions");
+static variables inherit (HAT_PARTS + "check_monster_functions");
+static variables inherit (HAT_PARTS + "check_room_functions");
+static variables inherit (HAT_PARTS + "check_shield_functions");
+static variables inherit (HAT_PARTS + "check_torch_functions");
+static variables inherit (HAT_PARTS + "check_treasure_functions");
+static variables inherit (HAT_PARTS + "check_weapon_functions");
 
-inherit (HAT_PARTS + "hat_news");
+static variables inherit (HAT_PARTS + "hat_news");
+inherit (HAT_PARTS + "hat_settings");
 
 // -------------------------------------------------- External Prototypes ---
 
@@ -58,18 +59,14 @@ void hatcheck_finished();
 
 // ----------------------------------------------------- Global Variables ---
 
-int already, allno, allchecked, hat_visible, hat_light, hat_ansi;
-string commands, *all_files;
+static int already, allno, allchecked;
+static string commands, *all_files;
 
 // ------------------------------------------------------- Implementation ---
 
 void create() {
   armour::create();
 
-  hat_visible = 1;
-  hat_light = 1;
-  hat_ansi = 1;
-  set_light(1);
   set_name("hat");
   set_alias(({"wizard hat", "\nqc_wizard_hat"}));
   set_long("Use 'help hat' to see a list of commands.");
@@ -86,6 +83,7 @@ void create() {
 void init() {
   armour::init();
   hat_news::init();
+  hat_settings::init();
 
   if(environment() != this_player())
     return;
@@ -98,9 +96,6 @@ void init() {
 
   add_action("do_help", "help");
   add_action("do_hatcheck", "hatcheck");
-  add_action("do_hatlight", "hatlight");
-  add_action("do_hatansi", "hatansi");
-  add_action("do_hatshow", "hatshow");
   add_action("do_hatmap", "hatmap");
   add_action("do_hatfind", "hatfind");
   add_action("do_hatstop", "hatstop");
@@ -160,37 +155,13 @@ int do_help(string what) {
 }
 
 string short() {
-  if(!hat_visible)
+  if(!query_hat_visible())
     return 0;
 
-  if(hat_light)
+  if(query_hat_light())
     return "a wizard hat (glowing)";
 
   return "a wizard hat";
-}
-
-int do_hatlight() {
-  if(!hat_light) {
-    set_light(1);
-    hat_light = 1;
-    write("The hat starts to glow.\n");
-  } else {
-    set_light(-1);
-    hat_light = 0;
-    write("The hat stops glowing.\n");
-  }
-  return 1;
-}
-
-int do_hatansi() {
-  if(!hat_ansi) {
-    hat_ansi = 1;
-    write("Errors will be highlighted.\n");
-  } else {
-    hat_ansi = 0;
-    write("Errors will not be highlighted.\n");
-  }
-  return 1;
 }
 
 int do_hatmap() {
@@ -564,38 +535,11 @@ void hatcheck_finished() {
   stop_busy();
 }
 
-int do_hatshow() {
-  if(!hat_visible) {
-    write("The hat turns visible.\n");
-    hat_visible = 1;
-  } else {
-    write("The hat turns invisible.\n");
-    hat_visible = 0;
-  }
-  return 1;
-}
-
-void init_arg(string arg) {
-  string *args;
-
-  args = explode(arg, "|");
-
-  hat_visible = to_int(args[0]);
-  hat_light = to_int(args[1]);
-  hat_ansi = to_int(args[2]);
-  set_last_time_news_checked(to_int(args[3]));
-}
-
 string query_auto_load() {
   if(this_player()->query_level() < APPRENTICE)
     return 0;
   else
-    return explode(file_name(this_object()),"#")[0]+":"+
-      sprintf("%d|%d|%d|%d",
-      hat_visible,
-      hat_light,
-      hat_ansi,
-      query_last_time_news_checked());
+    return explode(file_name(this_object()),"#")[0] + ":";
 }
 
 int drop() { return 1; }
@@ -606,8 +550,4 @@ int query_level() {
 
 string* query_all_files() {
   return all_files;
-}
-
-int query_hat_ansi() {
-  return hat_ansi;
 }
