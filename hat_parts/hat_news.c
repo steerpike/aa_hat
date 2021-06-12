@@ -12,7 +12,7 @@ mapping news;
 int query_last_time_news_checked() { return last_time_news_checked; }
 void set_last_time_news_checked(int i) { last_time_news_checked = i; }
 
-void mapping query_hatnews() { return ([]) + news; }
+mapping query_hatnews() { return ([]) + news; }
 
 void init() {
   add_action("do_hatnews", "hatnews");
