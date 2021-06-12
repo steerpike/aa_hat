@@ -16,24 +16,24 @@
 
 // ---------------------------------------------------------- Inheritance ---
 
-static variables inherit "obj/armour";
+inherit "obj/armour";
 
-static variables inherit (HAT_PARTS + "basic_functions");
-static variables inherit (HAT_PARTS + "common_functions");
+inherit (HAT_PARTS + "basic_functions");
+inherit (HAT_PARTS + "common_functions");
 
-static variables inherit (HAT_PARTS + "check_armour_functions");
-static variables inherit (HAT_PARTS + "check_coins_functions");
-static variables inherit (HAT_PARTS + "check_container_functions");
-static variables inherit (HAT_PARTS + "check_drink_functions");
-static variables inherit (HAT_PARTS + "check_food_functions");
-static variables inherit (HAT_PARTS + "check_gem_functions");
-static variables inherit (HAT_PARTS + "check_key_functions");
-static variables inherit (HAT_PARTS + "check_monster_functions");
-static variables inherit (HAT_PARTS + "check_room_functions");
-static variables inherit (HAT_PARTS + "check_shield_functions");
-static variables inherit (HAT_PARTS + "check_torch_functions");
-static variables inherit (HAT_PARTS + "check_treasure_functions");
-static variables inherit (HAT_PARTS + "check_weapon_functions");
+inherit (HAT_PARTS + "check_armour_functions");
+inherit (HAT_PARTS + "check_coins_functions");
+inherit (HAT_PARTS + "check_container_functions");
+inherit (HAT_PARTS + "check_drink_functions");
+inherit (HAT_PARTS + "check_food_functions");
+inherit (HAT_PARTS + "check_gem_functions");
+inherit (HAT_PARTS + "check_key_functions");
+inherit (HAT_PARTS + "check_monster_functions");
+inherit (HAT_PARTS + "check_room_functions");
+inherit (HAT_PARTS + "check_shield_functions");
+inherit (HAT_PARTS + "check_torch_functions");
+inherit (HAT_PARTS + "check_treasure_functions");
+inherit (HAT_PARTS + "check_weapon_functions");
 
 inherit (HAT_PARTS + "hat_news");
 
@@ -58,8 +58,8 @@ void hatcheck_finished();
 
 // ----------------------------------------------------- Global Variables ---
 
-static int already, allno, allchecked, hat_visible, hat_light, hat_ansi;
-static string commands, *all_files;
+int already, allno, allchecked, hat_visible, hat_light, hat_ansi;
+string commands, *all_files;
 
 // ------------------------------------------------------- Implementation ---
 
