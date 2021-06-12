@@ -6,7 +6,7 @@
 
 #define HAT_PARTS HAT_PATH "hat_parts/"
 #define HAT_LOG   HAT_PATH "log/"
-#define HAT_SAVE  HAT_PATH "save/"
+#define HAT_SAVE  HAT_PATH "hats/"
 
 #define HAT_NEWS  HAT_LOG "hat.news"
 

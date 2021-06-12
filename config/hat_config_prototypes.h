@@ -13,4 +13,7 @@ void check_material(object o, int mandatory);
 void check_recommended_value(object o, int rec);
 varargs int text_check(object o, string what, string text, int flags, mapping extra);
 
+// From hat_settings.c
+void save_hat();
+
 #endif
