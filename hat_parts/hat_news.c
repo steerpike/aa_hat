@@ -7,7 +7,6 @@
 
 int last_time_news_checked;
 // ([ unix time: "news strings" ]);
-mapping news;
 
 int query_last_time_news_checked() { return last_time_news_checked; }
 void set_last_time_news_checked(int i) { last_time_news_checked = i; }
@@ -19,9 +18,15 @@ void init() {
   add_action("do_addhatnews", "addhatnews");
 }
 
-void load_news() {
+void check_if_news() {
+  if(file_date(HAT_NEWS) > query_last_time_news_checked())
+    COLOURUTIL_D->write_c((string)COLOURUTIL_D->igreen("There is new 'hatnews' (or 'hatnews <num>/all' for details.\n"));
+}
+
+mapping get_news() {
   int i;
   string *data, *news_items;
+  mapping news;
 
   news = ([]);
   if(file_size(HAT_NEWS) > 0) {
@@ -30,21 +35,23 @@ void load_news() {
       data = explode(news_items[i], "|");
       news += ([ to_int(data[0]): implode(data[1..], "|") ]);
     }
-    if(file_date(HAT_NEWS) > query_last_time_news_checked())
-      COLOURUTIL_D->write_c((string)COLOURUTIL_D->igreen("There is new 'hatnews' (or 'hatnews <num>/all' for details.\n"));
   }
+  return news;
 }
 
 void check_news(int num_of_items) {
   int i, *keys, time_threshold;
   string date, *news_items;
+  mapping news;
+
+  news = get_news();
 
   if(!num_of_items) {
     time_threshold = query_last_time_news_checked();
     num_of_items = sizeof(news);
   }
   
-  //set_last_time_news_checked(time());
+  set_last_time_news_checked(time());
 
   news_items = ({});
   keys = sort_array(m_indices(news), #'<); //'
