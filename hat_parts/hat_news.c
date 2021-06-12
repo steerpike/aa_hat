@@ -41,7 +41,7 @@ void check_news(int num_of_items) {
   keys = sort_array(m_indices(news), #'<); //'
   for(i=0; i<sizeof(keys) && i<num_of_items; i++) {
     if(keys[i] > time_threshold) {
-      date = explode((string)XFUN->short_time(keys[i]), " ")[0]
+      date = explode((string)XFUN->short_time(keys[i]), " ")[0];
       news_items += ({ date + ": " + news[keys[i]] });
     }
   }
