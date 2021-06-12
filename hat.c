@@ -21,19 +21,21 @@ inherit "obj/armour";
 inherit (HAT_PARTS + "basic_functions");
 inherit (HAT_PARTS + "common_functions");
 
-inherit (HAT_PARTS + "armour_functions");
-inherit (HAT_PARTS + "coins_functions");
-inherit (HAT_PARTS + "container_functions");
-inherit (HAT_PARTS + "drink_functions");
-inherit (HAT_PARTS + "food_functions");
-inherit (HAT_PARTS + "gem_functions");
-inherit (HAT_PARTS + "key_functions");
-inherit (HAT_PARTS + "monster_functions");
-inherit (HAT_PARTS + "room_functions");
-inherit (HAT_PARTS + "shield_functions");
-inherit (HAT_PARTS + "torch_functions");
-inherit (HAT_PARTS + "treasure_functions");
-inherit (HAT_PARTS + "weapon_functions");
+inherit (HAT_PARTS + "check_armour_functions");
+inherit (HAT_PARTS + "check_coins_functions");
+inherit (HAT_PARTS + "check_container_functions");
+inherit (HAT_PARTS + "check_drink_functions");
+inherit (HAT_PARTS + "check_food_functions");
+inherit (HAT_PARTS + "check_gem_functions");
+inherit (HAT_PARTS + "check_key_functions");
+inherit (HAT_PARTS + "check_monster_functions");
+inherit (HAT_PARTS + "check_room_functions");
+inherit (HAT_PARTS + "check_shield_functions");
+inherit (HAT_PARTS + "check_torch_functions");
+inherit (HAT_PARTS + "check_treasure_functions");
+inherit (HAT_PARTS + "check_weapon_functions");
+
+inherit (HAT_PARTS + "hat_news");
 
 // -------------------------------------------------- External Prototypes ---
 
@@ -44,8 +46,8 @@ void hatcheck_room_2(object room);
 void hatcheck_room_3(object room, mapping items);
 void determine_light(object room, object o, mapping items);
 
-void increment_error_count();
-int query_error_count();
+void increment_qc_count();
+int query_qc_count();
 
 void increment_balance_count();
 int query_balance_count();
@@ -56,17 +58,17 @@ void hatcheck_finished();
 
 // ----------------------------------------------------- Global Variables ---
 
-int already, allno, allchecked;
-string commands, hat_visible, hat_light, hat_ansi, *all_files;
+int already, allno, allchecked, hat_visible, hat_light, hat_ansi;
+string commands, *all_files;
 
 // ------------------------------------------------------- Implementation ---
 
 void create() {
   armour::create();
 
-  hat_visible = "+";
-  hat_light = "+";
-  hat_ansi = "+";
+  hat_visible = 1;
+  hat_light = 1;
+  hat_ansi = 1;
   set_light(1);
   set_name("hat");
   set_alias(({"wizard hat", "\nqc_wizard_hat"}));
@@ -83,6 +85,7 @@ void create() {
 
 void init() {
   armour::init();
+  hat_news::init();
 
   if(environment() != this_player())
     return;
@@ -151,39 +154,40 @@ int do_help(string what) {
     "hatmap   = Create a map of the current area.\n" +
     "hatfind  = Find objects (use a keyword, such as 'trinket').\n" +
     "hatstop  = Cancel a 'hatcheck' in progress.\n" +
-    "hatlog   = more, cat, or clear your hatlog.\n");
+    "hatlog   = more, cat, or clear your hatlog.\n" +
+    "hatnews  = check the hatnews (optionally specify \"all\" or <num>\n");
   return 1;
 }
 
 string short() {
-  if(hat_visible == "-")
+  if(!hat_visible)
     return 0;
 
-  if(hat_light == "+")
+  if(hat_light)
     return "a wizard hat (glowing)";
 
   return "a wizard hat";
 }
 
 int do_hatlight() {
-  if(hat_light == "-") {
+  if(!hat_light) {
     set_light(1);
-    hat_light = "+";
+    hat_light = 1;
     write("The hat starts to glow.\n");
   } else {
     set_light(-1);
-    hat_light = "-";
+    hat_light = 0;
     write("The hat stops glowing.\n");
   }
   return 1;
 }
 
 int do_hatansi() {
-  if(hat_ansi == "-") {
-    hat_ansi = "+";
+  if(!hat_ansi) {
+    hat_ansi = 1;
     write("Errors will be highlighted.\n");
   } else {
-    hat_ansi = "-";
+    hat_ansi = 0;
     write("Errors will not be highlighted.\n");
   }
   return 1;
@@ -399,8 +403,8 @@ void hatcheck_file(string path) {
   if(!o) {
     err = catch(load_object(path));
     if(err) {
-      write("Error loading: "+path+"\n");
-      increment_error_count();
+      report(0, "Error loading: "+path, ERROR_CHANNEL);
+      increment_qc_count();
       call_out("hatcheck_all_files", 1);
       return;
     }
@@ -408,8 +412,8 @@ void hatcheck_file(string path) {
   }
 
   if(!o) {
-    write("Error locating: "+path+"\n");
-    increment_error_count();
+    report(0, "Error locating: "+path, ERROR_CHANNEL);
+    increment_qc_count();
     call_out("hatcheck_all_files", 1);
     return;
   }
@@ -545,13 +549,13 @@ int do_hatcheck(string what) {
 }
 
 void hatcheck_finished() {
-  if(!query_error_count() && !query_balance_count())
+  if(!query_qc_count() && !query_balance_count())
     write("Hatcheck complete: no problems detected.\n");
   else {
     if(allchecked) {
       write("Hatcheck complete: checked "+allchecked+" files.\n");
-      if(query_error_count())
-        COLOURUTIL_D->write_cf(CHANNELS[QC_CHANNEL]+"Found "+query_error_count()+" QC issues."+COLOUR_RESET);
+      if(query_qc_count())
+        COLOURUTIL_D->write_cf(CHANNELS[QC_CHANNEL]+"Found "+query_qc_count()+" QC issues."+COLOUR_RESET);
       if(query_balance_count())
         COLOURUTIL_D->write_cf(CHANNELS[BALANCE_CHANNEL]+"Found "+query_balance_count()+" Balance issues."+COLOUR_RESET);
     } else
@@ -561,30 +565,37 @@ void hatcheck_finished() {
 }
 
 int do_hatshow() {
-  if(hat_visible == "-") {
+  if(!hat_visible) {
     write("The hat turns visible.\n");
-    hat_visible = "+";
+    hat_visible = 1;
   } else {
     write("The hat turns invisible.\n");
-    hat_visible = "-";
+    hat_visible = 0;
   }
   return 1;
 }
 
 void init_arg(string arg) {
-  hat_visible = arg[0..0];
-  hat_light = arg[1..1];
-  if(strlen(arg) > 2)
-    hat_ansi = arg[2..2];
-  if(hat_light == "-")
-    set_light(-1);
+  string *args;
+
+  args = explode(arg, "|");
+
+  hat_visible = to_int(args[0]);
+  hat_light = to_int(args[1]);
+  hat_ansi = to_int(args[2]);
+  set_last_time_news_checked(to_int(args[3]));
 }
 
 string query_auto_load() {
   if(this_player()->query_level() < APPRENTICE)
     return 0;
   else
-    return explode(file_name(this_object()),"#")[0]+":"+hat_visible+hat_light+hat_ansi;
+    return explode(file_name(this_object()),"#")[0]+":"+
+      sprintf("%d|%d|%d|%d",
+      hat_visible,
+      hat_light,
+      hat_ansi,
+      query_last_time_news_checked());
 }
 
 int drop() { return 1; }
@@ -598,5 +609,5 @@ string* query_all_files() {
 }
 
 int query_hat_ansi() {
-  return hat_ansi == "+";
+  return hat_ansi;
 }
