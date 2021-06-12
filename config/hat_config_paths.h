@@ -8,6 +8,8 @@
 #define HAT_LOG   HAT_PATH "log/"
 #define HAT_SAVE  HAT_PATH "save/"
 
+#define HAT_NEWS  HAT_LOG "hat.news"
+
 #define HAT_TOOL HAT_PATH "hat"
 #define HAT_ROOM HAT_PATH "hat_room"
 
