@@ -11,8 +11,6 @@ int last_time_news_checked;
 int query_last_time_news_checked() { return last_time_news_checked; }
 void set_last_time_news_checked(int i) { last_time_news_checked = i; }
 
-mapping query_hatnews() { return ([]) + news; }
-
 void init() {
   add_action("do_hatnews", "hatnews");
   add_action("do_addhatnews", "addhatnews");
@@ -51,6 +49,8 @@ void check_news(int num_of_items) {
   if(!num_of_items) {
     time_threshold = query_last_time_news_checked();
     num_of_items = sizeof(news);
+  } else if (num_of_items == -1) {
+    num_of_items = sizeof(news);
   }
   
   set_last_time_news_checked(time());
@@ -81,7 +81,7 @@ int do_addhatnews(string arg) {
 
 int do_hatnews(string arg) {
   if(arg == "all")
-    check_news(sizeof(news));
+    check_news(-1);
   else
     check_news(to_int(arg));
   return 1;
