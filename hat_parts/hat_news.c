@@ -22,7 +22,7 @@ void save_news() {
 }
 
 void load_news() {
-  if(!load_object(HAT_SAVE + "hat"))
+  if(!restore_object(HAT_SAVE + "hat"))
     news = ([]);
 }
 
