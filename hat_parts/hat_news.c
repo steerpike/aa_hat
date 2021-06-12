@@ -29,6 +29,8 @@ void load_news() {
       data = explode(news_items[i], "|");
       news += ([ to_int(data[0]): implode(data[1..], "|") ]);
     }
+    if(file_date(HAT_NEWS) > query_last_time_news_checked())
+      COLOURUTIL_D->write_c((string)COLOURUTIL_D->igreen("There is new 'hatnews' (or 'hatnews <num>/all' for details.\n"));
   }
 }
 
