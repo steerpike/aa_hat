@@ -5,6 +5,8 @@
 
 #include "../hat_def.h"
 
+void
+
 int last_time_news_checked;
 // ([ unix time: "news strings" ]);
 
@@ -54,6 +56,7 @@ void check_news(int num_of_items) {
   }
   
   set_last_time_news_checked(time());
+  save_hat();
 
   news_items = ({});
   keys = sort_array(m_indices(news), #'<); //'
