@@ -69,7 +69,6 @@ void create() {
   hat_visible = 1;
   hat_light = 1;
   hat_ansi = 1;
-  load_news();
   set_light(1);
   set_name("hat");
   set_alias(({"wizard hat", "\nqc_wizard_hat"}));
@@ -106,6 +105,8 @@ void init() {
   add_action("do_hatfind", "hatfind");
   add_action("do_hatstop", "hatstop");
   add_action("do_hatlog", "hatlog");
+
+  call_out("check_if_news", 2);
 }
 
 void hatlog_more() {
@@ -155,7 +156,8 @@ int do_help(string what) {
     "hatmap   = Create a map of the current area.\n" +
     "hatfind  = Find objects (use a keyword, such as 'trinket').\n" +
     "hatstop  = Cancel a 'hatcheck' in progress.\n" +
-    "hatlog   = more, cat, or clear your hatlog.\n");
+    "hatlog   = more, cat, or clear your hatlog.\n" +
+    "hatnews  = check the hatnews (optionally specify \"all\" or <num>\n");
   return 1;
 }
 
