@@ -22,8 +22,8 @@ void load_news() {
   int i;
   string *data, *news_items;
 
+  news = ([]);
   if(file_size(HAT_NEWS) > 0) {
-    news = ([]);
     news_items = explode(read_file(HAT_NEWS), "\n");
     for(i=0; i<sizeof(news_items); i++) {
       data = explode(news_items[i], "|");
