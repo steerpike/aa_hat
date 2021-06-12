@@ -5,8 +5,6 @@
 
 #include "../hat_def.h"
 
-void
-
 int last_time_news_checked;
 // ([ unix time: "news strings" ]);
 
