@@ -150,7 +150,7 @@ int do_help(string what) {
     "hatfind  = Find objects (use a keyword, such as 'trinket').\n" +
     "hatstop  = Cancel a 'hatcheck' in progress.\n" +
     "hatlog   = more, cat, or clear your hatlog.\n" +
-    "hatnews  = check the hatnews (optionally specify \"all\" or <num>\n");
+    "hatnews  = check the hatnews (optionally specify \"all\" or <num>)\n");
   return 1;
 }
 
