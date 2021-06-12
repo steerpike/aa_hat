@@ -55,7 +55,7 @@ void check_news(int num_of_items) {
   for(i=0; i<sizeof(keys) && i<num_of_items; i++) {
     if(keys[i] > time_threshold) {
       date = explode((string)XFUN->short_time(keys[i]), " ")[0];
-      news_items += ({ get_f_string(date + ": " + news[keys[i]], 0, strlen(date)+2) });
+      news_items += ({ get_f_string(date + ": " + news[keys[i]], 0, strlen(date)+2)[0..<2] });
     }
   }
 
