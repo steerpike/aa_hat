@@ -149,8 +149,8 @@ int do_help(string what) {
     "hatmap   = Create a map of the current area.\n" +
     "hatfind  = Find objects (use a keyword, such as 'trinket').\n" +
     "hatstop  = Cancel a 'hatcheck' in progress.\n" +
-    "hatlog   = more, cat, or clear your hatlog.\n" +
-    "hatnews  = check the hatnews (optionally specify \"all\" or <num>)\n");
+    "hatlog   = View or clear your hatlog ('hatlog <more/cat/clear>').\n" +
+    "hatnews  = Check the hatnews (optionally specify \"all\" or <num>).\n");
   return 1;
 }
 
