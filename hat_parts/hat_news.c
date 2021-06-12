@@ -16,11 +16,13 @@ mapping query_hatnews() { return ([]) + news; }
 void init() {
   add_action("do_hatnews", "hatnews");
   add_action("do_addhatnews", "addhatnews");
+
+  call_out("check_if_news", 3);
 }
 
 void check_if_news() {
   if(file_date(HAT_NEWS) > query_last_time_news_checked())
-    COLOURUTIL_D->write_c((string)COLOURUTIL_D->igreen("There is new 'hatnews' (or 'hatnews <num>/all' for details.\n"));
+    COLOURUTIL_D->write_c((string)COLOURUTIL_D->igreen("There is new 'hatnews'.\n"));
 }
 
 mapping get_news() {
