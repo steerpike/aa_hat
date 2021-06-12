@@ -72,10 +72,12 @@ void check_news(int num_of_items) {
 
 int do_addhatnews(string arg) {
   // TODO make a better security routine
-  if((string)this_player()->query_real_name() != "maker")
+  if((string)this_player()->query_real_name() != "maker" &&
+  (string)this_player()->query_real_name() != "ninjutsu")
     return 0;
 
   write_file(HAT_NEWS, time()+"|"+arg+"\n");
+  writef("Added news: \""+arg+"\"")
   return 1;
 }
 
