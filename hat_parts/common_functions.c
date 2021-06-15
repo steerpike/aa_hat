@@ -342,12 +342,14 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
   int i, j, text_len, num_lines, word_len, words_size, changed_word, changed_words;
   string c, word, *lines, *words, *extra_words, *punctuation;
 
-  //inform(o, "DEBUG: Running text_check for "+what+" on \""+text+"\".");
+  debug("DEBUG: Running text_check for "+what+" on \""+text+"\".");
 
-  //j = sizeof(TEXT_FLAGS);
-  //inform(o, "DEBUG: checking "+j+" flags for \""+what+"\" ("+file_name(o)+")");
-  //for(i=0; i<j; i++)
-  //  write(sprintf("  FLAG %2d: %3s - %s\n", i+1, (flags & (1 << i)?"on":"off"), TEXT_FLAGS[i]));
+  if(query_debugging()) {
+    j = sizeof(TEXT_FLAGS);
+    debug("DEBUG: checking "+j+" flags for \""+what+"\" ("+file_name(o)+")");
+    for(i=0; i<j; i++)
+      debug(sprintf("  FLAG %2d: %3s - %s\n", i+1, (flags & (1 << i)?"on":"off"), TEXT_FLAGS[i]));
+  }
 
   if(!text || text == "") {
     if(!(flags & TEXT_NOT_MANDATORY))
