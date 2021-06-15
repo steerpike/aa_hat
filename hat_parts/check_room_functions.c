@@ -52,12 +52,11 @@ void hatcheck_room(object o) {
     report(o, "The room needs more add_senses, it is too plain.", QC_CHANNEL);
 
   check_short(o, TEXT_CHECK_LIMITS, ROOM_SHORT_LIMITS);
-  check_long(o,
-    TEXT_EXCEPTION_ENDING_SPACE | TEXT_CHECK_LIMITS,
-    ROOM_LONG_LIMITS);
+  check_long(o, TEXT_EXCEPTION_ENDING_SPACE | TEXT_CHECK_LIMITS, ROOM_LONG_LIMITS);
   check_set_sense(o, "search", TEXT_NOT_MANDATORY);
   check_set_sense(o, "smell", (o->query_is_underwater_room()?TEXT_NOT_MANDATORY:0));
   check_set_sense(o, "sound", 0);
+  check_add_messages(o);
 
   inheritance = inherit_list(o);
 
@@ -87,9 +86,26 @@ void hatcheck_room(object o) {
   check_add_senses(o, 0);
 }
 
-// TODO code checking for add_message()
-void check_messages(object room) {
+private void _check_add_message(mixed message) {
+  mixed msg_self, msg_others.
+
+
+
+}
+
+void check_add_messages(object room) {
+  int i;
+  string *verbs, *nouns;
+  mapping messages;
+  mixed msg_self, msg_others;
+
+  messages = room->query_messages();
   
+  if(!messages) return;
+
+  for(i=0; i<sizeof(messages); i++)
+    // TODO check a single message
+
 }
 
 // TODO code checking for block_stand_messages and block_stand
