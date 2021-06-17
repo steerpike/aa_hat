@@ -468,7 +468,7 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
       report(o, capitalize(what) + " uses article \""+word+"\" before \""+words[i+1]+"\", but should use \""+(lower_case(word)=="a"?"an":"a")+"\".", QC_CHANNEL);
 
     if( i < words_size-1 && member(({"hand", "hands", "finger", "fingers", "foot", "feet", "arm", "arms", "leg", "legs"}), words[i+1]) != -1 && word == "your")
-        report(o, capitalize(what) + " (see World policies).", WORLD_CHANNEL);
+        report(o, capitalize(what) +" has \""+words[i+1]+"\" (see World policies).", WORLD_CHANNEL);
   }
 
   if(flags & TEXT_DENY_MULTIPLE_WORDS && sizeof(words) > 1)
