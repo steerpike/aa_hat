@@ -175,17 +175,13 @@ void inform(object o, string s, int channel) {
 }
 
 void report(object o, string s, int channel) {
-  if(channel == ERROR_CHANNEL) {
-    out_line(s, channel, 2);
-    return;
-  }
+  int indent; 
+  indent = 2;
 
-  if(channel == HAT_CHANNEL) {
-    out_line(s, channel, 10);
-    return;
-  }
+  if(channel == HAT_CHANNEL) // Nin wanted 10 indent for HAT_CHANNEL
+    indent = 10;
 
-  inform(o, s, channel);
+  inform(o, s, channel, indent);
 }
 
 void check_inherits(object o) {
