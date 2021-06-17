@@ -529,6 +529,8 @@ void hatcheck_finished() {
         COLOURUTIL_D->write_cf(CHANNELS[QC_CHANNEL]+"Found "+query_qc_count()+" QC issues."+COLOUR_RESET);
       if(query_balance_count())
         COLOURUTIL_D->write_cf(CHANNELS[BALANCE_CHANNEL]+"Found "+query_balance_count()+" Balance issues."+COLOUR_RESET);
+      if(query_balance_count())
+        COLOURUTIL_D->write_cf(CHANNELS[WORLD_CHANNEL]+"Found "+query_balance_count()+" World issues."+COLOUR_RESET);
     } else
       write("Hatcheck complete: nothing checked--nothing found.\n");
   }
