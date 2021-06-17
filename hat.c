@@ -522,6 +522,7 @@ int do_hatcheck(string what) {
 void hatcheck_finished() {
   if(!query_qc_count() && !query_balance_count() && !query_world_count())
     write("Hatcheck complete: no problems detected.\n");
+    
   else {
     if(allchecked) {
       write("Hatcheck complete: checked "+allchecked+" files.\n");
