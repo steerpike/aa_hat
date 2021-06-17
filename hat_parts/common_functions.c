@@ -25,7 +25,7 @@ varargs void out_line(string s, int highlight, int indent);
 
 // --------------------------------------------------------- Global Variables
 
-int emergency_stop, qc_count, balance_count, is_busy;
+int emergency_stop, qc_count, balance_count, world_count, is_busy;
 object last_reported;
 mapping reports;
 
@@ -38,6 +38,10 @@ int query_qc_count() { return qc_count; }
 void reset_balance_count() { balance_count = 0; }
 void increment_balance_count() { balance_count++; }
 int query_balance_count() { return balance_count; }
+
+void reset_world_count() { world_count = 0; }
+void increment_world_count() { world_count++; }
+int query_world_count() { return world_count; }
 
 object query_last_reported() { return last_reported; }
 
@@ -78,6 +82,7 @@ void reset_variables() {
   set_sum_value(0);
   reset_qc_count();
   reset_balance_count();
+  reset_world_count();
   set_reporting_on_object(0);
   disable_emergency_stop();
   clear_reports();
@@ -115,9 +120,6 @@ void hat_log(string s) {
 
 varargs void out_line(string s, int channel, int indent) {
   string colour;
-  
-  if(!indent)
-    indent = 2;
 
   colour = CHANNELS[channel];
   COLOURUTIL_D->write_c(COLOURUTIL_D->get_cf_string(colour+s+COLOUR_RESET, 0, indent));
@@ -152,6 +154,12 @@ void add_report(object o, string error) {
 }
 
 void inform(object o, string s, int channel) {
+  int indent; 
+  indent = 2;
+
+  if(channel == HAT_CHANNEL) // Nin wanted 10 indent for HAT_CHANNEL
+    indent = 10;
+
   if(o != query_last_reported())
     set_reporting_on_object(o);
   
@@ -163,21 +171,13 @@ void inform(object o, string s, int channel) {
       increment_qc_count();
     else if(channel == BALANCE_CHANNEL)
       increment_balance_count();
-    out_line(s, channel);
+    else if(channel == WORLD_CHANNEL)
+      increment_world_count();
+    out_line(s, channel, indent);
   }
 }
 
 void report(object o, string s, int channel) {
-  if(channel == ERROR_CHANNEL) {
-    out_line(s, channel, 2);
-    return;
-  }
-
-  if(channel == HAT_CHANNEL) {
-    out_line(s, channel, 10);
-    return;
-  }
-
   inform(o, s, channel);
 }
 
@@ -461,7 +461,7 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
       report(o, capitalize(what) + " uses article \""+word+"\" before \""+words[i+1]+"\", but should use \""+(lower_case(word)=="a"?"an":"a")+"\".", QC_CHANNEL);
 
     if( i < words_size-1 && member(({"hand", "hands", "finger", "fingers", "foot", "feet", "arm", "arms", "leg", "legs"}), words[i+1]) != -1 && word == "your")
-      report(o, capitalize(what) + " has \""+words[i+1]+"\" (man query_hand_str).", QC_CHANNEL);
+      report(o, capitalize(what) + " has \""+words[i+1]+"\" (see World policies).", WORLD_CHANNEL);
   }
 
   if(flags & TEXT_DENY_MULTIPLE_WORDS && sizeof(words) > 1)

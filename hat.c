@@ -520,8 +520,9 @@ int do_hatcheck(string what) {
 }
 
 void hatcheck_finished() {
-  if(!query_qc_count() && !query_balance_count())
+  if(!query_qc_count() && !query_balance_count() && !query_world_count())
     write("Hatcheck complete: no problems detected.\n");
+    
   else {
     if(allchecked) {
       write("Hatcheck complete: checked "+allchecked+" files.\n");
@@ -529,6 +530,8 @@ void hatcheck_finished() {
         COLOURUTIL_D->write_cf(CHANNELS[QC_CHANNEL]+"Found "+query_qc_count()+" QC issues."+COLOUR_RESET);
       if(query_balance_count())
         COLOURUTIL_D->write_cf(CHANNELS[BALANCE_CHANNEL]+"Found "+query_balance_count()+" Balance issues."+COLOUR_RESET);
+      if(query_world_count())
+        COLOURUTIL_D->write_cf(CHANNELS[WORLD_CHANNEL]+"Found "+query_world_count()+" World issues."+COLOUR_RESET);
     } else
       write("Hatcheck complete: nothing checked--nothing found.\n");
   }
