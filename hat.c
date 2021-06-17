@@ -17,7 +17,7 @@
 // ---------------------------------------------------------- Inheritance ---
 
 static variables inherit "obj/armour";
-static variables inherit "/w/maker/tools/debug/debug";
+static variables inherit DEBUG;
 
 static variables inherit (HAT_PARTS + "basic_functions");
 static variables inherit (HAT_PARTS + "common_functions");

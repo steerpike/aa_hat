@@ -22,5 +22,4 @@ void set_last_time_news_checked(int i);
 varargs void debug(mixed arg, int tell_room);
 int query_debugging();
 
-
 #endif
