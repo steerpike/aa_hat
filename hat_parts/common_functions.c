@@ -120,9 +120,6 @@ void hat_log(string s) {
 
 varargs void out_line(string s, int channel, int indent) {
   string colour;
-  
-  if(!indent)
-    indent = 2;
 
   colour = CHANNELS[channel];
   COLOURUTIL_D->write_c(COLOURUTIL_D->get_cf_string(colour+s+COLOUR_RESET, 0, indent));
@@ -157,6 +154,12 @@ void add_report(object o, string error) {
 }
 
 void inform(object o, string s, int channel) {
+  int indent; 
+  indent = 2;
+
+  if(channel == HAT_CHANNEL) // Nin wanted 10 indent for HAT_CHANNEL
+    indent = 10;
+
   if(o != query_last_reported())
     set_reporting_on_object(o);
   
@@ -170,18 +173,12 @@ void inform(object o, string s, int channel) {
       increment_balance_count();
     else if(channel == WORLD_CHANNEL)
       increment_world_count();
-    out_line(s, channel);
+    out_line(s, channel, indent);
   }
 }
 
 void report(object o, string s, int channel) {
-  int indent; 
-  indent = 2;
-
-  if(channel == HAT_CHANNEL) // Nin wanted 10 indent for HAT_CHANNEL
-    indent = 10;
-
-  inform(o, s, channel, indent);
+  inform(o, s, channel);
 }
 
 void check_inherits(object o) {
