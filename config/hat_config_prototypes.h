@@ -19,7 +19,7 @@ int query_last_time_news_checked();
 void set_last_time_news_checked(int i);
 
 // From /w/maker/tools/debug/debug.c
-varargs void debug(mixed arg, int tell_room);
-int query_debugging();
+public varargs void debug(mixed arg, string channel)
+mapping query_debugging();
 
 #endif
