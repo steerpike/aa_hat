@@ -17,6 +17,7 @@
 // ---------------------------------------------------------- Inheritance ---
 
 static variables inherit "obj/armour";
+static variables inherit DEBUG;
 
 static variables inherit (HAT_PARTS + "basic_functions");
 static variables inherit (HAT_PARTS + "common_functions");
@@ -65,6 +66,9 @@ static string commands, *all_files;
 // ------------------------------------------------------- Implementation ---
 
 void create() {
+  if(!is_clone())
+    return;
+
   armour::create();
 
   set_name("hat");
