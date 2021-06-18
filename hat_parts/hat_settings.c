@@ -5,13 +5,12 @@
 #define SAVE_PATH HAT_SAVE + (string)environment()->query_real_name()
 
 int hat_visible, hat_light, hat_ansi, last_time_news_checked;
+static int hat_is_lit;
 
 void initialize_variables() {
   hat_visible = 1;
-  hat_light = 1;
+  hat_light = 0;
   hat_ansi = 1;
-
-  set_light(1);
 }
 
 int query_hat_visible() { return hat_visible; }
@@ -28,6 +27,11 @@ void restore_hat() {
 
   if(!restore_object(SAVE_PATH))
     initialize_variables();
+
+  if(query_hat_light() && !hat_is_lit) {
+    set_light(1);
+    hat_is_lit = 1;
+  }
 }
 
 void init() {
