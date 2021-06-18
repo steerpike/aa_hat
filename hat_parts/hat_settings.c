@@ -58,10 +58,12 @@ int do_hatlight() {
   if(!hat_light) {
     set_light(1);
     hat_light = 1;
+    hat_is_lit = 1;
     write("The hat starts to glow.\n");
   } else {
     set_light(-1);
     hat_light = 0;
+    hat_is_light = 0;
     write("The hat stops glowing.\n");
   }
   save_hat();
