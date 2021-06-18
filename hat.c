@@ -66,6 +66,9 @@ static string commands, *all_files;
 // ------------------------------------------------------- Implementation ---
 
 void create() {
+  if(!is_clone())
+    return;
+
   armour::create();
 
   set_name("hat");
