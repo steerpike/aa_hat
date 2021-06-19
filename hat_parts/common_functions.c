@@ -342,12 +342,12 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
   int i, j, text_len, num_lines, word_len, words_size, changed_word, changed_words;
   string c, word, *lines, *words, *extra_words, *punctuation;
 
-  //inform(o, "DEBUG: Running text_check for "+what+" on \""+text+"\".");
+  debug("Running text_check for "+what+" on \""+text+"\".", "text_check");
 
-  //j = sizeof(TEXT_FLAGS);
-  //inform(o, "DEBUG: checking "+j+" flags for \""+what+"\" ("+file_name(o)+")");
-  //for(i=0; i<j; i++)
-  //  write(sprintf("  FLAG %2d: %3s - %s\n", i+1, (flags & (1 << i)?"on":"off"), TEXT_FLAGS[i]));
+  j = sizeof(TEXT_FLAGS);
+  debug("checking "+j+" flags for \""+what+"\" ("+file_name(o)+")", "text_check");
+  for(i=0; i<j; i++)
+    debug(sprintf("  FLAG %2d: %3s - %s\n", i+1, (flags & (1 << i)?"on":"off"), TEXT_FLAGS[i]), "text_check");
 
   if(!text || text == "") {
     if(!(flags & TEXT_NOT_MANDATORY))
@@ -402,20 +402,20 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
   else if(flags & TEXT_DENY_ARTICLE && !(flags & TEXT_EXCEPTION_ALLOW_ARTICLE) && sizeof(words) && is_article(words[0]))
     report(o, capitalize(what) + " usually does not start with \"a\", \"an\", \"the\" or \"some\".", QC_CHANNEL);
 
-  //inform(o, "DEBUG: words are "+(string)XFUN->variable_to_string(words)+".");
+  debug("words are "+(string)XFUN->variable_to_string(words)+".", "text_check");
   // loop through all the words, and strip punctuation from them
   changed_words = 0;
   for(i=0, words_size=sizeof(words); i<words_size; i++) {
     word = words[i];
     extra_words = 0;
     changed_word = 0;
-    //inform(o, "DEBUG: Parsing word: \""+word+"\"");
+    debug("Parsing word: \""+word+"\"", "text_check");
 
     for(j=0, word_len=strlen(word); j<word_len; j++) {
       c = word[j..j];
-      //inform(o, "DEBUG: Parsing char: \""+c+"\"");
+      debug("Parsing char: \""+c+"\"", "text_check");
       if( !(c[0] >= 'a' && c[0] <= 'z') && !(c[0] >= 'A' && c[0] <= 'Z') && c != "'" && c != "-") {
-        //inform(o, "DEBUG: character \""+c+"\" is not part of word \""+word+"\".");
+        debug("character \""+c+"\" is not part of word \""+word+"\".", "text_check");
         extra_words = explode(word, c);
         // insert the new words, but preserve order
         if(words_size == 1) {
@@ -431,18 +431,18 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
         words_size += sizeof(extra_words) - 1;
         changed_words = 1;
         changed_word = 1;
-        //if(changed_word) {
-        //  inform(o, "DEBUG: words "+(string)XFUN->variable_to_string(words)+".");
-        //  inform(o, "DEBUG: word "+i+" \""+word+"\".");
-        //  inform(o, "DEBUG: "+words_size+" words.");
-        //}
+        if(changed_word) {
+          debug( ([ "words" : words ]), "text_check" );
+          debug( "word " + i + " \"" + word + "\".", "text_check" );
+          debug( words_size + " words.", "text_check" );
+        }
         break;
       }
     }
   }
 
-  //if(changed_words)
-  //  inform(o, "DEBUG: words have been changed to "+(string)XFUN->variable_to_string(words)+".");
+  if(changed_words)
+    debug( (["Words have been changed to" : words]), "text_check" );
 
   for(i=0; i<sizeof(words); i++) {
     word = words[i];
@@ -476,10 +476,10 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
 
   if(flags & TEXT_CHECK_LIMITS) {
     num_lines = sizeof(explode(get_f_string(text), "\n"));
-    //inform(o, "DEBUG: extra is "+XFUN->variable_to_string(extra));
-    //inform(o, "DEBUG: num_lines ("+num_lines+").");
-    //inform(o, "DEBUG: text_len ("+text_len+").");
-    //inform(o, "DEBUG: text is \""+text+"\".");
+    debug( ([ "extra"     : extra     ]), "text_check" );
+    debug( ([ "num_lines" : num_lines ]), "text_check" );
+    debug( ([ "text_len"  : text_len  ]), "text_check" );
+    debug( ([ "text"      : text      ]), "text_check" );
 
     if(mappingp(extra)) {
       // TODO break up this dang text_check function!
@@ -524,6 +524,8 @@ void check_add_senses(object o, int i) {
   int cost;
   string sense, *senses;
   mapping items;
+
+  if(!o) return;
 
   senses = ({"item","noget","search","smell","sound","taste","touch"});
   sense = senses[i];

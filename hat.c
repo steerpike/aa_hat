@@ -17,6 +17,7 @@
 // ---------------------------------------------------------- Inheritance ---
 
 static variables inherit "obj/armour";
+static variables inherit DEBUG;
 
 static variables inherit (HAT_PARTS + "basic_functions");
 static variables inherit (HAT_PARTS + "common_functions");
@@ -65,6 +66,9 @@ static string commands, *all_files;
 // ------------------------------------------------------- Implementation ---
 
 void create() {
+  if(!is_clone())
+    return;
+
   armour::create();
 
   set_name("hat");
@@ -223,6 +227,8 @@ void hatcheck_item(object o) {
 
   done = already = 0;
 
+  debug((["hatcheck_item", o]), "item");
+
   fname = explode(file_name(o), "#")[0];
   if(!format_check_file(o, fname+".c")) {
     call_out("hatcheck_all_files", 1);
@@ -330,16 +336,11 @@ void hatcheck_item_list(object o, int notify_ok) {
       stop_busy();
       return;
     }
-    if(EVAL_COST_LIMIT) {
-      call_out("hatcheck_item_list", 2, o, notify_ok);
-      return;
-    } else {
-      hatcheck_item(o);
-      o = next_inventory(o);
-    }
+    hatcheck_item(o);
+    o = next_inventory(o);
   }
   // TODO, port this value stuff into monster_functions.c
-  if(query_sum_value()) {
+  if(query_sum_value() && query_holder()) {
     add_total_value((int)query_holder()->query_money());
     lvl = (int) query_holder()->query_level();
     if(lvl > 0 && lvl < 26) {
@@ -428,6 +429,8 @@ void hatcheck_all_files() {
     return;
   }
 
+  debug((["files":files]), "files");
+
   while(1) {
     if(allno >= sizeof(all_files)) {
       hatcheck_finished();
@@ -452,8 +455,9 @@ void hatcheck_all_files() {
         writef("Invalid dir for hatcheck: "+dir);
       else {
         files = get_dir(dir, 1);
-        for(i=0; i<sizeof(files); i++)
+        for(i=0; i<sizeof(files); i++) {
           all_files += ({dir+files[i]});
+        }
       }
     } else
       if(l > 0 && strlen(all_files[allno]) > 2) {
