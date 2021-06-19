@@ -525,8 +525,6 @@ void check_add_senses(object o, int i) {
   string sense, *senses;
   mapping items;
 
-  if(!o) return;
-
   senses = ({"item","noget","search","smell","sound","taste","touch"});
   sense = senses[i];
 
