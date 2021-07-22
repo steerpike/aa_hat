@@ -17,5 +17,5 @@ jobs:
         port: ${{ secrets.port }}
         username: ${{ secrets.staging_username }}
         password: ${{ secrets.staging_password }}
-        server-dir: qc/hat/
+        server-dir: hat/
         state-name: .sync-state.json
