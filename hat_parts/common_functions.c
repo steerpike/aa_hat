@@ -474,8 +474,11 @@ varargs int text_check(object o, string what, string text, int flags, mapping ex
     c = text[<1..<1];
   }
 
+  num_lines = sizeof(explode(get_f_string(text), "\n"));
+  if(num_lines > 21)
+    report(o, capitalize(what) + " has too many lines ("+num_lines+"). Max 21.", QC_CHANNEL);
+
   if(flags & TEXT_CHECK_LIMITS) {
-    num_lines = sizeof(explode(get_f_string(text), "\n"));
     debug( ([ "extra"     : extra     ]), "text_check" );
     debug( ([ "num_lines" : num_lines ]), "text_check" );
     debug( ([ "text_len"  : text_len  ]), "text_check" );
