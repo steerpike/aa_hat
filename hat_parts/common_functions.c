@@ -150,7 +150,7 @@ void add_report(object o, string error) {
   if(o)
     file = explode(file_name(o), "#")[0];
   else
-    files = 0;
+    file = 0;
 
   if(!member(reports, file))
     reports += ([ file : ({ error }) ]);
