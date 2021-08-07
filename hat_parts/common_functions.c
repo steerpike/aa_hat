@@ -129,7 +129,10 @@ varargs void out_line(string s, int channel, int indent) {
 int already_reported(object o, string error) {
   string file;
 
-  file = explode(file_name(o), "#")[0];
+  if(o)
+    file = explode(file_name(o), "#")[0];
+  else
+    file = 0;
 
   if(!member(reports, file))
     return 0;
@@ -144,7 +147,10 @@ int already_reported(object o, string error) {
 void add_report(object o, string error) {
   string file;
 
-  file = explode(file_name(o), "#")[0];
+  if(o)
+    file = explode(file_name(o), "#")[0];
+  else
+    file = 0;
 
   if(!member(reports, file))
     reports += ([ file : ({ error }) ]);
