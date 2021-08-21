@@ -20,5 +20,6 @@
 #define SPELLING_D HAT_PATH "daemon/spelling_d"
 #define WANDUS "/d/Balance/obj/wandus"
 #define DEBUG "/w/maker/tools/debug/debug"
+#define EVILSENSE "/w/adinos/class/paladin/evilsense"
 
 #endif
