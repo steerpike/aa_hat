@@ -344,7 +344,7 @@ void monster_race(object o) {
 
 // TODO add query_is_registered to evilsense.c so we can pass
 // the oject reference instead of unreliably looking at the monster's name
-void monster_evilsense(o) {
+void monster_evilsense(object o) {
   int align;
 
   align = (int)o->query_alignment();
