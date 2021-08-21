@@ -16,6 +16,7 @@ void monster_stat(object o);
 void monster_chats(object o);
 void monster_spells(object o);
 void monster_race(object o);
+void monster_evilsense(object o);
 void monster_ac(object o);
 void monster_wc(object o);
 void monster_hp(object o);
@@ -343,10 +344,10 @@ void monster_race(object o) {
 
 // TODO add query_is_registered to evilsense.c so we can pass
 // the oject reference instead of unreliably looking at the monster's name
-void monster_race(o) {
+void monster_evilsense(o) {
   int align;
 
-  align = (int)o-query_alignment()
+  align = (int)o->query_alignment();
 
   if(align <= -500 && !EVILSENSE->query_is_registered(o))
     report(o, "Register with evilsense. Alignment: "+align+" ('man evilsense')", QC_CHANNEL);
