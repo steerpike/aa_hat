@@ -16,7 +16,6 @@ void monster_stat(object o);
 void monster_chats(object o);
 void monster_spells(object o);
 void monster_race(object o);
-void monster_evilsense(object o);
 void monster_ac(object o);
 void monster_wc(object o);
 void monster_hp(object o);
@@ -75,7 +74,6 @@ void hatcheck_monster(object o) {
   monster_align(o);
   monster_spells(o);
   monster_race(o);
-  monster_evilsense(o);
   // TODO cycle through persona states and check all their chats
   // and while we're doing that, check their reactions as well,
   // and maybe even their destinations for PATH_D?
@@ -342,17 +340,6 @@ void monster_race(object o) {
     report(o, "The race \""+race+"\" does not need to be an alias.", QC_CHANNEL);
 }
 
-// TODO add query_is_registered to evilsense.c so we can pass
-// the oject reference instead of unreliably looking at the monster's name
-void monster_evilsense(object o) {
-  int align;
-
-  align = (int)o->query_alignment();
-
-  if(align <= -500 && !EVILSENSE->query_is_registered(o))
-    report(o, "Register with evilsense. Alignment: "+align+" ('man evilsense')", QC_CHANNEL);
-}
-
 void monster_ac(object o) {
   int body, head, arm, leg, lvl, min, max;
 
@@ -455,6 +442,9 @@ void monster_align(object o) {
 
   if(align < min || align > max)
     report(o, "Alignment ("+align+") is too "+(align<min?"evil":"good")+" for a level "+lvl+" monster. Max: "+(align<min?min:max)+".", BALANCE_CHANNEL);
+
+  if(align <= -500 && !EVILSENSE->query_is_registered(o))
+    report(o, "Register with evilsense. Alignment: "+align+" ('man evilsense')", QC_CHANNEL);
 }
 
 
