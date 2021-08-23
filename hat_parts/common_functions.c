@@ -54,9 +54,9 @@ void set_reporting_on_object(object o) {
     item_short = (string)o->query_short();
     if(!item_short)
       item_short = (string)o->short();
-    
+
     name = (string)o->query_name();
-    
+
     if(item_short && item_short[0..0] == "0")
       item_short = item_short[2..<1];
 
@@ -94,6 +94,9 @@ string hatlog_dir() {
 
 string hatlog_file() { return hatlog_dir() + "hat.log"; }
 
+string hatlog_sense_file() { return "/w/"+
+      (string)this_player()->query_real_name() + "/log/senses.log"; }
+
 int setup_hatlog() {
   string dir, name;
 
@@ -116,6 +119,10 @@ int setup_hatlog() {
 void hat_log(string s) {
   if(setup_hatlog())
     log_file(hatlog_file(), s);
+}
+
+void hat_log_senses(string s) {
+  log_file(hatlog_sense_file(), s);
 }
 
 varargs void out_line(string s, int channel, int indent) {
@@ -160,7 +167,7 @@ void add_report(object o, string error) {
 }
 
 void inform(object o, string s, int channel) {
-  int indent; 
+  int indent;
   indent = 2;
 
   if(channel == HAT_CHANNEL) // Nin wanted 10 indent for HAT_CHANNEL
@@ -168,7 +175,7 @@ void inform(object o, string s, int channel) {
 
   if(o != query_last_reported())
     set_reporting_on_object(o);
-  
+
   s = "- " +s;
 
   if(!already_reported(o, s)) {
@@ -296,6 +303,7 @@ void check_add_senses_texts(object o, mapping map, string what) {
     if(!member(descriptions, description)) {
       text_check(o, "the "+what+" for \""+keys[i]+"\"", description, TEXT_ALLOW_REDIRECT);
       descriptions += ([description]);
+      hat_log_senses(get_f_string(description,0,0));
       map -= ([keys[i]]);
     }
   }
@@ -539,7 +547,7 @@ void check_add_senses(object o, int i) {
 
   items = (mapping) call_other(o, "query_"+PLURAL_D->to_plural(sense));
   check_add_senses_texts(o, items, "add_"+sense);
-  
+
   if(i == sizeof(senses)-1) {
     // TODO this is a bit of a hack. all the call_out break points should
     // be converted to a callback system, instead of directly calling
