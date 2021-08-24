@@ -94,8 +94,7 @@ string hatlog_dir() {
 
 string hatlog_file() { return hatlog_dir() + "hat.log"; }
 
-string hatlog_sense_file() { return "/w/"+
-      (string)this_player()->query_real_name() + "/log/senses.log"; }
+string hatlog_sense_file() { return hatlog_dir() +"senses.log"; }
 
 int setup_hatlog() {
   string dir, name;
@@ -122,7 +121,8 @@ void hat_log(string s) {
 }
 
 void hat_log_senses(string s) {
-  log_file(hatlog_sense_file(), s);
+  if(setup_hatlog())
+    log_file(hatlog_sense_file(), s);
 }
 
 varargs void out_line(string s, int channel, int indent) {
